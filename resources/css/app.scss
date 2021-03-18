@@ -1,0 +1,1156 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
+
+@import "~bootstrap";
+@import "~@uppy/core/src/style";
+@import "~@uppy/dashboard/src/style";
+
+$primary-color: var(--primary-color);
+$second-color: #fff;
+
+
+html, body {
+    background-color: $second-color;
+    font-family: 'Nunito', sans-serif;
+
+    a {
+        text-decoration: none;
+    }
+
+    ul {
+        list-style-type: none;
+    }
+}
+
+.fpool-button {
+    background-color: $primary-color;
+    color: #fff !important;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 6px 9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        opacity: .9;
+        color: #fff !important;
+    }
+
+    svg {
+        width: 16px;
+        height: 16px;
+        margin-top: -3px;
+        margin-right: 5px;
+    }
+}
+
+.header {
+    .navbar {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        padding: 0 20px;
+        border-bottom: 1px solid #e5e5e5;
+
+
+        /* Define the shape and color of the hamburger lines */
+        .navbar-toggler {
+            span {
+                display: block;
+                background-color: #212121;
+                height: 2px;
+                width: 25px;
+                margin-top: 5px;
+                margin-bottom: 5px;
+                position: relative;
+                left: 0;
+                opacity: 1;
+                transition: all 0.35s ease-out;
+                transform-origin: center;
+                /* top line needs a little padding */
+                /* top line moves back to initial position and rotates back to 0 degrees */
+                &:nth-child(1) {
+                    transform: translate(0%, 0%) rotate(0deg);
+                    margin-top: 0.3em;
+                    top: 1.4px;
+                }
+
+                /* middle line goes back to regular color and opacity */
+                &:nth-child(2) {
+                    opacity: 1;
+                }
+
+                /* bottom line goes back to initial position and rotates back to 0 degrees */
+                &:nth-child(3) {
+                    transform: translate(0%, 0%) rotate(0deg);
+                    top: -18px;
+                }
+            }
+
+            /**
+                * Animate collapse into X.
+            */
+
+            /* top line rotates 45 degrees clockwise and moves up and in a bit to close the center of the X in the center of the button */
+            &:not(.collapsed) span:nth-child(1) {
+                transform: translate(11%, -35%) rotate(45deg);
+                top: 0;
+            }
+
+            /* center line goes transparent */
+            &:not(.collapsed) span:nth-child(2) {
+                opacity: 0;
+            }
+
+            /**
+               * Animate collapse open into hamburger menu
+             */
+            /* bottom line rotates 45 degrees counter clockwise, in, and down a bit to close the center of the X in the center of the button  */
+            &:not(.collapsed) span:nth-child(3) {
+                transform: translate(11%, 160%) rotate(-45deg);
+            }
+        }
+
+        .logo {
+            height: 45px;
+        }
+
+        .page-items {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+
+            .nav-link {
+                color: #131313;
+            }
+        }
+
+        .navbar-nav {
+            .nav-item {
+                margin-left: 10px;
+
+                .nav-link {
+                    color: #131313;
+
+                    &:hover {
+                        color: #000;
+                    }
+
+                    &.fpool-sign-up {
+                        padding: 6px 12px;
+                    }
+                }
+            }
+
+            .dropdown-toggle {
+                color: #131313;
+
+                &::after {
+
+                }
+            }
+        }
+
+        .fpool-move-btn {
+            .dropdown-menu {
+                top: 56px;
+                border-color: #e5e5e5 !important;
+            }
+
+            .dropdown-toggle::after {
+                display: none !important;
+            }
+        }
+
+        .nav-user-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+        }
+    }
+}
+
+.page-wrapper {
+    .fpool-dropzone {
+        margin-top: 100px;
+
+        .uppy-Dashboard-inner {
+            margin: 0 auto;
+
+            .uppy-Dashboard-AddFiles {
+                border-color: $primary-color;
+                border-width: 1.5px;
+            }
+
+            .uppy-Dashboard-AddFiles-info a {
+                display: none !important;
+            }
+
+            .uppy-Dashboard-Item, .uppyDashboard-Item.is-complete {
+                display: inline-block;
+            }
+        }
+    }
+
+    .fpool-dropzone-terms {
+        display: flex;
+        justify-content: center;
+        font-size: 12px;
+        color: #212121;
+
+        .selected-page-item {
+            color: $primary-color;
+            text-decoration-color: $primary-color;
+            font-weight: bold;
+        }
+    }
+
+    .page-container {
+        box-shadow: rgb(35 46 60 / 4%) 0 2px 4px 0;
+        border: 1px solid rgba(101, 109, 119, 0.16);
+        padding: 20px;
+        margin-top: 50px;
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 14px;
+        }
+
+        ul {
+            list-style-type: initial;
+        }
+
+    }
+}
+
+.return-to-homepage {
+    margin-top: 16px;
+
+    a {
+        color: $primary-color;
+        font-size: 14px;
+        font-weight: bold;
+        text-decoration: none;
+
+        &:hover {
+            color: #000;
+
+            svg {
+                color: #000;
+            }
+        }
+
+        svg {
+            margin-top: -3px;
+            width: 20px;
+            height: 20px;
+            color: $primary-color;
+        }
+    }
+}
+
+.fpool-login-wrapper {
+
+    .fpool-login-logo {
+        margin-top: 100px;
+        text-align: center;
+
+        img {
+            height: 46px;
+        }
+    }
+
+    .fpool-login {
+        padding: 20px 30px;
+        border: 1px solid #e5e5e5;
+        margin-top: 80px;
+        text-align: center;
+        overflow: hidden;
+
+        .login-types-title {
+            margin: 14px 0;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            height: 1px;
+
+            &::before {
+                content: "";
+                margin-right: .5rem;
+            }
+
+            &::after {
+                content: "";
+                margin-left: .5rem;
+            }
+
+            &::after, &::before {
+                flex: 1 1 auto;
+                height: 1px;
+                background-color: $primary-color;
+                opacity: .16;
+            }
+        }
+
+        .login-types {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+            .login-type {
+                margin-top: 10px;
+                max-width: 100%;
+                width: 100%;
+                height: 40px;
+                border: 1px solid $primary-color;
+                border-radius: 3px;
+                display: flex;
+                align-items: center;
+                color: #000 !important;
+                text-decoration: none;
+
+                .login-type-title {
+                    text-align: center;
+                    font-weight: bold;
+                    width: 100%;
+                }
+
+                .login-type-icon {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 50px;
+                    height: 40px;
+                    background-color: $primary-color;
+                    border-top-left-radius: 3px;
+                    border-bottom-left-radius: 3px;
+
+                    svg {
+                        width: 20px;
+                        height: 20px;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+
+        .form-group {
+            text-align: left;
+
+            label {
+                font-weight: 600;
+                font-size: 15px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .navbar {
+        .page-items {
+            &.login-items {
+                display: none !important;
+            }
+
+            .fpool-button {
+                display: none !important;
+            }
+        }
+    }
+    .navbar-collapse {
+        position: absolute;
+        left: 0;
+        top: 60px;
+        z-index: 101 !important;
+        width: 100%;
+        border-bottom: 1px solid #e5e5e5;
+        background-color: #fff;
+
+        .nav-item {
+            .nav-link {
+                padding: .5rem 1.5rem;
+                justify-content: flex-start;
+
+                &.dropdown-toggle {
+                    &::after {
+                        margin-top: 9px !important;
+                        margin-right: 20px !important;
+                        float: right;
+                    }
+                }
+            }
+        }
+    }
+    .fpool-user-wrapper {
+        .fpool-sidebar {
+            max-width: 100% !important;
+        }
+
+        .fpool-user-container {
+            padding-left: 0 !important;
+            padding-top: 20px;
+        }
+    }
+}
+
+.fpool-user-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 60px auto 0 auto;
+
+    .fpool-sidebar {
+        border: 1px solid #e5e5e5;
+        border-radius: 6px;
+        padding: 0 !important;
+        max-width: 220px;
+        margin-bottom: 30px;
+
+        ul {
+            padding: 0 !important;
+            margin: 0 !important;
+
+            li {
+                width: 100%;
+                height: 38px;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                position: relative;
+
+                &.active {
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        height: 100%;
+                        width: 2px;
+                        background-color: $primary-color;
+                    }
+
+                    a {
+                        color: $primary-color;
+                    }
+                }
+
+                a {
+                    color: #333;
+                    font-size: 14px;
+                    font-weight: bold;
+                    text-decoration: none;
+                    padding-left: 16px;
+                }
+
+                &:hover {
+                    background-color: $primary-color;
+
+                    a {
+                        color: #fff;
+                    }
+                }
+
+                &:not(last-child) {
+                    border-bottom: 1px solid #e5e5e5;
+                }
+            }
+        }
+    }
+
+    .fpool-sidebar-title {
+        font-weight: 600;
+        font-size: 26px;
+        color: #333;
+    }
+
+    .fpool-user-container {
+        padding-left: 20px;
+
+        .fpool-user {
+            padding: 16px;
+            border: 1px solid #e5e5e5;
+            border-radius: 6px;
+            min-height: 200px;
+
+            .fpool-user-content {
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: row;
+                justify-content: space-between;
+
+                .fpool-button {
+                    font-size: 14px !important;
+                }
+
+                .fpool-update-avatar {
+
+                    .fpool-avatar-area {
+                        display: flex;
+                        justify-content: center;
+
+                        #user_avatar {
+                            display: none !important;
+                        }
+
+                        .fpool-avatar {
+                            position: relative;
+                            width: 100px;
+                            height: 100px;
+
+                            &:hover {
+                                .fpool-delete-button {
+                                    visibility: visible !important;
+                                }
+                            }
+
+                            label[for=user_avatar], label[for=user_delete_avatar] {
+                                cursor: pointer;
+                                position: absolute;
+                                bottom: 0;
+                                right: 5px;
+                                width: 30px;
+                                height: 30px;
+                                border-radius: 50%;
+
+                                &.fpool-delete-button {
+                                    left: 0 !important;
+                                    visibility: hidden;
+                                }
+
+                                svg {
+                                    width: 100%;
+                                    height: auto;
+                                    margin: 0;
+                                }
+
+                            }
+
+                            .user-avatar {
+                                width: 100px;
+                                height: 100px;
+                                border-radius: 50%;
+                            }
+                        }
+
+                    }
+                }
+
+                .fpool-images-wrapper {
+                    display: none;
+                    width: 100%;
+
+                    .fpool-images-content {
+                        display: flex;
+                        flex-wrap: wrap;
+                        flex-direction: row;
+                        justify-content: center;
+
+
+                        .empty-images {
+                            text-align: center;
+
+                            img {
+                                max-width: 250px;
+                            }
+
+                            h5 {
+                                font-weight: bold;
+                                margin-top: 30px;
+                            }
+
+                            p {
+                                font-size: 14px;
+                            }
+                        }
+
+                        .fpool-user-image {
+                            margin: 5px;
+                            position: relative;
+                            height: 170px;
+                            width: 220px;
+
+                            &:hover {
+                                .fpool-image-delete {
+                                    opacity: 1;
+                                    transition: opacity .3s;
+                                }
+
+                                .fpool-image-link {
+                                    opacity: 1;
+                                    transition: opacity .3s;
+                                }
+
+                                .fpool-image-bottom {
+                                    height: 30px;
+                                    transition: height .3s;
+                                }
+                            }
+
+                            a {
+                                img {
+                                    width: 100%;
+                                    height: 100%;
+                                    cursor: pointer;
+                                    object-fit: cover;
+                                }
+                            }
+
+                            .fpool-image-bottom {
+                                position: absolute;
+                                bottom: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 0;
+                                background-color: $primary-color;
+                                transition: height .3s;
+                                overflow-x: hidden;
+
+                                .bottom-content {
+                                    width: 100%;
+                                    height: 100%;
+                                    padding: 0 3px;
+                                    display: flex;
+                                    justify-content: space-between;
+                                    align-items: center;
+                                    flex-direction: row;
+                                    font-size: 13px;
+                                    color: #fff;
+                                    overflow: hidden;
+
+                                    .image-name {
+                                        width: 85%;
+                                        overflow: hidden;
+                                        white-space: nowrap;
+                                        text-overflow: ellipsis;
+                                    }
+
+                                    .image-info {
+                                        margin-right: 5px;
+
+                                        a {
+                                            color: #fff;
+                                        }
+
+                                        svg {
+                                            width: 18px;
+                                            height: 18px;
+                                            cursor: pointer;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .fpool-image-delete {
+                                position: absolute;
+                                right: 5px;
+                                top: 5px;
+                                width: 30px;
+                                height: 30px;
+                                border-radius: 50%;
+                                cursor: pointer;
+                                background-color: #e34346;
+                                display: flex;
+                                justify-content: center;
+                                opacity: 0;
+                                transition: opacity .3s;
+
+                                svg {
+                                    color: #fff;
+                                    width: 20px;
+                                    height: auto;
+                                    margin: 0;
+                                }
+                            }
+
+                            .fpool-image-link {
+                                position: absolute;
+                                left: 5px;
+                                top: 5px;
+                                width: 30px;
+                                height: 30px;
+                                border-radius: 50%;
+                                cursor: pointer;
+                                background-color: $primary-color;
+                                display: flex;
+                                justify-content: center;
+                                opacity: 0;
+                                transition: opacity .3s;
+
+                                svg {
+                                    color: #fff;
+                                    width: 16px;
+                                    height: auto;
+                                    margin: 0;
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+
+        }
+    }
+}
+
+.fpool-file-wrapper {
+
+    .fpool-file-container {
+        padding: 5px;
+
+        .fpool-file-content {
+            border: 1px solid #e5e5e5;
+            border-radius: 20px;
+            padding: 18px;
+
+            .file-snap {
+
+            }
+        }
+    }
+
+    .fpool-file-user-container {
+        padding: 5px;
+
+        .fpool-file-user-content {
+            position: relative;
+            z-index: 0;
+            border: 1px solid #e5e5e5;
+            border-radius: 20px;
+            padding: 10px 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            flex-wrap: wrap;
+            overflow: hidden;
+
+            .user-avatar {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+            }
+
+            .username {
+                margin-top: 10px;
+            }
+
+            .file-info {
+                display: flex;
+                width: 100%;
+                margin-top: 10px;
+
+                ul {
+                    padding: 0 0 0 25px;
+                    margin: 0;
+                    width: 100%;
+
+                    li {
+                        display: flex;
+                        width: 100%;
+
+                        span {
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+
+                        svg {
+                            width: 18px;
+                            height: 18px;
+                            color: $primary-color;
+                            margin-right: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.fpool-copy {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #212121;
+    overflow: hidden;
+    z-index: 2;
+    border-radius: 0.25rem;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+.fpool-copy-container {
+    position: relative;
+
+    textarea {
+        overflow: hidden;
+    }
+
+    &:hover {
+        .fpool-copy {
+            display: flex !important;
+        }
+    }
+}
+
+.fpool-user-card {
+    max-height: 75px;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: $primary-color;
+    z-index: -1;
+    border-top-right-radius: 20px;
+}
+
+.social-share {
+    .resp-sharing-button__link,
+    .resp-sharing-button__icon {
+        display: inline-block
+    }
+
+    .resp-sharing-button__link {
+        text-decoration: none;
+        color: #fff;
+        margin: 0.5em
+    }
+
+    .resp-sharing-button {
+        border-radius: 5px;
+        transition: 25ms ease-out;
+        padding: 0.5em 0.75em;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif
+    }
+
+    .resp-sharing-button__icon svg {
+        width: 1em;
+        height: 1em;
+        margin-right: 0.4em;
+        vertical-align: top
+    }
+
+    .resp-sharing-button--small svg {
+        margin: 0;
+        vertical-align: middle
+    }
+
+    /* Non solid icons get a stroke */
+    .resp-sharing-button__icon {
+        stroke: #fff;
+        fill: none
+    }
+
+    /* Solid icons get a fill */
+    .resp-sharing-button__icon--solid,
+    .resp-sharing-button__icon--solidcircle {
+        fill: #fff;
+        stroke: none
+    }
+
+    .resp-sharing-button--twitter {
+        background-color: #55acee
+    }
+
+    .resp-sharing-button--twitter:hover {
+        background-color: #2795e9
+    }
+
+    .resp-sharing-button--pinterest {
+        background-color: #bd081c
+    }
+
+    .resp-sharing-button--pinterest:hover {
+        background-color: #8c0615
+    }
+
+    .resp-sharing-button--facebook {
+        background-color: #3b5998
+    }
+
+    .resp-sharing-button--facebook:hover {
+        background-color: #2d4373
+    }
+
+    .resp-sharing-button--tumblr {
+        background-color: #35465C
+    }
+
+    .resp-sharing-button--tumblr:hover {
+        background-color: #222d3c
+    }
+
+    .resp-sharing-button--reddit {
+        background-color: #5f99cf
+    }
+
+    .resp-sharing-button--reddit:hover {
+        background-color: #3a80c1
+    }
+
+    .resp-sharing-button--google {
+        background-color: #dd4b39
+    }
+
+    .resp-sharing-button--google:hover {
+        background-color: #c23321
+    }
+
+    .resp-sharing-button--linkedin {
+        background-color: #0077b5
+    }
+
+    .resp-sharing-button--linkedin:hover {
+        background-color: #046293
+    }
+
+    .resp-sharing-button--email {
+        background-color: #777
+    }
+
+    .resp-sharing-button--email:hover {
+        background-color: #5e5e5e
+    }
+
+    .resp-sharing-button--xing {
+        background-color: #1a7576
+    }
+
+    .resp-sharing-button--xing:hover {
+        background-color: #114c4c
+    }
+
+    .resp-sharing-button--whatsapp {
+        background-color: #25D366
+    }
+
+    .resp-sharing-button--whatsapp:hover {
+        background-color: #1da851
+    }
+
+    .resp-sharing-button--hackernews {
+        background-color: #FF6600
+    }
+
+    .resp-sharing-button--hackernews:hover, .resp-sharing-button--hackernews:focus {
+        background-color: #FB6200
+    }
+
+    .resp-sharing-button--vk {
+        background-color: #507299
+    }
+
+    .resp-sharing-button--vk:hover {
+        background-color: #43648c
+    }
+
+    .resp-sharing-button--facebook {
+        background-color: #3b5998;
+        border-color: #3b5998;
+    }
+
+    .resp-sharing-button--facebook:hover,
+    .resp-sharing-button--facebook:active {
+        background-color: #2d4373;
+        border-color: #2d4373;
+    }
+
+    .resp-sharing-button--twitter {
+        background-color: #55acee;
+        border-color: #55acee;
+    }
+
+    .resp-sharing-button--twitter:hover,
+    .resp-sharing-button--twitter:active {
+        background-color: #2795e9;
+        border-color: #2795e9;
+    }
+
+    .resp-sharing-button--tumblr {
+        background-color: #35465C;
+        border-color: #35465C;
+    }
+
+    .resp-sharing-button--tumblr:hover,
+    .resp-sharing-button--tumblr:active {
+        background-color: #222d3c;
+        border-color: #222d3c;
+    }
+
+    .resp-sharing-button--email {
+        background-color: #777777;
+        border-color: #777777;
+    }
+
+    .resp-sharing-button--email:hover,
+    .resp-sharing-button--email:active {
+        background-color: #5e5e5e;
+        border-color: #5e5e5e;
+    }
+
+    .resp-sharing-button--pinterest {
+        background-color: #bd081c;
+        border-color: #bd081c;
+    }
+
+    .resp-sharing-button--pinterest:hover,
+    .resp-sharing-button--pinterest:active {
+        background-color: #8c0615;
+        border-color: #8c0615;
+    }
+
+    .resp-sharing-button--linkedin {
+        background-color: #0077b5;
+        border-color: #0077b5;
+    }
+
+    .resp-sharing-button--linkedin:hover,
+    .resp-sharing-button--linkedin:active {
+        background-color: #046293;
+        border-color: #046293;
+    }
+
+    .resp-sharing-button--reddit {
+        background-color: #5f99cf;
+        border-color: #5f99cf;
+    }
+
+    .resp-sharing-button--reddit:hover,
+    .resp-sharing-button--reddit:active {
+        background-color: #3a80c1;
+        border-color: #3a80c1;
+    }
+
+    .resp-sharing-button--xing {
+        background-color: #1a7576;
+        border-color: #1a7576;
+    }
+
+    .resp-sharing-button--xing:hover
+    .resp-sharing-button--xing:active {
+        background-color: #114C4C;
+        border-color: #114C4C;
+    }
+
+    .resp-sharing-button--whatsapp {
+        background-color: #25D366;
+        border-color: #25D366;
+    }
+
+    .resp-sharing-button--whatsapp:hover,
+    .resp-sharing-button--whatsapp:active {
+        background-color: #1DA851;
+        border-color: #1DA851;
+    }
+
+    .resp-sharing-button--hackernews {
+        background-color: #FF6600;
+        border-color: #FF6600;
+    }
+
+    .resp-sharing-button--hackernews:hover
+    .resp-sharing-button--hackernews:active {
+        background-color: #FB6200;
+        border-color: #FB6200;
+    }
+
+    .resp-sharing-button--vk {
+        background-color: #507299;
+        border-color: #507299;
+    }
+
+    .resp-sharing-button--vk:hover
+    .resp-sharing-button--vk:active {
+        background-color: #43648c;
+        border-color: #43648c;
+    }
+
+    .resp-sharing-button--telegram {
+        background-color: #54A9EB;
+    }
+
+    .resp-sharing-button--telegram:hover {
+        background-color: #4B97D1;
+    }
+}
+
+.fpool-spinner {
+    animation: rotate 2s linear infinite;
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -25px 0 0 -25px;
+    width: 50px;
+    height: 50px;
+
+    & .path {
+        stroke: $primary-color;
+        stroke-linecap: round;
+        animation: dash 1.5s ease-in-out infinite;
+    }
+
+    @keyframes rotate {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes dash {
+        0% {
+            stroke-dasharray: 1, 150;
+            stroke-dashoffset: 0;
+        }
+        50% {
+            stroke-dasharray: 90, 150;
+            stroke-dashoffset: -35;
+        }
+        100% {
+            stroke-dasharray: 90, 150;
+            stroke-dashoffset: -124;
+        }
+    }
+
+}
+
+.no-resize {
+    resize: none !important;
+}
+
+@media only screen and (max-width: 992px) {
+    .fpool-image-bottom {
+        height: 30px !important;
+    }
+    .fpool-image-link, .fpool-image-delete {
+        opacity: 1 !important;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .container-fluid, .container {
+        padding: 0 !important;
+    }
+}

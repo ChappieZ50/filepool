@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
+
+$primary-color: #212121;
+$second-color: #2c7ce0;
+$third-color: #f2f5f5;
+
+.navbar-brand-wrapper {
+    background-color: $primary-color !important;
+}
+
+.sidebar {
+    z-index: 99;
+    background: linear-gradient(to top, $primary-color, $primary-color);
+
+    > .nav:not(.sub-menu) > .nav-item:hover:not(.nav-profile):not(.hover-open) > .nav-link:not([aria-expanded="true"]) {
+        background: $second-color;
+    }
+
+    > .nav .nav-item:not(.hover-open) .collapse .sub-menu .nav-item .nav-link:before,
+    > .nav .nav-item:not(.hover-open) .collapsing .sub-menu .nav-item .nav-link:before {
+        background: $second-color;
+    }
+}
+
+a.close {
+    position: absolute;
+    right: 12px;
+    top: 6px;
+}
+
+.btn.btn-lg {
+    padding: 14px;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.input-group-prepend {
+    .input-group-text.bg-transparent {
+        width: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: transparent !important;
+        border: none !important;
+    }
+}
+
+#new_user_modal {
+    .input-helper::before {
+        margin-top: -1px;
+    }
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+    &::placeholder {
+        color: #333;
+    }
+}
+
+.card-body {
+    padding-top: 0 !important;
+}
+
+.card-header {
+    padding: 14px !important;
+
+    .card-title {
+        margin: 0 !important;
+    }
+}
+
+
+.user-avatar {
+    img {
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+    }
+}
+
+
+.user-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 0 0 0;
+
+    .username {
+        margin-top: 14px;
+        font-weight: bold;
+        font-size: 18px;
+        color: $second-color;
+        letter-spacing: .5px;
+        font-family: 'Nunito', sans-serif;
+    }
+
+    .email {
+        margin-top: 2px;
+        font-weight: bold;
+        color: $primary-color;
+        font-family: 'Nunito', sans-serif;
+    }
+
+    .user-status {
+        margin-top: 8px;
+        display: flex;
+
+        label:not(:first-child) {
+            margin-left: 10px;
+        }
+    }
+}
+
+.file-info {
+    ul {
+        list-style-type: none;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 5px;
+
+            &:hover {
+                background-color: $second-color;
+                color: #fff;
+            }
+
+            &:not(:last-child) {
+                border-bottom: 1px solid #e5e5e5;
+            }
+        }
+    }
+}
+
+.table-image {
+    width: 80px !important;
+    height: 80px !important;
+    border-radius: 8% !important;
+}
+
+.nav-tabs {
+    border: 0 !important;
+
+    .nav-item {
+
+        .nav-link {
+            border: 1px solid #e5e5e5;
+            border-bottom: 0;
+            border-radius: 0 !important;
+            padding: 0.8rem 1rem;
+
+            &.active {
+                background-color: $second-color;
+                color: #fff;
+            }
+
+            &:hover {
+                background-color: $second-color;
+                color: #fff;
+            }
+
+            &:last-child {
+                border-bottom: 1px solid #e5e5e5;
+            }
+        }
+    }
+}
+
+.choose-file {
+    label {
+        cursor: pointer;
+
+        &:hover {
+            background-color: $second-color;
+            color: #fff;
+        }
+    }
+}
+
+.ck {
+    .ck-editor__main, .ck-content {
+        min-height: 300px !important;
+    }
+}
+
+.latest-items {
+    .latest-item {
+        &:not(:last-child) {
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .user-name a, .user-name strong {
+            color: $second-color;
+        }
+    }
+}
+
+.file-image {
+    object-fit: cover;
+    border: 1px solid #e5e5e5;
+}
+
+.out-of-page {
+    color: $second-color;
+}
+
+.fpool-admin-menu {
+    a.dropdown-item {
+        color: $primary-color;
+        font-weight: 500;
+
+        &:hover {
+            color: $second-color;
+        }
+
+        .mdi {
+            color: $second-color;
+            font-size: 14px !important;
+            margin-right: 5px;
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .navbar.default-layout {
+        .navbar-menu-wrapper {
+            width: calc(100% - 20px);
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .navbar.default-layout .navbar-brand-wrapper {
+        padding: 4px 10px;
+    }
+}
