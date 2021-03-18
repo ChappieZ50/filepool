@@ -7,7 +7,9 @@ $(document).ready(function () {
         uppy_drop_string = $('#fpool_dropzone').attr('data-drop'),
         uppy_browse_string = $('#fpool_dropzone').attr('data-browse'),
         uppy_maxFileSize = $('#fpool_dropzone').attr('data-max-size'),
-        uppy_maxFile = $('#fpool_dropzone').attr('data-max-file');
+        uppy_maxFile = $('#fpool_dropzone').attr('data-max-file'),
+        uppy_file_types = $('#fpool_dropzone').attr('data-file-types');
+
     const uppy = new Uppy({
         debug: false,
         autoProceed: true,
@@ -15,7 +17,7 @@ $(document).ready(function () {
             maxFileSize: parseInt(uppy_maxFileSize),
             maxNumberOfFiles: parseInt(uppy_maxFile),
             minNumberOfFiles: 1,
-            allowedFileTypes: ["image/*"],
+            allowedFileTypes: uppy_file_types.split(','),
         },
         locale: {
             strings: {

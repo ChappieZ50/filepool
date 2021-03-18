@@ -84,11 +84,12 @@
                 <div class="clearfix"></div>
                 @php $accepted_mimes = json_decode(get_setting('dropzone_accepted_mimes')); @endphp
                 <select class="selectpicker w-100" multiple name="dropzone_accepted_mimes[]" id="dropzone_accepted_mimes" data-live-search="true">
-                    @forelse(get_accepted_mimes(true) as $mime)
-                        <option {{in_array($mime,$accepted_mimes) ? 'selected' : ''}}>{{$mime}}</option>
+                    @forelse(get_mimes(true) as $mime)
+                        <option {{$accepted_mimes && in_array($mime,$accepted_mimes) ? 'selected' : ''}}>{{$mime}}</option>
                     @empty
                     @endforelse
                 </select>
+                <div class="small text-muted">Leave empty for accept all mimes</div>
             </div>
         </div>
     </div>

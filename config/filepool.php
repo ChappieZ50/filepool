@@ -14,8 +14,39 @@ return [
     'max_avatar_size'     => '3000', // Avatar max size
 
     /* DO NOT EDIT */
-    'accepted_mimes'      => 'jpeg,jpg,png,gif,pdf,doc,docx,xlx,xlsx,csv,txt,mp4,m4v,wmv,mp3,m4a,wav,apk,zip,rar',
-    'anonymous_user'      => [
+    'accepted_mimes'      => [
+        /* Image */
+        'image/jpeg'                                                              => 'jpeg',
+        'image/jpg'                                                               => 'jpg',
+        'image/png'                                                               => 'png',
+        'image/gif'                                                               => 'gif',
+
+        /* Application */
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document' => 'docx',
+        'application/msword'                                                      => 'doc',
+        'application/vnd.ms-excel'                                                => 'xls',
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'       => 'xlsx',
+        'application/vnd.android.package-archive'                                 => 'apk',
+        'application/zip'                                                         => 'zip',
+        'application/x-rar'                                                       => 'rar',
+
+        /* Text */
+        'text/csv'                                                                => 'csv',
+        'text/plain'                                                              => 'txt',
+
+        /* Video */
+        'video/mp4'                                                               => 'mp4',
+        'video/x-m4v'                                                             => 'm4v',
+        'video/x-ms-wmv'                                                          => 'wmv',
+
+        /* Audio */
+        'audio/mpeg'                                                              => 'mp3',
+        'audio/mp4'                                                               => 'm4a',
+        'audio/x-wav'                                                             => 'wav',
+
+    ],
+
+    'anonymous_user' => [
         'username'     => 'Anonymous',
         'avatar'       => '',
         'email'        => '',
@@ -46,7 +77,7 @@ return [
         'google_analytics'      => '',
 
         /* Dropzone Settings */
-        'dropzone_rule'         => 'Max 5 files in one time and JPG,PNG,GIF,SVG are accepted, 25MB limit',
+        'dropzone_rule'         => 'Max 5 files in one time and 25MB limit',
         'dropzone_text'         => 'Drop files here, paste or %{browse}',
         'browse_text'           => 'browse files',
 

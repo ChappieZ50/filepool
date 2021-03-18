@@ -91,19 +91,6 @@ if (!function_exists('get_avatar_size')) {
 }
 
 /*
- * Get Accepted Mimes
-*/
-if (!function_exists('get_accepted_mimes')) {
-    function get_accepted_mimes($toArray = false)
-    {
-        if ($toArray) {
-            return explode(',', config('filepool.accepted_mimes'));
-        }
-        return config('filepool.accepted_mimes');
-    }
-}
-
-/*
  * Get Upload Folder for avatars, logo, favicon etc.
 */
 if (!function_exists('upload_folder')) {
@@ -377,5 +364,50 @@ if (!function_exists('get_chart_data')) {
             }
         }
         return $pool;
+    }
+}
+
+/* Array to string */
+if (!function_exists('arr_to_str')) {
+    function arr_to_str($arr, $json = true, $glue = ',')
+    {
+        if (empty($arr) || is_string($arr) && !$json) {
+            return false;
+        }
+
+        $arr = $json ? json_decode($arr) : $arr;
+        return implode($glue, $arr);
+    }
+}
+
+/* String to array */
+if (!function_exists('str_to_arr')) {
+    function str_to_arr($str, $glue = ',')
+    {
+        if (!is_string($str) || empty($str)) {
+            return false;
+        }
+
+        return explode($glue, $str);
+    }
+}
+
+if (!function_exists('get_mimes')) {
+    function get_mimes($type = false, $mimes = [])
+    {
+        $accepted_mimes = config('filepool.accepted_mimes');
+        $data = [];
+        foreach ($accepted_mimes as $key => $value) {
+            $needle = $type ? $value : $key;
+            if ($mimes) {
+                if (in_array($value, $mimes) || in_array($key, $mimes)) {
+                    $data[] = $needle;
+                }
+            } else {
+                $data[] = $needle;
+            }
+        }
+
+        return $data;
     }
 }

@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     @component('components.ads.home.top') @endcomponent
 
     @component('components.dropzone') @endcomponent
