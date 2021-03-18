@@ -147,6 +147,19 @@ html, body {
                 }
             }
 
+            .dropdown-menu {
+                .dropdown-item {
+                    &:active {
+                        background-color: $primary-color !important;
+                    }
+
+                    .active {
+                        background-color: $primary-color !important;
+
+                    }
+                }
+            }
+
             .dropdown-toggle {
                 color: #131313;
 
@@ -182,9 +195,13 @@ html, body {
         .uppy-Dashboard-inner {
             margin: 0 auto;
 
+            .uppy-Dashboard-browse {
+                color: $primary-color !important;
+            }
+
             .uppy-Dashboard-AddFiles {
                 border-color: $primary-color;
-                border-width: 1.5px;
+                border-width: 2px;
             }
 
             .uppy-Dashboard-AddFiles-info a {

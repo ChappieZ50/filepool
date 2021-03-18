@@ -94,8 +94,11 @@ if (!function_exists('get_avatar_size')) {
  * Get Accepted Mimes
 */
 if (!function_exists('get_accepted_mimes')) {
-    function get_accepted_mimes()
+    function get_accepted_mimes($toArray = false)
     {
+        if ($toArray) {
+            return explode(',', config('filepool.accepted_mimes'));
+        }
         return config('filepool.accepted_mimes');
     }
 }

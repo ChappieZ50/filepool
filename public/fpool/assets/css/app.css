@@ -199,6 +199,13 @@ a.close {
   margin-right: 5px;
 }
 
+.bootstrap-select .dropdown-menu.show {
+  z-index: 9999;
+}
+.bootstrap-select .filter-option-inner-inner {
+  height: 17px;
+}
+
 @media (max-width: 991px) {
   .navbar.default-layout .navbar-menu-wrapper {
     width: calc(100% - 20px);

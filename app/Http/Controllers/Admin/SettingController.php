@@ -51,16 +51,17 @@ class SettingController extends Controller
     private function website(SettingRequest $request)
     {
         $data = [
-            'website_name'     => $request->get('website_name'),
-            'google_analytics' => $request->get('google_analytics'),
-            'max_file_size'    => $request->get('max_file_size'),
-            'one_time_uploads' => $request->get('one_time_uploads'),
-            'uploads_storage'  => $request->get('uploads_storage'),
-            'dropzone_text'    => $request->get('dropzone_text'),
-            'browse_text'      => $request->get('browse_text'),
-            'dropzone_rule'    => $request->get('dropzone_rule'),
-            'menu_title'       => $request->get('menu_title'),
-            'theme_color'      => $request->get('theme_color'),
+            'website_name'            => $request->get('website_name'),
+            'google_analytics'        => $request->get('google_analytics'),
+            'max_file_size'           => $request->get('max_file_size'),
+            'one_time_uploads'        => $request->get('one_time_uploads'),
+            'uploads_storage'         => $request->get('uploads_storage'),
+            'dropzone_text'           => $request->get('dropzone_text'),
+            'dropzone_accepted_mimes' => json_encode($request->get('dropzone_accepted_mimes')),
+            'browse_text'             => $request->get('browse_text'),
+            'dropzone_rule'           => $request->get('dropzone_rule'),
+            'menu_title'              => $request->get('menu_title'),
+            'theme_color'             => $request->get('theme_color'),
         ];
 
         if ($this->updateOrCreate($data)) {

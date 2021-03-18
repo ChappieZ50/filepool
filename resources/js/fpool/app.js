@@ -1,6 +1,6 @@
 require('./bootstrap');
 import axios from 'axios';
-import 'bootstrap/dist/js/bootstrap.bundle'
+import 'bootstrap/dist/js/bootstrap.bundle';
 import Swal from 'sweetalert2'
 
 const feather = require('feather-icons');

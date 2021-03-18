@@ -14,7 +14,7 @@ return [
     'max_avatar_size'     => '3000', // Avatar max size
 
     /* DO NOT EDIT */
-    'accepted_mimes'      => 'jpeg,jpg,png,svg,gif',
+    'accepted_mimes'      => 'jpeg,jpg,png,gif,pdf,doc,docx,xlx,xlsx,csv,txt,mp4,m4v,wmv,mp3,m4a,wav,apk,zip,rar',
     'anonymous_user'      => [
         'username'     => 'Anonymous',
         'avatar'       => '',
@@ -30,7 +30,7 @@ return [
         /* Website Settings */
         'website_name'          => 'Filepool',
         'menu_title'            => 'About',
-        'theme_color'           => '#2c7ce0',
+        'theme_color'           => '#d3059d',
 
         /* SEO */
         'site_title'            => 'Filepool',

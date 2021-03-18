@@ -239,6 +239,16 @@ a.close {
     }
 }
 
+.bootstrap-select {
+    .dropdown-menu.show {
+        z-index: 9999;
+    }
+
+    .filter-option-inner-inner {
+        height: 17px;
+    }
+}
+
 @media (max-width: 991px) {
     .navbar.default-layout {
         .navbar-menu-wrapper {
