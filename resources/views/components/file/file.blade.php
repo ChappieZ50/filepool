@@ -5,7 +5,7 @@
         </div>
         <div class="file-snap p-4">
             <div class="form-group">
-                <label for="fpool_file_url" class="h5">Image Link</label>
+                <label for="fpool_file_url" class="h5">File Link</label>
                 <div class="fpool-copy-container">
                     <input type="text" class="form-control" value="{{file_url($file)}}" readonly id="fpool_file_url">
                     <div id="copy_content" class="d-none">{{file_url($file)}}</div>

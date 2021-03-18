@@ -1,6 +1,6 @@
 <div class="fpool-user-container col-xl-10 col-lg-10 col-md-12 col-sm-12">
     <div class="fpool-user">
-        <h2 class="fpool-sidebar-title">My Images</h2>
+        <h2 class="fpool-sidebar-title">My Files</h2>
         <hr>
         <div class="fpool-user-content">
             <svg class="fpool-spinner" viewBox="0 0 50 50">
@@ -10,12 +10,12 @@
                 <div class="col-12 fpool-images-content">
                     @unless(count($files))
                         <div class="empty-images">
-                            <img src="{{ asset('empty-images.svg') }}" alt="empty image" class="img-fluid">
+                            <img src="{{ asset('assets/images/empty-files.svg') }}" alt="empty file" class="img-fluid">
                             <h5>
-                                No images found
+                                No files found
                             </h5>
                             <p>
-                                You can upload some images from <a href="{{ route('home') }}">here.</a>
+                                You can upload some files from <a href="{{ route('home') }}">here.</a>
                             </p>
                         </div>
 

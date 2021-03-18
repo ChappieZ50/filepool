@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('site_title',' — My Images')
+@section('site_title',' — My Files')
 
 @section('content')
     <div class="fpool-user-wrapper col-md-10 col-sm-12">

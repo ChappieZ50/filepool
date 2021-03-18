@@ -1,11 +1,31 @@
+@if(!empty($file_chart_data))
+    @php($status = false)
+    @foreach($file_chart_data as $item)
+        @php($status = $item != 0 ? true : false)
+        @if($status)
+            @break
+        @endif
+    @endforeach
+@endif
 <div class="fpool-user-container col-xl-10 col-lg-10 col-md-12 col-sm-12">
     <div class="fpool-user">
         <h2 class="fpool-sidebar-title">Statistics</h2>
         <hr>
         <div class="fpool-user-content">
             <div class="col-12 fpool-stats">
-                <h5>Monthly Uploads</h5>
-                <div id="file_chart"></div>
+                @if($status)
+                    <div id="file_chart"></div>
+                @else
+                    <div class="empty-statistics">
+                        <img src="{{ asset('assets/images/empty-statistics.svg') }}" alt="empty statistics" class="img-fluid">
+                        <h5>
+                            Empty statistics
+                        </h5>
+                        <p>
+                            You can upload some files from <a href="{{ route('home') }}">here.</a>
+                        </p>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

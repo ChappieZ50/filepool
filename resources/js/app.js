@@ -28,7 +28,7 @@ $(document).ready(function () {
     }).resize();
 
 
-    /* Copy Image Link */
+    /* Copy File Link */
     let clipboard = new Clipboard('#copy');
 
     function setTooltip(btn, message) {
@@ -45,7 +45,7 @@ $(document).ready(function () {
 
 
     clipboard.on('success', function (e) {
-        setTooltip(e.trigger, 'Image Copied!');
+        setTooltip(e.trigger, 'File Copied!');
         hideTooltip(e.trigger);
     });
 
@@ -54,12 +54,12 @@ $(document).ready(function () {
         hideTooltip(e.trigger);
     });
 
-    /* Delete Image */
+    /* Delete File */
     $('#delete').on('click', function () {
         let id = $(this).attr('data-id');
         Swal.fire({
             title: "Are you sure?",
-            text: "This image will delete forever.",
+            text: "This file will delete forever.",
             icon: "error",
             confirmButtonText: "Yes, Delete it",
             cancelButtonText: "Cancel",
@@ -68,7 +68,7 @@ $(document).ready(function () {
         }).then(result => {
             if (result.isConfirmed) {
                 Swal.fire({
-                    title: "Image successfully deleted.",
+                    title: "File successfully deleted.",
                     icon: "success",
                 })
             }
@@ -176,7 +176,7 @@ $(document).ready(function () {
         }, 500);
     });
 
-    /* Image Delete */
+    /* File Delete */
 
     $(document).on('click', '#file_delete', function () {
         const id = $(this).attr('data-id');
@@ -259,7 +259,7 @@ $(document).ready(function () {
     if ($('#file_chart').length) {
         let options = {
             series: [{
-                name: "Images",
+                name: "Files",
                 data: Object.values(window.file_chart)
             }],
             chart: {

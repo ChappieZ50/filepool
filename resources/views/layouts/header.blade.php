@@ -3,7 +3,7 @@
         <div class="page-items">
             <a class="fpool-button nav-link" href="{{ url('/') }}">
                 <i data-feather="upload"></i>
-                Upload image
+                Upload file
             </a>
             <button class="navbar-toggler collapsed border-0" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -47,7 +47,7 @@
                         <div class="dropdown-menu dropdown-menu-right position-absolute shadow-lg"
                              aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('user.profile') }}">Profile</a>
-                            <a class="dropdown-item" href="{{ route('user.images') }}">My Images</a>
+                            <a class="dropdown-item" href="{{ route('user.files') }}">My Files</a>
                             <a class="dropdown-item" href="{{ route('user.statistic') }}">Statistics</a>
                             @if(auth()->user()->is_admin)
                                 <a class="dropdown-item" href="{{route('admin.home')}}">Admin Panel</a>

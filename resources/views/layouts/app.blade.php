@@ -57,7 +57,7 @@
 
 <script>
     window.routes = {
-        file_destroy: '{{ route('user.images') . '/destroy' }}'
+        file_destroy: '{{ route('user.files') . '/destroy' }}'
     };
 
 </script>

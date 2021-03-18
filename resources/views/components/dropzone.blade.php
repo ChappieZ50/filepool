@@ -9,7 +9,7 @@
             $privacy = get_privacy_page();
             $terms = get_terms_page();
         @endphp
-        By creating a image, you agree
+        By creating a file, you agree
         <a href="{{route('page',['slug' => !empty($terms->slug) ? $terms->slug : '#'])}}" class="selected-page-item"
            target="_blank">{{!empty($terms->title) ? $terms->title : ''}}</a>
         and

@@ -73,14 +73,14 @@ Route::group(['as' => 'user.', 'namespace' => 'User', 'middleware' => 'user-stat
 
         Route::get('statistic', 'StatisticController@index')->name('statistic');
 
-        Route::get('my-files', 'UserController@userImages')->name('images');
+        Route::get('my-files', 'UserController@userFiles')->name('files');
         Route::delete('my-files/destroy/{file}', 'UserController@destroyFile')->name('file.destroy');
     });
 });
 
-// Store images
+// Store files
 Route::post('file/store', 'FileController@store')->name('file.store');
-// Download image
+// Download file
 Route::get('fpool/download/{file}', 'FileController@downloadFile')->name('file.download');
-// Show image
+// Show file
 Route::get('fpool/{file}', 'FileController@show')->name('file.show');

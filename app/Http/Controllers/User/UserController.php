@@ -10,7 +10,6 @@ use App\Models\File as FileModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -21,7 +20,7 @@ class UserController extends Controller
     }
 
     /* Getting user's files */
-    public function userImages()
+    public function userFiles()
     {
         $files = FileModel::where('user_id', auth()->user()->id)->orderByDesc('id')->paginate();
         return view('user.files')->with('files', $files);
@@ -74,7 +73,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        $avatar = upload_file($request->file('avatar'), config('imgpool.user_avatars_folder'), $user->avatar)->getData();
+        $avatar = upload_file($request->file('avatar'), config('filepool.user_avatars_folder'), $user->avatar)->getData();
         if ($avatar) {
             $update = $user->update([
                 'avatar' => $avatar->name
@@ -89,7 +88,7 @@ class UserController extends Controller
 
     public function destroyAvatar()
     {
-        File::delete(config('imgpool.user_avatars_folder') . '/' . auth()->user()->avatar);
+        File::delete(config('filepool.user_avatars_folder') . '/' . auth()->user()->avatar);
         Auth::user()->update([
             'avatar' => ''
         ]);
