@@ -3,7 +3,7 @@
 /* Please do not change this settings if its possible. You can change this settings from admin panel */
 /* You can change max_avatar_size */
 
-/* Imgpool config file */
+/* Filepool config file */
 
 return [
     /* Do not change if website is active and if some files are uploaded. */
@@ -28,14 +28,14 @@ return [
 
     'settings' => [
         /* Website Settings */
-        'website_name'          => 'Imgpool',
+        'website_name'          => 'Filepool',
         'menu_title'            => 'About',
         'theme_color'           => '#2c7ce0',
 
         /* SEO */
-        'site_title'            => 'Imgpool',
-        'site_description'      => 'Imgpool',
-        'site_keywords'         => 'imgpool,upload image',
+        'site_title'            => 'Filepool',
+        'site_description'      => 'Filepool',
+        'site_keywords'         => 'filepool,upload image',
 
         /* Upload Settings */
         'max_file_size'         => '5', // 5 MB
