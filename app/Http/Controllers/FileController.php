@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FileDownloadRequest;
 use App\Http\Requests\FileRequest;
 use App\Models\File;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class FileController extends Controller
 {
@@ -41,10 +43,25 @@ class FileController extends Controller
         return response()->json([], 500);
     }
 
-    public function downloadFile($file)
+    public function downloadFile(FileDownloadRequest $request)
     {
-        $file = File::where('file_id', $file)->first();
-        return $file ? download_file($file) : abort(404);
+        $file = File::where('file_id', $request->get('id'))->first();
+
+        if ($file) {
+            if ($file->password && !Hash::check($request->get('password'), $file->password)) {
+                return response()->json([
+                    'status'  => false,
+                    'message' => 'Password incorrect'
+                ]);
+            }
+
+            return download_file($file);
+        }
+
+        return response()->json([
+            'status'  => false,
+            'message' => 'File not found'
+        ]);
     }
 
     public function save($fileId, $fileSize, $fileMime, $fileOriginalId, $storage = 'local')

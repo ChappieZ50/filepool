@@ -21,7 +21,7 @@ if (!function_exists('download_file')) {
         if ($file->uploaded_to === 'aws') {
             return Storage::disk('s3')->download(config('filepool.aws_folder') . '/' . $name);
         } else {
-            return response()->download(config('filepool.local_folder') . '/' . $name);
+            return Storage::disk('local')->download(config('filepool.local_folder') . '/' . $name);
         }
     }
 }
@@ -32,12 +32,7 @@ if (!function_exists('download_file')) {
 if (!function_exists('file_url')) {
     function file_url($file)
     {
-        if ($file->uploaded_to === 'aws') {
-            $link = Storage::disk('s3')->url(config('filepool.aws_folder') . '/' . $file->file_full_id);
-        } else {
-            $link = asset(config('filepool.local_folder') . '/' . $file->file_full_id);
-        }
-        return $link;
+        return route('file.show', $file->file_id);
     }
 }
 
@@ -169,28 +164,28 @@ if (!function_exists('delete_file')) {
  * If you pass file name to $delete parameter. Then this file will be deleted.
 */
 if (!function_exists('upload_file')) {
-    function upload_file($file, $uploadFolder, $delete = '', $disk = '')
+    function upload_file($file, $path, $delete = '', $disk = 'local')
     {
+        $path = $disk === 'local' ? storage_path($path) : $path;
+
         $extension = $file->getClientOriginalExtension();
         $fileId = Str::random(12);
         $name = $fileId . '.' . $extension;
         $fileSize = $file->getSize();
         $fileOriginalId = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
 
-        if ($disk) {
-            $put = Storage::disk($disk)->put($uploadFolder . '/' . $name, file_get_contents($file), 'public');
+        if ($disk !== 'local') {
+            $put = Storage::disk($disk)->put($path . '/' . $name, file_get_contents($file), 'public');
         } else {
-            $put = $file->move(public_path($uploadFolder), $name);
+            $put = Storage::disk($disk)->put($path . '/' . $name, file_get_contents($file));
         }
 
         if ($put) {
+
             if ($delete) {
-                if ($disk) {
-                    Storage::disk($disk)->delete($uploadFolder . '/' . $delete);
-                } else {
-                    File::delete(public_path($uploadFolder . '/' . $delete));
-                }
+                Storage::disk($disk)->delete($path . '/' . $delete);
             }
+
             return response()->json([
                 'status'           => true,
                 'extension'        => $extension,
@@ -198,7 +193,7 @@ if (!function_exists('upload_file')) {
                 'file_id'          => $fileId,
                 'file_original_id' => $fileOriginalId,
                 'file_size'        => $fileSize,
-                'url'              => !$disk ? asset($uploadFolder . '/' . $name) : Storage::disk($disk)->url($uploadFolder . '/' . $name)
+                'url'              => route('file.show', $fileId),
             ]);
         }
 

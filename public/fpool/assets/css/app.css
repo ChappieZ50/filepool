@@ -1,4 +1,119 @@
 @import url(https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap);
+.ipool-file-type {
+  width: 110px;
+  height: 130px;
+  background-color: #33b5e5;
+  position: relative;
+  margin: 10px;
+  display: inline-block;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.ipool-file-type:before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid #178ab4;
+  z-index: 5;
+}
+.ipool-file-type:after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  border-left: 20px solid transparent;
+  border-top: 20px solid white;
+}
+.ipool-file-type:after, .ipool-file-type:before, .ipool-file-type {
+  transition: all 0.3s;
+}
+.ipool-file-type:hover .file-icon-text {
+  transition: font-size 0.3s;
+  font-size: 20px;
+}
+.ipool-file-type:hover:before, .ipool-file-type:hover:after {
+  transition: all 0.3s;
+  border-width: 0;
+}
+.ipool-file-type i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.ipool-file-type .file-icon-text {
+  transition: font-size 0.3s;
+  position: absolute;
+  left: -12px;
+  bottom: 10px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.ipool-file-avi, .ipool-file-mov, .ipool-file-mp4, .ipool-file-ogg, .ipool-file-wmv, .ipool-file-webm {
+  background-color: rgba(208, 145, 154, 0.7);
+}
+.ipool-file-avi .file-icon-text > div, .ipool-file-mov .file-icon-text > div, .ipool-file-mp4 .file-icon-text > div, .ipool-file-ogg .file-icon-text > div, .ipool-file-wmv .file-icon-text > div, .ipool-file-webm .file-icon-text > div {
+  background-color: #d0919a;
+  border-radius: 6px;
+  padding: 6px 14px;
+}
+.ipool-file-avi:before, .ipool-file-mov:before, .ipool-file-mp4:before, .ipool-file-ogg:before, .ipool-file-wmv:before, .ipool-file-webm:before {
+  border-bottom-color: #d0919a;
+}
+
+.ipool-file-mp3, .ipool-file-wav {
+  background-color: rgba(212, 110, 173, 0.8);
+}
+.ipool-file-mp3 .file-icon-text > div, .ipool-file-wav .file-icon-text > div {
+  background-color: #d46ead;
+  border-radius: 6px;
+  padding: 6px 14px;
+}
+.ipool-file-mp3:before, .ipool-file-wav:before {
+  border-bottom-color: #d46ead;
+}
+
+.ipool-file-doc, .ipool-file-docx, .ipool-file-xls, .ipool-file-xlsx, .ipool-file-ppt, .ipool-file-pptx, .ipool-file-pdf, .ipool-file-odt, .ipool-file-ods, .ipool-file-odp, .ipool-file-rtf {
+  background-color: rgba(84, 203, 237, 0.8);
+}
+.ipool-file-doc .file-icon-text > div, .ipool-file-docx .file-icon-text > div, .ipool-file-xls .file-icon-text > div, .ipool-file-xlsx .file-icon-text > div, .ipool-file-ppt .file-icon-text > div, .ipool-file-pptx .file-icon-text > div, .ipool-file-pdf .file-icon-text > div, .ipool-file-odt .file-icon-text > div, .ipool-file-ods .file-icon-text > div, .ipool-file-odp .file-icon-text > div, .ipool-file-rtf .file-icon-text > div {
+  background-color: #54cbed;
+  border-radius: 6px;
+  padding: 6px 14px;
+}
+.ipool-file-doc:before, .ipool-file-docx:before, .ipool-file-xls:before, .ipool-file-xlsx:before, .ipool-file-ppt:before, .ipool-file-pptx:before, .ipool-file-pdf:before, .ipool-file-odt:before, .ipool-file-ods:before, .ipool-file-odp:before, .ipool-file-rtf:before {
+  border-bottom-color: #54cbed;
+}
+
+.ipool-file-psd, .ipool-file-ai, .ipool-file-jpg, .ipool-file-png, .ipool-file-gif, .ipool-file-tiff, .ipool-file-ico, .ipool-file-svg, .ipool-file-webp {
+  background-color: rgba(143, 205, 190, 0.8);
+}
+.ipool-file-psd .file-icon-text > div, .ipool-file-ai .file-icon-text > div, .ipool-file-jpg .file-icon-text > div, .ipool-file-png .file-icon-text > div, .ipool-file-gif .file-icon-text > div, .ipool-file-tiff .file-icon-text > div, .ipool-file-ico .file-icon-text > div, .ipool-file-svg .file-icon-text > div, .ipool-file-webp .file-icon-text > div {
+  background-color: #8fcdbe;
+  border-radius: 6px;
+  padding: 6px 14px;
+}
+.ipool-file-psd:before, .ipool-file-ai:before, .ipool-file-jpg:before, .ipool-file-png:before, .ipool-file-gif:before, .ipool-file-tiff:before, .ipool-file-ico:before, .ipool-file-svg:before, .ipool-file-webp:before {
+  border-bottom-color: #8fcdbe;
+}
+
+.ipool-file-rar, .ipool-file-csv, .ipool-file-json, .ipool-file-xml, .ipool-file-html, .ipool-file-zip, .ipool-file-txt {
+  background-color: rgba(244, 119, 101, 0.8);
+}
+.ipool-file-rar .file-icon-text > div, .ipool-file-csv .file-icon-text > div, .ipool-file-json .file-icon-text > div, .ipool-file-xml .file-icon-text > div, .ipool-file-html .file-icon-text > div, .ipool-file-zip .file-icon-text > div, .ipool-file-txt .file-icon-text > div {
+  background-color: #f47765;
+  border-radius: 6px;
+  padding: 6px 14px;
+}
+.ipool-file-rar:before, .ipool-file-csv:before, .ipool-file-json:before, .ipool-file-xml:before, .ipool-file-html:before, .ipool-file-zip:before, .ipool-file-txt:before {
+  border-bottom-color: #f47765;
+}
+
 .navbar-brand-wrapper {
   background-color: #212121 !important;
 }

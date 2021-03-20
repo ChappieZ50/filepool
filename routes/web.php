@@ -81,6 +81,6 @@ Route::group(['as' => 'user.', 'namespace' => 'User', 'middleware' => 'user-stat
 // Store files
 Route::post('file/store', 'FileController@store')->name('file.store');
 // Download file
-Route::get('fpool/download/{file}', 'FileController@downloadFile')->name('file.download');
+Route::post('fpool/download', 'FileController@downloadFile')->name('file.download');
 // Show file
 Route::get('fpool/{file}', 'FileController@show')->name('file.show');

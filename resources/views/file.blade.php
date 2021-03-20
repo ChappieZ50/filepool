@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
-@section('og_site_image',file_url($file))
 @section('site_robots','noindex')
 
 @section('content')

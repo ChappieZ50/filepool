@@ -1,0 +1,135 @@
+.ipool-file-type {
+    width: 110px;
+    height: 130px;
+    background-color: #33b5e5;
+    position: relative;
+    margin: 10px;
+    display: inline-block;
+    border-radius: 3px;
+    cursor: pointer;
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        border-right: 20px solid transparent;
+        border-bottom: 20px solid #178ab4;
+        z-index: 5;
+    }
+
+    &:after {
+        content: "";
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        border-left: 20px solid transparent;
+        border-top: 20px solid white;
+    }
+
+    &:after, &:before, & {
+        transition: all .3s;
+    }
+
+    &:hover {
+        .file-icon-text {
+            transition: font-size .3s;
+            font-size: 20px;
+        }
+
+        &:before, &:after {
+            transition: all .3s;
+            border-width: 0;
+        }
+
+    }
+
+    i {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .file-icon-text {
+        transition: font-size .3s;
+        position: absolute;
+        left: -12px;
+        bottom: 10px;
+        color: #fff;
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+}
+
+.ipool-file-avi, .ipool-file-mov, .ipool-file-mp4, .ipool-file-ogg, .ipool-file-wmv, .ipool-file-webm {
+    background-color: rgba(208, 145, 154, .7);
+
+    .file-icon-text > div {
+        background-color: rgba(208, 145, 154, 1);
+        border-radius: 6px;
+        padding: 6px 14px;
+    }
+
+    &:before {
+        border-bottom-color: rgba(208, 145, 154, 1);
+    }
+}
+
+.ipool-file-mp3, .ipool-file-wav {
+    background-color: rgba(212, 110, 173, 0.8);
+
+    .file-icon-text > div {
+        background-color: rgba(212, 110, 173, 1);
+        border-radius: 6px;
+        padding: 6px 14px;
+    }
+
+    &:before {
+        border-bottom-color: rgba(212, 110, 173, 1);
+    }
+}
+
+.ipool-file-doc, .ipool-file-docx, .ipool-file-xls, .ipool-file-xlsx, .ipool-file-ppt, .ipool-file-pptx, .ipool-file-pdf, .ipool-file-odt, .ipool-file-ods, .ipool-file-odp, .ipool-file-rtf {
+    background-color: rgba(84, 203, 237, 0.8);
+
+    .file-icon-text > div {
+        background-color: rgba(84, 203, 237, 1);
+        border-radius: 6px;
+        padding: 6px 14px;
+    }
+
+    &:before {
+        border-bottom-color: rgba(84, 203, 237, 1);
+    }
+}
+
+.ipool-file-psd, .ipool-file-ai, .ipool-file-jpg, .ipool-file-png, .ipool-file-gif, .ipool-file-tiff, .ipool-file-ico, .ipool-file-svg, .ipool-file-webp {
+    background-color: rgba(143, 205, 190, 0.8);
+
+    .file-icon-text > div {
+        background-color: rgba(143, 205, 190, 1);
+        border-radius: 6px;
+        padding: 6px 14px;
+    }
+
+    &:before {
+        border-bottom-color: rgba(143, 205, 190, 1);
+    }
+}
+
+.ipool-file-rar, .ipool-file-csv, .ipool-file-json, .ipool-file-xml, .ipool-file-html, .ipool-file-zip, .ipool-file-txt {
+    background-color: rgba(244, 119, 101, 0.8);
+
+    .file-icon-text > div {
+        background-color: rgba(244, 119, 101, 1);
+        border-radius: 6px;
+        padding: 6px 14px;
+    }
+
+    &:before {
+        border-bottom-color: rgba(244, 119, 101, 1);
+    }
+}

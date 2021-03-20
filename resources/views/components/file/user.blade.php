@@ -23,12 +23,18 @@
                 </li>
             </ul>
         </div>
-        <a href="{{ route('file.download',$file->file_id) }}" class="btn btn-sm fpool-button mt-3 w-100"
-           style="font-size: 14px;" {{has_ad('download_ad') ? 'onclick=window.open(\''.get_ad('download_ad').'\');' : ''}}>
-            <i data-feather="download"></i>
+
+        <button class="btn btn-sm fpool-button mt-3 w-100" style="font-size: 14px;" data-mime="{{$file->file_mime}}" data-id="{{$file->file_id}}"
+                id="download_file" {{$file->password ? 'data-secure="true"' : ''}}>
+            <i data-feather="{{$file->password ? 'lock' : 'download'}}"></i>
             Download
-        </a>
+        </button>
     </div>
     @component('components.ads.file.left') @endcomponent
 </div>
 
+@if(config()->get('captcha.secret') && config()->get('captcha.sitekey'))
+@section('scripts')
+    <script src="https://www.google.com/recaptcha/api.js?onload=showSweetAlertRecaptcha"></script>
+@append
+@endif

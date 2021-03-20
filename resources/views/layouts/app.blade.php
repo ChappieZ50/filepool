@@ -44,6 +44,7 @@
 
     </style>
 
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
     @yield('styles')
 </head>
@@ -57,7 +58,11 @@
 
 <script>
     window.routes = {
-        file_destroy: '{{ route('user.files') . '/destroy' }}'
+        file_destroy: '{{ route('user.files') . '/destroy' }}',
+        file_download: '{{ route('file.download')}}',
+    };
+    window.filepool = {
+        g_recaptcha_site_key: '{{get_setting('recaptcha_site_key')}}'
     };
 
 </script>

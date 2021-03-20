@@ -8,16 +8,10 @@
 return [
     /* Do not change if website is active and if some files are uploaded. */
     'local_folder'        => 'if', // This setting for local storage
-    'user_avatars_folder' => 'avatars', // Avatars will uploading here
     'aws_folder'          => 'if', // This setting for aws storage
+    'user_avatars_folder' => 'avatars', // Avatars will uploading here
     'upload_folder'       => 'df', // Upload Folder for website uploads (logo,favicon,avatar etc.)
     'max_avatar_size'     => '3000', // Avatar max size
-
-    /*
-        Does't have image this icons:
-
-    */
-
 
     'accepted_mimes' => [
         /* Video Files */

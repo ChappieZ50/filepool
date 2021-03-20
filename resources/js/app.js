@@ -296,11 +296,72 @@ $(document).ready(function () {
         chart.render();
     }
 
-    /* Fpool images loading */
+    /* Fpool files loading */
     if ($('.fpool-images-wrapper').length) {
         imagesLoaded(document.querySelector('.fpool-images-wrapper'), function () {
             $('.fpool-spinner').fadeOut();
             $('.fpool-images-wrapper').fadeIn();
         });
     }
+
+    /* File Download */
+    $('#download_file').on('click', function () {
+        let id = $(this).attr('data-id'),
+            mime = $(this).attr('data-mime'),
+            recaptcha = '';
+        if ($(this).attr('data-secure')) {
+            Swal.fire({
+                title: 'Enter Password',
+                html: '<input autocapitalize="off" name="file_password" class="swal2-input" placeholder="File Password" type="password" style="display: flex;">'
+                    + '<div id="swal_recaptcha"></div>',
+                onOpen: function () {
+                    if (window.filepool.g_recaptcha_site_key.length > 0) {
+                        grecaptcha.render('swal_recaptcha', {
+                            'sitekey': window.filepool.g_recaptcha_site_key
+                        })
+                    }
+                },
+                preConfirm: function () {
+                    if (window.filepool.g_recaptcha_site_key.length > 0) {
+                        if (grecaptcha.getResponse().length === 0) {
+                            Swal.showValidationMessage(`Please verify that you're not a robot`)
+                        } else {
+                            recaptcha = grecaptcha.getResponse();
+                        }
+                    }
+                },
+                showCancelButton: true,
+                confirmButtonText: 'Download File',
+                showLoaderOnConfirm: true,
+
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let password = $('input[name=file_password]').val();
+                    download_file(id, mime, password, recaptcha);
+                }
+            })
+        } else {
+            download_file(id, mime);
+        }
+    });
+
+    function download_file(id, mime, password = '', g_recaptcha_response = '') {
+        axios.post(window.routes.file_download, {
+            id,
+            password,
+            "g-recaptcha-response": g_recaptcha_response,
+        }, {
+            responseType: 'blob',
+        }).then(response => {
+            const url = window.URL.createObjectURL(new Blob([response.data]));
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', id + '.' + mime);
+            document.body.appendChild(link);
+            link.click();
+        }).catch(() => {
+            show_swal('Something gone wrong', 'error');
+        });
+    }
+
 });
