@@ -22,7 +22,7 @@ class UserController extends Controller
     /* Getting user's files */
     public function userFiles()
     {
-        $files = FileModel::where('user_id', auth()->user()->id)->orderByDesc('id')->paginate();
+        $files = FileModel::where('user_id', auth()->user()->id)->orderByDesc('id')->paginate(32);
         return view('user.files')->with('files', $files);
     }
 

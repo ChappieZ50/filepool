@@ -13,7 +13,13 @@ return [
     'upload_folder'       => 'df', // Upload Folder for website uploads (logo,favicon,avatar etc.)
     'max_avatar_size'     => '3000', // Avatar max size
 
-    'accepted_mimes'         => [
+    /*
+        Does't have image this icons:
+
+    */
+
+
+    'accepted_mimes' => [
         /* Video Files */
         'avi', 'mov', 'mp4', 'ogg', 'wmv', 'webm',
         /* Audio Files */
@@ -21,9 +27,23 @@ return [
         /* Document Files */
         'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'pdf', 'odt', 'ods', 'odp', 'rtf',
         /* Image Files */
-        'jpg', 'png', 'gif', 'tiff', 'ico', 'svg', 'webp',
+        'jpg', 'png', 'gif', 'tiff', 'ico', 'svg', 'webp', 'psd', 'ai',
         /* Other Files */
-        'apk', 'rar', 'csv', 'json', 'xml', 'html', 'zip',
+        'rar', 'csv', 'json', 'xml', 'html', 'zip', 'txt',
+    ],
+
+
+    'accepted_mimes_request' => [
+        /* Video */
+        'video/avi', 'video/x-msvideo', 'video/quicktime', 'video/x-quicktime', 'video/mp4', 'video/ogg', 'video/x-ms-wmv', 'video/x-ms-asf', 'video/webm', 'video/x-mpeg', 'video/mpeg', 'video/ogg',
+        /* Audio */
+        'audio/ogg', 'audio/webm', 'audio/mpeg3', 'audio/mpeg', 'audio/x-mpeg-3', 'audio/wav', 'audio/x-wav',
+        /* Application */
+        'application/ogg', 'application/vnd.rar', 'application/postscript', 'application/x-rar-compressed', 'application/x-rar', 'application/zip', 'application/json', 'application/xml', 'application/doc', 'application/ms-doc', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/excel', 'application/vnd.ms-excel', 'application/x-excel', 'application/x-msexcel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/mspowerpoint', 'application/powerpoint', 'application/vnd.ms-powerpoint', 'application/x-mspowerpoint', 'application/vnd.openxmlformats-officedocument.presentationml.presentation', 'application/pdf', 'application/vnd.oasis.opendocum', 'application/vnd.oasis.opendocument.spreadsheet', 'application/vnd.oasis.opendocument.presentation', 'application/rtf', 'application/vnd.oasis.opendocument.text',
+        /* Image */
+        'image/mov', 'image/vnd.adobe.photoshop', 'image/jpeg', 'image/pjpeg', 'image/png', 'image/gif', 'image/tiff', 'image/x-tiff', 'image/x-icon', 'image/vnd.microsoft.icon', 'image/svg+xml', 'image/webp',
+        /* Text */
+        'text/csv', 'text/xml', 'text/html', 'text/rtf', 'text/plain',
     ],
 
     'anonymous_user' => [

@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\FpoolMimes;
 use Illuminate\Foundation\Http\FormRequest;
 
 class FileRequest extends FormRequest
@@ -24,8 +23,8 @@ class FileRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'file' => ['required', 'max:' . get_setting('max_file_size') * 1000, new FpoolMimes],
-        ];
+         return [
+             'file' => 'required|file|mimetypes:'.get_accepted_mimes().'|max:' . get_setting('max_file_size') * 1000,
+         ];
     }
 }

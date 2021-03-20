@@ -368,19 +368,24 @@ if (!function_exists('get_chart_data')) {
 }
 
 if (!function_exists('get_accepted_mimes')) {
-    function get_accepted_mimes($str = true)
+    function get_accepted_mimes($dropzone = false, $str = true)
     {
+        if ($dropzone) {
+            $mimes = config('filepool.accepted_mimes');
+        } else {
+            $mimes = config('filepool.accepted_mimes_request');
+        }
         if ($str) {
-            return implode(',', config('filepool.accepted_mimes'));
+            return implode(',', $mimes);
         }
 
-        return config('filepool.accepted_mimes');
+        return $mimes;
     }
 }
 
 if (!function_exists('get_accepted_mimes_dropzone')) {
     function get_accepted_mimes_dropzone()
     {
-        return '.' . str_replace(',', ',.', get_accepted_mimes());
+        return '.' . str_replace(',', ',.', get_accepted_mimes(true));
     }
 }

@@ -588,128 +588,6 @@ html, body {
                                 font-size: 14px;
                             }
                         }
-
-                        .fpool-user-image {
-                            margin: 5px;
-                            position: relative;
-                            height: 170px;
-                            width: 220px;
-
-                            &:hover {
-                                .fpool-image-delete {
-                                    opacity: 1;
-                                    transition: opacity .3s;
-                                }
-
-                                .fpool-image-link {
-                                    opacity: 1;
-                                    transition: opacity .3s;
-                                }
-
-                                .fpool-image-bottom {
-                                    height: 30px;
-                                    transition: height .3s;
-                                }
-                            }
-
-                            a {
-                                img {
-                                    width: 100%;
-                                    height: 100%;
-                                    cursor: pointer;
-                                    object-fit: cover;
-                                }
-                            }
-
-                            .fpool-image-bottom {
-                                position: absolute;
-                                bottom: 0;
-                                left: 0;
-                                width: 100%;
-                                height: 0;
-                                background-color: $primary-color;
-                                transition: height .3s;
-                                overflow-x: hidden;
-
-                                .bottom-content {
-                                    width: 100%;
-                                    height: 100%;
-                                    padding: 0 3px;
-                                    display: flex;
-                                    justify-content: space-between;
-                                    align-items: center;
-                                    flex-direction: row;
-                                    font-size: 13px;
-                                    color: #fff;
-                                    overflow: hidden;
-
-                                    .image-name {
-                                        width: 85%;
-                                        overflow: hidden;
-                                        white-space: nowrap;
-                                        text-overflow: ellipsis;
-                                    }
-
-                                    .image-info {
-                                        margin-right: 5px;
-
-                                        a {
-                                            color: #fff;
-                                        }
-
-                                        svg {
-                                            width: 18px;
-                                            height: 18px;
-                                            cursor: pointer;
-                                        }
-                                    }
-                                }
-                            }
-
-                            .fpool-image-delete {
-                                position: absolute;
-                                right: 5px;
-                                top: 5px;
-                                width: 30px;
-                                height: 30px;
-                                border-radius: 50%;
-                                cursor: pointer;
-                                background-color: #e34346;
-                                display: flex;
-                                justify-content: center;
-                                opacity: 0;
-                                transition: opacity .3s;
-
-                                svg {
-                                    color: #fff;
-                                    width: 20px;
-                                    height: auto;
-                                    margin: 0;
-                                }
-                            }
-
-                            .fpool-image-link {
-                                position: absolute;
-                                left: 5px;
-                                top: 5px;
-                                width: 30px;
-                                height: 30px;
-                                border-radius: 50%;
-                                cursor: pointer;
-                                background-color: $primary-color;
-                                display: flex;
-                                justify-content: center;
-                                opacity: 0;
-                                transition: opacity .3s;
-
-                                svg {
-                                    color: #fff;
-                                    width: 16px;
-                                    height: auto;
-                                    margin: 0;
-                                }
-                            }
-                        }
                     }
 
                 }
@@ -1171,6 +1049,142 @@ html, body {
 
     p {
         font-size: 14px;
+    }
+}
+
+.ipool-file-type {
+    width: 110px;
+    height: 130px;
+    background-color: #33b5e5;
+    position: relative;
+    margin: 10px;
+    display: inline-block;
+    border-radius: 3px;
+    cursor: pointer;
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        border-right: 20px solid transparent;
+        border-bottom: 20px solid #178ab4;
+        z-index: 5;
+    }
+
+    &:after {
+        content: "";
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        border-left: 20px solid transparent;
+        border-top: 20px solid white;
+    }
+
+    &:after, &:before, & {
+        transition: all .3s;
+    }
+
+    &:hover {
+        .file-icon-text {
+            transition: font-size .3s;
+            font-size: 20px;
+        }
+
+        &:before, &:after {
+            transition: all .3s;
+            border-width: 0;
+        }
+
+    }
+
+    i {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .file-icon-text {
+        transition: font-size .3s;
+        position: absolute;
+        left: -12px;
+        bottom: 10px;
+        color: #fff;
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+}
+
+.ipool-file-avi, .ipool-file-mov, .ipool-file-mp4, .ipool-file-ogg, .ipool-file-wmv, .ipool-file-webm {
+    background-color: rgba(208, 145, 154, .7);
+
+    .file-icon-text > div {
+        background-color: rgba(208, 145, 154, 1);
+        border-radius: 6px;
+        padding: 6px 14px;
+    }
+
+    &:before {
+        border-bottom-color: rgba(208, 145, 154, 1);
+    }
+}
+
+.ipool-file-mp3, .ipool-file-wav {
+    background-color: rgba(212, 110, 173, 0.8);
+
+    .file-icon-text > div {
+        background-color: rgba(212, 110, 173, 1);
+        border-radius: 6px;
+        padding: 6px 14px;
+    }
+
+    &:before {
+        border-bottom-color: rgba(212, 110, 173, 1);
+    }
+}
+
+.ipool-file-doc, .ipool-file-docx, .ipool-file-xls, .ipool-file-xlsx, .ipool-file-ppt, .ipool-file-pptx, .ipool-file-pdf, .ipool-file-odt, .ipool-file-ods, .ipool-file-odp, .ipool-file-rtf {
+    background-color: rgba(84, 203, 237, 0.8);
+
+    .file-icon-text > div {
+        background-color: rgba(84, 203, 237, 1);
+        border-radius: 6px;
+        padding: 6px 14px;
+    }
+
+    &:before {
+        border-bottom-color: rgba(84, 203, 237, 1);
+    }
+}
+
+.ipool-file-psd, .ipool-file-ai, .ipool-file-jpg, .ipool-file-png, .ipool-file-gif, .ipool-file-tiff, .ipool-file-ico, .ipool-file-svg, .ipool-file-webp {
+    background-color: rgba(143, 205, 190, 0.8);
+
+    .file-icon-text > div {
+        background-color: rgba(143, 205, 190, 1);
+        border-radius: 6px;
+        padding: 6px 14px;
+    }
+
+    &:before {
+        border-bottom-color: rgba(143, 205, 190, 1);
+    }
+}
+
+.ipool-file-rar, .ipool-file-csv, .ipool-file-json, .ipool-file-xml, .ipool-file-html, .ipool-file-zip, .ipool-file-txt {
+    background-color: rgba(244, 119, 101, 0.8);
+
+    .file-icon-text > div {
+        background-color: rgba(244, 119, 101, 1);
+        border-radius: 6px;
+        padding: 6px 14px;
+    }
+
+    &:before {
+        border-bottom-color: rgba(244, 119, 101, 1);
     }
 }
 

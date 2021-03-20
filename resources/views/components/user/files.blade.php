@@ -22,36 +22,21 @@
                     @else
                         @foreach ($files as $file)
                             @php $link = file_url($file); @endphp
-                            <div class="fpool-user-image">
-                                <div class="fpool-image-delete" id="file_delete" data-id="{{ $file->id }}">
-                                    <i data-feather="x"></i>
-                                </div>
-                                <div class="fpool-image-link">
-                                    <i data-feather="link" id="copy" data-clipboard-text="{{ $link }}"></i>
-                                </div>
-
-                                <a href="{{ route('file.show',$file->file_id) }}" target="_blank">
-                                    <img src="{{ $link }}" alt="{{ $file->file_original_id }}" class="rounded">
-                                </a>
-
-                                <div class="fpool-image-bottom">
-                                    <div class="bottom-content">
-                                        <div class="image-name"
-                                             title="{{ $file->file_original_id . '.' . $file->file_mime }}">{{ $file->file_original_id . '.' . $file->file_mime }}</div>
-                                        <div class="image-info">
-                                            <a href="{{ route('file.download',['file' => $file->file_id]) }}" {{has_ad('download_ad') ? 'onclick=window.open(\''.get_ad('download_ad').'\');' : ''}}>
-                                                <i data-feather="download"></i>
-                                            </a>
+                            <a href="{{ route('file.show',$file->file_id) }}" target="_blank">
+                                <div class="ipool-file-type ipool-file-{{$file->file_mime}}">
+                                    <div class="file-icon-text">
+                                        <div>
+                                            {{$file->file_mime}}
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         @endforeach
                     @endunless
                 </div>
-                <div class="mx-auto mt-3">
-                    {{ $files->links() }}
-                </div>
+            </div>
+            <div class="mx-auto mt-3">
+                {{ $files->links() }}
             </div>
         </div>
     </div>
