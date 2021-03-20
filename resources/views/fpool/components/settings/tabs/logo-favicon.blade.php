@@ -6,7 +6,7 @@
         @csrf
         <div class="row">
             <div class="col-lg-6 text-center mt-3">
-                <img src="{{isset($setting) && $setting->logo ? website_file_url($setting->logo) : website_file_url('404.svg','assets/images/')}}" alt="logo" style="max-width: 120px;"
+                <img src="{{isset($setting) && $setting->logo ? website_file_url($setting->logo) : website_file_url('404.svg','fpool/assets/images/')}}" alt="logo" style="max-width: 120px;"
                      id="logo_preview">
                 <div class="form-group">
                     <hr>
@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="col-lg-6 text-center mt-3">
-                <img src="{{isset($setting) && $setting->favicon ? website_file_url($setting->favicon) : website_file_url('404.svg','assets/images/')}}" alt="favicon" style="max-width: 120px;" id="favicon_preview">
+                <img src="{{isset($setting) && $setting->favicon ? website_file_url($setting->favicon) : website_file_url('404.svg','fpool/assets/images/')}}" alt="favicon" style="max-width: 120px;" id="favicon_preview">
                 <div class="form-group">
                     <hr>
                     <div class="mt-3 choose-file">
