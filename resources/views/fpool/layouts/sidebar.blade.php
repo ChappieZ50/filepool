@@ -28,7 +28,7 @@
         <li class="nav-item">
             <a class="nav-link" href="{{route('admin.file.index')}}">
                 <i class="menu-icon typcn typcn-document-text"></i>
-                <span class="menu-title">Images</span>
+                <span class="menu-title">Files</span>
             </a>
         </li>
         <li class="nav-item">

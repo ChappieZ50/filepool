@@ -79,26 +79,7 @@
                 <input type="text" class="form-control col-12" id="dropzone_rule" name="dropzone_rule"
                        value="{{ isset($setting) ? $setting->dropzone_rule : old('dropzone_rule') }}">
             </div>
-            <div class="form-group">
-                <label for="dropzone_accepted_mimes">Accepted Mimes</label>
-                <div class="clearfix"></div>
-                @php $accepted_mimes = json_decode(get_setting('dropzone_accepted_mimes')); @endphp
-                <select class="selectpicker w-100" multiple name="dropzone_accepted_mimes[]" id="dropzone_accepted_mimes" data-live-search="true">
-                    @forelse(get_mimes(true) as $mime)
-                        <option {{$accepted_mimes && in_array($mime,$accepted_mimes) ? 'selected' : ''}}>{{$mime}}</option>
-                    @empty
-                    @endforelse
-                </select>
-                <div class="small text-muted">Leave empty for accept all mimes</div>
-            </div>
         </div>
     </div>
     <button type="submit" class="btn btn-primary btn-lg float-right">Save Settings</button>
 </form>
-
-@section('scripts')
-    <script src="{{asset('fpool/assets/plugins/bootstrap-select/bootstrap-select.min.js')}}"></script>
-@append
-@section('styles')
-    <link rel="stylesheet" href="{{asset('fpool/assets/plugins/bootstrap-select/bootstrap-select.min.css')}}">
-@append

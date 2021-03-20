@@ -376,30 +376,6 @@ $(document).ready(function () {
         chart.render();
     }
 
-    /* File Extension Chart */
-    if ($('#file_extension_chart').length) {
-        var options = {
-            series: Object.values(window.file_extension_chart),
-            chart: {
-                width: 380,
-                type: 'pie',
-            },
-            labels: Object.values(window.file_extension_chart_labels),
-            responsive: [{
-                breakpoint: 480,
-                options: {
-                    chart: {
-                        width: 200
-                    }
-                }
-            }]
-        };
-
-        var chart = new ApexCharts(document.querySelector("#file_extension_chart"), options);
-
-        chart.render();
-    }
-
     /* User Login Types Chart */
     if ($('#user_login_chart').length) {
         var options = {

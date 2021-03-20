@@ -2,27 +2,31 @@ const Uppy = require('@uppy/core');
 const XHRUpload = require('@uppy/xhr-upload');
 const Dashboard = require('@uppy/dashboard');
 
+const accepted_mimes = [
+    ".avi",
+];
+
 $(document).ready(function () {
     const uppy_note = $('#fpool_dropzone').attr('data-note'),
-        uppy_drop_string = $('#fpool_dropzone').attr('data-drop'),
-        uppy_browse_string = $('#fpool_dropzone').attr('data-browse'),
-        uppy_maxFileSize = $('#fpool_dropzone').attr('data-max-size'),
-        uppy_maxFile = $('#fpool_dropzone').attr('data-max-file'),
-        uppy_file_types = $('#fpool_dropzone').attr('data-file-types');
+        fpool_drop_string = $('#fpool_dropzone').attr('data-drop'),
+        fpool_browse_string = $('#fpool_dropzone').attr('data-browse'),
+        fpool_max_file_size = $('#fpool_dropzone').attr('data-max-size'),
+        fpool_max_file = $('#fpool_dropzone').attr('data-max-file'),
+        fpool_mimes = $('#fpool_dropzone').attr('data-mimes');
 
-    const uppy = new Uppy({
+    new Uppy({
         debug: false,
         autoProceed: true,
         restrictions: {
-            maxFileSize: parseInt(uppy_maxFileSize),
-            maxNumberOfFiles: parseInt(uppy_maxFile),
+            maxFileSize: parseInt(fpool_max_file_size),
+            maxNumberOfFiles: parseInt(fpool_max_file),
             minNumberOfFiles: 1,
-            allowedFileTypes: uppy_file_types.split(','),
+            allowedFileTypes: fpool_mimes.split(','),
         },
         locale: {
             strings: {
-                dropPaste: uppy_drop_string,
-                browse: uppy_browse_string,
+                dropPaste: fpool_drop_string,
+                browse: fpool_browse_string,
             }
         }
     }).use(Dashboard, {

@@ -57,7 +57,6 @@ class SettingController extends Controller
             'one_time_uploads'        => $request->get('one_time_uploads'),
             'uploads_storage'         => $request->get('uploads_storage'),
             'dropzone_text'           => $request->get('dropzone_text'),
-            'dropzone_accepted_mimes' => json_encode($request->get('dropzone_accepted_mimes')),
             'browse_text'             => $request->get('browse_text'),
             'dropzone_rule'           => $request->get('dropzone_rule'),
             'menu_title'              => $request->get('menu_title'),

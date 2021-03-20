@@ -27,8 +27,6 @@ class HomeController extends Controller
         /* Take last 5 records from users */
         $users = User::orderByDesc('id')->take(5)->get();
 
-        $labels = explode(',', arr_to_str(get_mimes(true,get_setting('dropzone_accepted_mimes'))), false);
-
         return view('fpool.home')->with([
             'filesCount'                  => $filesCount,
             'usersCount'                  => $usersCount,
@@ -42,7 +40,6 @@ class HomeController extends Controller
             'chart_user_data'             => get_chart_data(User::class),
             'chart_user_status_data'      => $this->getUserStatusChart(),
             'chart_file_extension_data'   => $this->getFileExtensionChart(),
-            'chart_file_extension_labels' => $labels,
             'chart_user_login_data'       => $this->getUserLoginChart(),
         ]);
     }

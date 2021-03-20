@@ -31,7 +31,6 @@ class SettingRequest extends FormRequest
             'one_time_uploads'        => 'sometimes',
             'uploads_storage'         => 'sometimes|in:local,aws',
             'dropzone_text'           => 'sometimes',
-            'dropzone_accepted_mimes' => 'sometimes',
             'browse_text'             => 'sometimes',
             'dropzone_rule'           => 'sometimes',
             'menu_title'              => 'sometimes',

@@ -75,17 +75,12 @@
 
             @endcomponent
 
-            @component('fpool.components.charts.file-extension-chart')
-
-            @endcomponent
-        </div>
-        <div class="row col-12">
             @component('fpool.components.charts.user-login-chart')
 
             @endcomponent
         </div>
     </div>
- @endsection
+@endsection
 
 @section('styles')
     <link rel="stylesheet" href="{{ asset('assets/plugins/apexcharts/apexcharts.css') }}">
@@ -98,7 +93,6 @@
         window.user_chart = @json($chart_user_data);
         window.user_status_chart = @json($chart_user_status_data);
         window.file_extension_chart = @json($chart_file_extension_data);
-        window.file_extension_chart_labels = @json($chart_file_extension_labels);
         window.user_login_chart = @json($chart_user_login_data);
     </script>
 @append

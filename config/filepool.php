@@ -13,37 +13,17 @@ return [
     'upload_folder'       => 'df', // Upload Folder for website uploads (logo,favicon,avatar etc.)
     'max_avatar_size'     => '3000', // Avatar max size
 
-    /* DO NOT EDIT */
-    'accepted_mimes'      => [
-        /* Image */
-        'image/jpeg'                                                              => 'jpeg',
-        'image/jpg'                                                               => 'jpg',
-        'image/png'                                                               => 'png',
-        'image/gif'                                                               => 'gif',
-
-        /* Application */
-        'application/vnd.openxmlformats-officedocument.wordprocessingml.document' => 'docx',
-        'application/msword'                                                      => 'doc',
-        'application/vnd.ms-excel'                                                => 'xls',
-        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'       => 'xlsx',
-        'application/vnd.android.package-archive'                                 => 'apk',
-        'application/zip'                                                         => 'zip',
-        'application/x-rar'                                                       => 'rar',
-
-        /* Text */
-        'text/csv'                                                                => 'csv',
-        'text/plain'                                                              => 'txt',
-
-        /* Video */
-        'video/mp4'                                                               => 'mp4',
-        'video/x-m4v'                                                             => 'm4v',
-        'video/x-ms-wmv'                                                          => 'wmv',
-
-        /* Audio */
-        'audio/mpeg'                                                              => 'mp3',
-        'audio/mp4'                                                               => 'm4a',
-        'audio/x-wav'                                                             => 'wav',
-
+    'accepted_mimes'         => [
+        /* Video Files */
+        'avi', 'mov', 'mp4', 'ogg', 'wmv', 'webm',
+        /* Audio Files */
+        'mp3', 'wav',
+        /* Document Files */
+        'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'pdf', 'odt', 'ods', 'odp', 'rtf',
+        /* Image Files */
+        'jpg', 'png', 'gif', 'tiff', 'ico', 'svg', 'webp',
+        /* Other Files */
+        'apk', 'rar', 'csv', 'json', 'xml', 'html', 'zip',
     ],
 
     'anonymous_user' => [

@@ -1,7 +1,7 @@
 <div class="col-lg-6 grid-margin stretch-card">
     <div class="card">
         <div class="p-4 border-bottom bg-light">
-            <h4 class="card-title mb-0">Statics of users</h4>
+            <h4 class="card-title mb-0">Monthly User Registers</h4>
         </div>
         <div id="user_chart"></div>
     </div>
