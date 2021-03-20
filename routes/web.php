@@ -30,6 +30,8 @@ Route::group(['prefix' => '/admin/', 'as' => 'admin.', 'namespace' => 'Admin', '
     Route::resource('message', 'MessageController')->except('create', 'edit');
     Route::resource('ad', 'AdController')->only('index', 'store');
 
+    Route::get('file/download/{id}', 'FileController@downloadFile')->name('file.download');
+
     /* Website Settings */
     Route::resource('setting', 'SettingController')->only('index', 'store');
 });

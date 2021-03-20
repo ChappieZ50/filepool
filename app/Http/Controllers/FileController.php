@@ -6,6 +6,8 @@ use App\Http\Requests\FileDownloadRequest;
 use App\Http\Requests\FileRequest;
 use App\Models\File;
 use App\Models\Setting;
+use Carbon\Carbon;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -32,7 +34,7 @@ class FileController extends Controller
         }
 
         $file = upload_file($file, $this->uploadFolder, '', $this->disk)->getData();
-        $save = $this->save($file->file_id, $file->file_size, $file->extension, $file->file_original_id, $this->storage);
+        $save = $this->save($file->file_id, $file->file_size, $file->extension, $file->file_original_id, $request->get('expire'), $request->get('password'), $this->storage);
 
         if ($save) {
             return response()->json([
@@ -48,14 +50,14 @@ class FileController extends Controller
         $file = File::where('file_id', $request->get('id'))->first();
 
         if ($file) {
-            if ($file->password && !Hash::check($request->get('password'), $file->password)) {
+            if (!empty($file->password) && !Hash::check($request->get('password'), $file->password)) {
                 return response()->json([
                     'status'  => false,
                     'message' => 'Password incorrect'
-                ]);
+                ], 401);
+            } else {
+                return download_file($file);
             }
-
-            return download_file($file);
         }
 
         return response()->json([
@@ -64,7 +66,7 @@ class FileController extends Controller
         ]);
     }
 
-    public function save($fileId, $fileSize, $fileMime, $fileOriginalId, $storage = 'local')
+    public function save($fileId, $fileSize, $fileMime, $fileOriginalId, $expire, $password = '', $storage = 'local')
     {
         $create = [
             'file_id'          => $fileId,
@@ -73,10 +75,14 @@ class FileController extends Controller
             'file_size'        => $fileSize,
             'file_mime'        => $fileMime,
             'uploaded_to'      => $storage,
+            'password'         => $password ? Hash::make($password) : '',
+            'expire'           => $expire !== 'never' ? Carbon::now()->addDays($expire) : '',
         ];
+
         if (Auth::check()) {
             $create['user_id'] = Auth::user()->id;
         }
+
         return File::create($create);
     }
 

@@ -1,7 +1,7 @@
 <div class="fpool-file-container col-xl-9 col-lg-9 col-md-12 col-sm-12">
     <div class="fpool-file-content">
         <div class="img-preview text-center">
-            <div class="ipool-file-type ipool-file-{{$file->file_mime}}">
+            <div class="ipool-file-type ipool-file-type-lg ipool-file-{{$file->file_mime}}">
                 <div class="file-icon-text">
                     <div>
                         {{$file->file_mime}}

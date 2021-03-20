@@ -49,4 +49,13 @@ class FileController extends Controller
 
         return response()->json(['status' => false]);
     }
+
+    public function downloadFile($id)
+    {
+        $file = File::where('id', $id)->first();
+        if ($file) {
+            return download_file($file);
+        }
+        return abort(404);
+    }
 }

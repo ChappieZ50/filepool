@@ -20,7 +20,15 @@
             @foreach ($files as $file)
                 <tr>
                     <td>
-                        <img src="{{ file_url($file) }}" alt="{{ $file->file_id }}" class="table-image file-image">
+                        <a href="{{ route('admin.file.show', $file->id) }}">
+                            <div class="ipool-file-type ipool-file-type-sm ipool-file-{{$file->file_mime}}">
+                                <div class="file-icon-text">
+                                    <div>
+                                        {{$file->file_mime}}
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
                     </td>
                     @isset($username)
                         <td>

@@ -23,8 +23,16 @@ class FileRequest extends FormRequest
      */
     public function rules()
     {
-         return [
-             'file' => 'required|file|mimetypes:'.get_accepted_mimes().'|max:' . get_setting('max_file_size') * 1000,
-         ];
+        $rules = [
+            'file'     => 'required|file|mimetypes:' . get_accepted_mimes() . '|max:' . get_setting('max_file_size') * 1000,
+            'expire'   => 'required|in:' . get_config('file_expires'),
+            'password' => 'sometimes|max:100',
+        ];
+
+        if (has_settings('recaptcha_site_key', 'recaptcha_secret_key') && !auth()->check()) {
+            $rules['g-recaptcha-response'] = 'required|captcha';
+        }
+
+        return $rules;
     }
 }

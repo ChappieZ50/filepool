@@ -22,12 +22,15 @@
                     @else
                         @foreach ($files as $file)
                             @php $link = file_url($file); @endphp
-                            <a href="{{ route('file.show',$file->file_id) }}" target="_blank">
+                            <a href="{{ route('file.show',$file->file_id) }}" target="_blank" class="ipool-file-wrapper shadow-sm">
                                 <div class="ipool-file-type ipool-file-{{$file->file_mime}}">
                                     <div class="file-icon-text">
                                         <div>
                                             {{$file->file_mime}}
                                         </div>
+                                    </div>
+                                    <div class="ipool-file-text">
+                                        {{str_limit($file->file_original_id,8,'..')}}.{{$file->file_mime}}
                                     </div>
                                 </div>
                             </a>

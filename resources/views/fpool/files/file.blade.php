@@ -7,7 +7,12 @@
                 "{{ $file->user->username }}" has been banned
             </div>
         @endif
-
+            @if($file->password)
+                <div class="alert alert-danger w-100 ml-3 mr-3">
+                    <i class="mdi mdi-shield-lock-outline"></i>
+                    This file protecting with password.
+                </div>
+            @endif
         <a href="{{route('file.show',$file->file_id)}}" class="ml-auto btn out-of-page" target="_blank">
             <span>File Page</span>
             <i class="mdi mdi-arrow-right"></i>
@@ -58,7 +63,7 @@
                                     <span>{{ str_limit($file->file_original_id,25) }}</span>
                                 </li>
                                 <li>
-                                    <strong>Image ID:</strong>
+                                    <strong>File ID:</strong>
                                     <span>{{ $file->file_id }}</span>
                                 </li>
                                 <li>
@@ -83,7 +88,6 @@
                                 </li>
                             </ul>
                         </div>
-                        <a href="{{ route('file.download',$file->file_id) }}" class="btn btn-primary w-100 mt-2">Download</a>
                     </div>
                 </div>
             </div>
@@ -91,9 +95,18 @@
             <div class="col-xl-9 col-lg-12 col-md-12 col-sm-12">
                 <div class="card p-3">
                     <div class="card-body">
-                        <div class="file-preview text-center">
-                            <img src="{{ file_url($file) }}" alt="{{ $file->user->username }}"
-                                 class="img-fluid rounded">
+                        <div class="file-preview d-flex justify-content-center align-items-center flex-wrap flex-column">
+                            <div class="ipool-file-type ipool-file-{{$file->file_mime}}">
+                                <div class="file-icon-text">
+                                    <div>
+                                        {{$file->file_mime}}
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="{{ route('admin.file.download',$file->id) }}" class="btn btn-primary btn-fw btn-lg mt-3">
+                                <i class="mdi mdi-download"></i>
+                                Download File
+                            </a>
                         </div>
                     </div>
                 </div>

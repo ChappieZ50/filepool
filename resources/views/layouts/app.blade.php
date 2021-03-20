@@ -62,7 +62,8 @@
         file_download: '{{ route('file.download')}}',
     };
     window.filepool = {
-        g_recaptcha_site_key: '{{get_setting('recaptcha_site_key')}}'
+        g_recaptcha_site_key: '{{get_setting('recaptcha_site_key')}}',
+        auth: {{auth()->check() ? 'true' : 'false'}},
     };
 
 </script>

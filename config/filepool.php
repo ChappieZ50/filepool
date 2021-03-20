@@ -50,7 +50,6 @@ return [
     ],
     /* DO NOT EDIT */
 
-
     'settings' => [
         /* Website Settings */
         'website_name'          => 'Filepool',
@@ -63,8 +62,8 @@ return [
         'site_keywords'         => 'filepool,upload image',
 
         /* Upload Settings */
-        'max_file_size'         => '5', // 5 MB
-        'one_time_uploads'      => '5', // 5 images in one post
+        'max_file_size'         => '30', // 5 MB
+        'one_time_uploads'      => '5', // 5 files in one post
         'uploads_storage'       => 'local', // "local","aws"
 
         /* Analytics */
@@ -89,5 +88,13 @@ return [
         'recaptcha_site_key'    => '',
         'recaptcha_secret_key'  => '',
     ],
+
+    'file_expires' => [
+        '1',
+        '7',
+        '15',
+        '30',
+        'never'
+    ]
 
 ];

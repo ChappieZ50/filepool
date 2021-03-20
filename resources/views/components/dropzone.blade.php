@@ -16,3 +16,9 @@
            target="_blank">{{!empty($privacy->title) ? $privacy->title : ''}}</a>
     </div>
 </div>
+
+@if(config()->get('captcha.secret') && config()->get('captcha.sitekey'))
+@section('scripts')
+    {!! NoCaptcha::renderJs() !!}
+@append
+@endif

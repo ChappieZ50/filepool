@@ -359,8 +359,12 @@ $(document).ready(function () {
             link.setAttribute('download', id + '.' + mime);
             document.body.appendChild(link);
             link.click();
-        }).catch(() => {
-            show_swal('Something gone wrong', 'error');
+        }).catch((errors) => {
+            if (errors.response.status === 401) {
+                show_swal('Password incorrect', 'error');
+            } else {
+                show_swal('Something gone wrong', 'error');
+            }
         });
     }
 

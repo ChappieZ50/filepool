@@ -9,7 +9,7 @@
 <div class="col-lg-6 grid-margin stretch-card">
     <div class="card">
         <div class="p-4 border-bottom bg-light d-flex justify-content-between">
-            <h4 class="card-title mb-0">Latest images</h4>
+            <h4 class="card-title mb-0">Latest files</h4>
             <a href="{{ route('admin.file.index') }}" class="btn btn-primary btn-fw">
                 <span>Show All Files</span>
                 <i class="mdi mdi-arrow-right"></i>
@@ -39,7 +39,7 @@
 
                                 </div>
                                 <div class="file-name">
-                                    <small>Uploaded this image: <a href="{{ route('admin.file.show', $file->id) }}"
+                                    <small>Uploaded this file: <a href="{{ route('admin.file.show', $file->id) }}"
                                             target="_blank" title="{{$file->file_original_id . '.' . $file->file_mime}}">{{ str_limit($file->file_original_id . '.' . $file->file_mime) }}</a></small>
                                 </div>
                             </div>

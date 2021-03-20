@@ -14,5 +14,3 @@
         @endcomponent
     </div>
 @endsection
-
-

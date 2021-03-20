@@ -9,6 +9,17 @@
   border-radius: 3px;
   cursor: pointer;
 }
+.ipool-file-type.ipool-file-type-sm {
+  width: 50px;
+  height: 70px;
+}
+.ipool-file-type.ipool-file-type-sm .file-icon-text {
+  font-size: 12px;
+}
+.ipool-file-type.ipool-file-type-lg {
+  width: 140px;
+  height: 180px;
+}
 .ipool-file-type:before {
   content: "";
   position: absolute;
@@ -52,6 +63,20 @@
   font-size: 18px;
   font-weight: bold;
   text-transform: uppercase;
+}
+.ipool-file-type .ipool-file-text {
+  position: absolute;
+  bottom: -24px;
+  left: 0;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.ipool-file-wrapper {
+  padding: 6px;
+  padding-bottom: 8px;
+  margin: 10px;
+  border: 1px solid #e5e5e5;
 }
 
 .ipool-file-avi, .ipool-file-mov, .ipool-file-mp4, .ipool-file-ogg, .ipool-file-wmv, .ipool-file-webm {

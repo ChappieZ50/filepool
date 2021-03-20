@@ -35,6 +35,6 @@
 
 @if(config()->get('captcha.secret') && config()->get('captcha.sitekey'))
 @section('scripts')
-    <script src="https://www.google.com/recaptcha/api.js?onload=showSweetAlertRecaptcha"></script>
+    {!! NoCaptcha::renderJs() !!}
 @append
 @endif

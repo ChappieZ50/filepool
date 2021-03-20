@@ -384,3 +384,14 @@ if (!function_exists('get_accepted_mimes_dropzone')) {
         return '.' . str_replace(',', ',.', get_accepted_mimes(true));
     }
 }
+
+
+if (!function_exists('get_config')) {
+    function get_config($name, $str = true)
+    {
+        if ($str) {
+            return implode(',', config('filepool.' . $name));
+        }
+        return config('filepool.' . $name);
+    }
+}
