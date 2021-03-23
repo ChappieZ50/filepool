@@ -101,6 +101,7 @@ $(document).ready(function () {
         note: uppy_note,
         replaceTargetContent: true,
         showProgressDetails: true,
+        theme: 'dark',
     }).use(XHRUpload, {
         endpoint: "file/store",
         fieldName: 'file',

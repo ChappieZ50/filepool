@@ -64,6 +64,7 @@
     window.filepool = {
         g_recaptcha_site_key: '{{get_setting('recaptcha_site_key')}}',
         auth: {{auth()->check() ? 'true' : 'false'}},
+        theme: '{{ get_setting('theme_color') }}',
     };
 
 </script>

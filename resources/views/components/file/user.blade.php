@@ -32,9 +32,3 @@
     </div>
     @component('components.ads.file.left') @endcomponent
 </div>
-
-@if(config()->get('captcha.secret') && config()->get('captcha.sitekey'))
-@section('scripts')
-    {!! NoCaptcha::renderJs() !!}
-@append
-@endif

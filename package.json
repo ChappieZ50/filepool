@@ -25,6 +25,7 @@
     },
     "dependencies": {
         "@popperjs/core": "^2.6.0",
+        "@sweetalert2/theme-dark": "^4.0.3",
         "@uppy/core": "^1.16.0",
         "@uppy/dashboard": "^1.16.0",
         "@uppy/xhr-upload": "^1.6.10",
@@ -33,6 +34,6 @@
         "feather-icons": "^4.28.0",
         "imagesloaded": "^4.1.4",
         "jquery": "^3.5.1",
-        "sweetalert2": "^10.15.2"
+        "sweetalert2": "^10.15.6"
     }
 }

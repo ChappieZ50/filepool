@@ -77,6 +77,7 @@ Route::group(['as' => 'user.', 'namespace' => 'User', 'middleware' => 'user-stat
 
         Route::get('my-files', 'UserController@userFiles')->name('files');
         Route::delete('my-files/destroy/{file}', 'UserController@destroyFile')->name('file.destroy');
+        Route::post('my-files/password', 'UserController@filePassword')->name('file.password');
     });
 });
 

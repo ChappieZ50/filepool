@@ -20,17 +20,14 @@
                     <h2 class="user-profile-title mt-5">Security Information</h2>
                     <hr>
                     <div class="form-group mt-4">
-                        <label for="user_current_password">Current Password</label>
                         <input type="password" class="form-control" name="current_password" id="user_current_password"
                             placeholder="Current Password">
                     </div>
                     <div class="form-group">
-                        <label for="user_new_password">New Password</label>
                         <input type="password" class="form-control" name="password" id="user_new_password"
                             placeholder="New Password">
                     </div>
                     <div class="form-group">
-                        <label for="user_new_password_confirmation">Confirm New Password</label>
                         <input type="password" class="form-control" name="password_confirmation"
                             id="user_new_password_confirmation" placeholder="Confirm New Password">
                     </div>

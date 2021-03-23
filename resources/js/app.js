@@ -7,7 +7,7 @@ window.$ = window.jQuery = require('jquery');
 import '@popperjs/core';
 import 'bootstrap/dist/js/bootstrap.bundle'
 import Clipboard from "clipboard/dist/clipboard";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2/src/sweetalert2.js'
 import imagesLoaded from 'imagesloaded';
 
 const feather = require('feather-icons');
@@ -54,27 +54,6 @@ $(document).ready(function () {
         hideTooltip(e.trigger);
     });
 
-    /* Delete File */
-    $('#delete').on('click', function () {
-        let id = $(this).attr('data-id');
-        Swal.fire({
-            title: "Are you sure?",
-            text: "This file will delete forever.",
-            icon: "error",
-            confirmButtonText: "Yes, Delete it",
-            cancelButtonText: "Cancel",
-            showCancelButton: true,
-            confirmButtonColor: '#e34346',
-        }).then(result => {
-            if (result.isConfirmed) {
-                Swal.fire({
-                    title: "File successfully deleted.",
-                    icon: "success",
-                })
-            }
-        });
-    });
-
     function parse_errors(errors, el = $('#user_profile_errors')) {
         Object.keys(errors).forEach(key => {
             let value = errors[key][0];
@@ -84,14 +63,16 @@ $(document).ready(function () {
     }
 
     /* type: "success","error" */
-    function show_swal(title, type = 'success') {
+    function show_swal(title, type = 'success', reload = true) {
         if (type === "error") {
             Swal.fire({
                 title: title,
                 icon: "error",
                 cancelButtonText: 'Close',
             }).then(function () {
-                window.location.reload();
+                if (reload) {
+                    window.location.reload();
+                }
             });
 
         } else {
@@ -100,7 +81,9 @@ $(document).ready(function () {
                 icon: "success",
                 cancelButtonText: 'Close',
             }).then(function () {
-                window.location.reload();
+                if (reload) {
+                    window.location.reload();
+                }
             });
         }
     }
@@ -262,11 +245,28 @@ $(document).ready(function () {
                 name: "Files",
                 data: Object.values(window.file_chart)
             }],
+            tooltip: {
+                theme: 'dark'
+            },
             chart: {
                 height: 350,
                 type: 'line',
                 zoom: {
                     enabled: true
+                },
+                foreColor: '#ccc',
+                toolbar: {
+                    show: false
+                },
+            },
+            theme: {
+                mode: 'light',
+                palette: 'palette10',
+                monochrome: {
+                    enabled: true,
+                    color: window.filepool.theme,
+                    shadeTo: 'light',
+                    shadeIntensity: 0.65
                 },
             },
             dataLabels: {
@@ -276,8 +276,9 @@ $(document).ready(function () {
                 curve: 'straight'
             },
             grid: {
+                borderColor: "#363e4a",
                 row: {
-                    colors: ['#f3f3f3', 'transparent'],
+                    colors: ['transparent', 'transparent'],
                     opacity: 0.5
                 },
             },
@@ -304,30 +305,48 @@ $(document).ready(function () {
         });
     }
 
+
+    /* Show File Password */
+    $(document).on('click', '#show_file_password', function () {
+        let id = $(this).attr('data-id');
+        if (id) {
+            Swal.fire({
+                title: 'Your password will appear clearly. Do you confirm?',
+                showCancelButton: true,
+                confirmButtonText: 'Yes',
+                showLoaderOnConfirm: true,
+            }).then(result => {
+                if (result.isConfirmed) {
+                    axios.post('my-files/password', {id}).then(response => {
+                        Swal.fire({
+                            title: 'Your file\'s password',
+                            text: response.data.password,
+                            showCancelButton: true,
+                            showConfirmButton: false,
+                        })
+                    }).catch(() => {
+                        show_swal('Something gone wrong', 'error', false);
+                    });
+                }
+            })
+        }
+    });
+
     /* File Download */
-    $('#download_file').on('click', function () {
+    $(document).on('click', '#download_file', function () {
         let id = $(this).attr('data-id'),
-            mime = $(this).attr('data-mime'),
-            recaptcha = '';
+            mime = $(this).attr('data-mime');
+
         if ($(this).attr('data-secure')) {
             Swal.fire({
                 title: 'Enter Password',
-                html: '<input autocapitalize="off" name="file_password" class="swal2-input" placeholder="File Password" type="password" style="display: flex;">'
-                    + '<div id="swal_recaptcha"></div>',
-                onOpen: function () {
-                    if (window.filepool.g_recaptcha_site_key.length > 0) {
-                        grecaptcha.render('swal_recaptcha', {
-                            'sitekey': window.filepool.g_recaptcha_site_key
-                        })
-                    }
+                input: 'password',
+                inputAttributes: {
+                    name: 'file_password'
                 },
                 preConfirm: function () {
-                    if (window.filepool.g_recaptcha_site_key.length > 0) {
-                        if (grecaptcha.getResponse().length === 0) {
-                            Swal.showValidationMessage(`Please verify that you're not a robot`)
-                        } else {
-                            recaptcha = grecaptcha.getResponse();
-                        }
+                    if ($('input[name=file_password]').val().length < 0) {
+                        Swal.showValidationMessage(`Please enter file's password`);
                     }
                 },
                 showCancelButton: true,
@@ -337,7 +356,7 @@ $(document).ready(function () {
             }).then((result) => {
                 if (result.isConfirmed) {
                     let password = $('input[name=file_password]').val();
-                    download_file(id, mime, password, recaptcha);
+                    download_file(id, mime, password);
                 }
             })
         } else {
@@ -345,11 +364,10 @@ $(document).ready(function () {
         }
     });
 
-    function download_file(id, mime, password = '', g_recaptcha_response = '') {
+    function download_file(id, mime, password = '') {
         axios.post(window.routes.file_download, {
             id,
             password,
-            "g-recaptcha-response": g_recaptcha_response,
         }, {
             responseType: 'blob',
         }).then(response => {
@@ -361,9 +379,9 @@ $(document).ready(function () {
             link.click();
         }).catch((errors) => {
             if (errors.response.status === 401) {
-                show_swal('Password incorrect', 'error');
+                show_swal('Password incorrect', 'error', false);
             } else {
-                show_swal('Something gone wrong', 'error');
+                show_swal('Something gone wrong', 'error', false);
             }
         });
     }

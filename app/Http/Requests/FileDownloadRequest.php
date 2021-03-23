@@ -23,15 +23,9 @@ class FileDownloadRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = [
+        return [
             'id'       => 'required',
             'password' => 'sometimes'
         ];
-
-        if (has_settings('recaptcha_site_key', 'recaptcha_secret_key')) {
-            $rules['g-recaptcha-response'] = 'required|captcha';
-        }
-
-        return $rules;
     }
 }

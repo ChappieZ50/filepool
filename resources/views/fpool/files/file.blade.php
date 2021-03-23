@@ -7,12 +7,12 @@
                 "{{ $file->user->username }}" has been banned
             </div>
         @endif
-            @if($file->password)
-                <div class="alert alert-danger w-100 ml-3 mr-3">
-                    <i class="mdi mdi-shield-lock-outline"></i>
-                    This file protecting with password.
-                </div>
-            @endif
+        @if($file->password)
+            <div class="alert alert-danger w-100 ml-3 mr-3">
+                <i class="mdi mdi-shield-lock-outline"></i>
+                This file protecting with password.
+            </div>
+        @endif
         <a href="{{route('file.show',$file->file_id)}}" class="ml-auto btn out-of-page" target="_blank">
             <span>File Page</span>
             <i class="mdi mdi-arrow-right"></i>
@@ -77,6 +77,12 @@
                                 <li>
                                     <strong>Created Date:</strong>
                                     <span>{{ $file->created_at }}</span>
+                                </li>
+                                <li>
+                                    <strong>Expire Date:</strong>
+                                    <span>
+                                        {{ empty($file->expire) ? '~' : \Illuminate\Support\Carbon::create($file->expire)->diffForHumans() }}
+                                    </span>
                                 </li>
                                 <li>
                                     <strong>Uploaded To:</strong>

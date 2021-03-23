@@ -64,7 +64,7 @@
                         </span>
                     @enderror
                 </div>
-                <div class="form-group d-flex justify-content-center">
+                <div class="form-group">
                     {!! app('captcha')->display() !!}
                     @error('g-recaptcha-response')
                     <span class="invalid-feedback d-block mt-2" role="alert">

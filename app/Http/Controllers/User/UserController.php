@@ -10,6 +10,7 @@ use App\Models\File as FileModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -29,7 +30,8 @@ class UserController extends Controller
     /* Deleting file and database record */
     public function destroyFile($id)
     {
-        $file = FileModel::where('id', $id)->where('user_id', Auth::user()->id)->first();
+        $file = FileModel::where('file_id', $id)->where('user_id', Auth::user()->id)->first();
+
         if ($file) {
             $destroy = delete_file($file);
 
@@ -37,6 +39,18 @@ class UserController extends Controller
                 $file->delete();
                 return response()->json(['status' => true]);
             }
+        }
+
+        return response()->json(['status' => false]);
+    }
+
+    public function filePassword()
+    {
+        $id = request()->get('id');
+        $file = FileModel::where('file_id', $id)->where('user_id', Auth::user()->id)->first();
+
+        if ($file) {
+            return response()->json(['status' => true, 'password' => $file->password]);
         }
 
         return response()->json(['status' => false]);
@@ -73,14 +87,18 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        $avatar = upload_file($request->file('avatar'), config('filepool.user_avatars_folder'), $user->avatar)->getData();
-        if ($avatar) {
-            $update = $user->update([
-                'avatar' => $avatar->name
+        $avatar = $request->file('avatar');
+        $extension = $avatar->getClientOriginalExtension();
+        $fileId = Str::random(12);
+        $name = $fileId . '.' . $extension;
+
+        if ($avatar->move(public_path(config('filepool.user_avatars_folder')), $name)) {
+            $user->update([
+                'avatar' => $name
             ]);
-            if ($update) {
-                return response()->json(['status' => true]);
-            }
+            return response()->json([
+                'status' => true,
+            ]);
         }
 
         return response()->json([], 500);

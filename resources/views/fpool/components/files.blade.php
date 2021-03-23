@@ -13,6 +13,7 @@
                 <th>Original Name</th>
                 <th>Size</th>
                 <th>Created</th>
+                <th>Expire</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -43,6 +44,7 @@
                     <td title="{{$file->file_original_id}}">{{ str_limit($file->file_original_id) }}</td>
                     <td>{{ readable_size($file->file_size) }}</td>
                     <td>{{ $file->created_at->diffForHumans() }}</td>
+                    <td><strong>{{ empty($file->expire) ? '~' : \Illuminate\Support\Carbon::create($file->expire)->diffForHumans() }}</strong></td>
 
                     <td>
                         <a href="{{ route('admin.file.show', $file->id) }}" class="btn btn-primary social-btn"

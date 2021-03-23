@@ -50,7 +50,10 @@ class FileController extends Controller
         $file = File::where('file_id', $request->get('id'))->first();
 
         if ($file) {
-            if (!empty($file->password) && !Hash::check($request->get('password'), $file->password)) {
+            if (Auth::check() && Auth::user()->id === $file->user->id) {
+                return download_file($file);
+            }
+            if (!empty($file->password) && $request->get('password') != $file->password) {
                 return response()->json([
                     'status'  => false,
                     'message' => 'Password incorrect'
@@ -75,7 +78,7 @@ class FileController extends Controller
             'file_size'        => $fileSize,
             'file_mime'        => $fileMime,
             'uploaded_to'      => $storage,
-            'password'         => $password ? Hash::make($password) : '',
+            'password'         => $password,
             'expire'           => $expire !== 'never' ? Carbon::now()->addDays($expire) : '',
         ];
 

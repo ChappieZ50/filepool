@@ -22,7 +22,24 @@
                     @else
                         @foreach ($files as $file)
                             @php $link = file_url($file); @endphp
-                            <a href="{{ route('file.show',$file->file_id) }}" target="_blank" class="ipool-file-wrapper shadow-sm">
+
+                            <div class="ipool-file-wrapper shadow-sm">
+                                <button type="button" class="btn fpool-button btn-sm file-actions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                        <path
+                                            d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"></path>
+                                    </svg>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{ route('file.show',$file->file_id) }}" target="_blank">View</a>
+                                    <a class="dropdown-item" href="javascript:;" data-id="{{$file->file_id}}"
+                                       data-mime="{{$file->file_mime}}" id="download_file" data-direct="true">Download</a>
+                                    <div class="dropdown-divider"></div>
+                                    @if($file->password)
+                                        <a class="dropdown-item" href="javascript:;" id="show_file_password" data-id="{{$file->file_id}}">Show Password</a>
+                                    @endif
+                                    <a class="dropdown-item text-danger" href="javascript:;" id="file_delete" data-id="{{$file->file_id}}">Delete File</a>
+                                </div>
                                 <div class="ipool-file-type ipool-file-{{$file->file_mime}}">
                                     <div class="file-icon-text">
                                         <div>
@@ -33,7 +50,12 @@
                                         {{str_limit($file->file_original_id,8,'..')}}.{{$file->file_mime}}
                                     </div>
                                 </div>
-                            </a>
+                                @if($file->password)
+                                    <div class="fpool-file-locked">
+                                        <i data-feather="lock"></i>
+                                    </div>
+                                @endif
+                            </div>
                         @endforeach
                     @endunless
                 </div>

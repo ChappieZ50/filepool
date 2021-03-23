@@ -155,7 +155,7 @@ if (!function_exists('delete_file')) {
         if ($file->uploaded_to === 'aws') {
             return Storage::disk('s3')->delete(config('filepool.aws_folder') . '/' . $file->file_full_id);
         } else {
-            return File::delete(config('filepool.local_folder') . '/' . $file->file_full_id);
+            return Storage::delete(config('filepool.local_folder') . '/' . $file->file_full_id);
         }
     }
 }
