@@ -33,8 +33,8 @@
     <link rel="apple-touch-icon" href="{{get_favicon()}}" sizes="48x48">
 
     {!! get_analytics_script() !!}
-    @if (has_ad('mobile_ad'))
-        {!! get_ad('mobile_ad') !!}
+    @if (has_ad('mobile'))
+        {!! get_ad('mobile') !!}
     @endif
 
     <style>
@@ -65,6 +65,7 @@
         g_recaptcha_site_key: '{{get_setting('recaptcha_site_key')}}',
         auth: {{auth()->check() ? 'true' : 'false'}},
         theme: '{{ get_setting('theme_color') }}',
+        premium: {{auth()->check() && auth()->user()->is_premium ? 'true' : 'false'}},
     };
 
 </script>

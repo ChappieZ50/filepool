@@ -27,8 +27,14 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->call(function () {
-            File::where('expire', '!=', '')->where('expire', '<', Carbon::now())->delete();
-        })->timezone('Europe/Istanbul')->everyMinute();
+            $files = File::whereNotNull('expire')->whereDate('expire', '<', Carbon::now()->format('Y-m-d H:i:s'))->get();
+            if ($files) {
+                foreach ($files as $file) {
+                    delete_file($file);
+                    $file->delete();
+                }
+            }
+        })->hourly();
     }
 
     /**

@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    @component('components.ads.home.top') @endcomponent
+    <div class="fpool-home">
+        @component('components.ads.home.left') @endcomponent
 
-    @component('components.dropzone') @endcomponent
+        @component('components.dropzone') @endcomponent
 
-    @component('components.ads.home.bottom') @endcomponent
-
+        @component('components.ads.home.right') @endcomponent
+    </div>
 @endsection
 
 @section('scripts')

@@ -138,15 +138,38 @@ if (!function_exists('get_analytics_script')) {
  * Change file sizes to readable size
 */
 if (!function_exists('readable_size')) {
-    function readable_size($size, $unit = "")
+    function readable_size($num, $t = 1, $onlyUnit = false)
     {
-        if ((!$unit && $size >= 1 << 30) || $unit == " GB")
-            return number_format($size / (1 << 30), 2) . " GB";
-        if ((!$unit && $size >= 1 << 20) || $unit == " MB")
-            return number_format($size / (1 << 20), 2) . " MB";
-        if ((!$unit && $size >= 1 << 10) || $unit == " KB")
-            return number_format($size / (1 << 10), 2) . " KB";
-        return number_format($size) . " bytes";
+        $num = $num < 0 ? $num : $num * $t;
+        $neg = $num < 0;
+
+
+        $units = array('B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
+
+        if ($neg) {
+            $num = -$num;
+        }
+
+        if ($num < 1) {
+            return ($neg ? '-' : '') . $num . ' B';
+        }
+
+        $exponent = min(floor(log($num) / log(1000)), count($units) - 1);
+
+        $num = sprintf('%.02F', ($num / pow(1000, $exponent)));
+
+        $unit = $units[$exponent];
+
+        return !$onlyUnit ? ($neg ? ' ' : '') . (int)$num . $unit : $unit;
+    }
+}
+/*
+ * Change file sizes to readable size
+*/
+if (!function_exists('readable_size_clearly')) {
+    function readable_size_clearly($size)
+    {
+        return readable_size($size, 1000000);
     }
 }
 if (!function_exists('delete_file')) {
@@ -280,6 +303,9 @@ if (!function_exists('has_ad')) {
 if (!function_exists('get_ad')) {
     function get_ad($name)
     {
+        if (auth()->check() && auth()->user()->is_premium) {
+            return "";
+        }
         $ad = Ad::first();
         return $ad->$name;
     }
@@ -334,7 +360,7 @@ if (!function_exists('str_limit')) {
 */
 
 if (!function_exists('get_chart_data')) {
-    function get_chart_data($model, callable $callback = null, $primary = 'id')
+    function get_chart_data($model, callable $callback = null, $primary = 'id', $col = false)
     {
         $query = $model::select($primary, 'created_at')->where(function ($q) use ($callback) {
             if (is_callable($callback)) {
@@ -349,7 +375,17 @@ if (!function_exists('get_chart_data')) {
         $pool = [];
 
         foreach ($query as $key => $value) {
-            $count[(int)$key] = count($value);
+            if (!$col) {
+                $count[(int)$key] = count($value);
+            } else {
+                foreach ($value as $item) {
+                    if (isset($count[(int)$key])) {
+                        $count[(int)$key] += $item->$primary;
+                    } else {
+                        $count[(int)$key] = $item->$primary;
+                    }
+                }
+            }
         }
         for ($i = 1; $i <= 12; $i++) {
             if (!empty($count[$i])) {
@@ -378,6 +414,7 @@ if (!function_exists('get_accepted_mimes')) {
     }
 }
 
+
 if (!function_exists('get_accepted_mimes_dropzone')) {
     function get_accepted_mimes_dropzone()
     {
@@ -385,7 +422,9 @@ if (!function_exists('get_accepted_mimes_dropzone')) {
     }
 }
 
-
+/*
+ * Getting config data
+ */
 if (!function_exists('get_config')) {
     function get_config($name, $str = true)
     {
@@ -393,5 +432,19 @@ if (!function_exists('get_config')) {
             return implode(',', config('filepool.' . $name));
         }
         return config('filepool.' . $name);
+    }
+}
+
+/*
+ * If user logged then return user's file max file size
+ * Else return default max file size
+ * $p parameter for pretty parse.
+ * Ex: If preview true: 10 value will change to "10MB", if not 10 will change to "10000"
+ */
+if (!function_exists('get_file_limit')) {
+    function get_file_limit($p = true)
+    {
+        $size = auth()->check() ? auth()->user()->file_size : get_setting('max_file_size');
+        return $p ? readable_size_clearly($size) : $size * 1000;
     }
 }

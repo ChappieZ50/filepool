@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\FileExpire;
 use Illuminate\Foundation\Http\FormRequest;
 
 class FileRequest extends FormRequest
@@ -24,8 +25,8 @@ class FileRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'file'     => 'required|file|mimetypes:' . get_accepted_mimes() . '|max:' . get_setting('max_file_size') * 1000,
-            'expire'   => 'required|in:' . get_config('file_expires'),
+            'file'     => 'required|file|mimetypes:' . get_accepted_mimes() . '|max:' . get_file_limit(false),
+            'expire'   => ['required', new FileExpire],
             'password' => 'sometimes|max:100',
         ];
 

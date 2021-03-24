@@ -62,7 +62,7 @@ return [
         'site_keywords'         => 'filepool,upload image',
 
         /* Upload Settings */
-        'max_file_size'         => '30', // 5 MB
+        'max_file_size'         => '30', // 30 MB
         'one_time_uploads'      => '5', // 5 files in one post
         'uploads_storage'       => 'local', // "local","aws"
 
@@ -70,7 +70,7 @@ return [
         'google_analytics'      => '',
 
         /* Dropzone Settings */
-        'dropzone_rule'         => 'Max 5 files in one time and 25MB limit',
+        'dropzone_rule'         => 'Max 5 files in one time and :size limit',
         'dropzone_text'         => 'Drop files here, paste or %{browse}',
         'browse_text'           => 'browse files',
 
@@ -95,6 +95,5 @@ return [
         '15',
         '30',
         'never'
-    ]
-
+    ],
 ];

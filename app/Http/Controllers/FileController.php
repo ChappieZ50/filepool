@@ -19,7 +19,7 @@ class FileController extends Controller
 
     public function __construct()
     {
-        $this->uploadFolder = config('filepool.local_folder'); // Default storage folder
+        $this->uploadFolder = get_config('local_folder',false); // Default storage folder
     }
 
     public function store(FileRequest $request)
@@ -30,7 +30,7 @@ class FileController extends Controller
         if ($setting && $setting->uploads_storage === 'aws') {
             $this->disk = 's3';
             $this->storage = 'aws';
-            $this->uploadFolder = config('filepool.aws_folder');
+            $this->uploadFolder = get_config('aws_folder',false);
         }
 
         $file = upload_file($file, $this->uploadFolder, '', $this->disk)->getData();
@@ -79,7 +79,7 @@ class FileController extends Controller
             'file_mime'        => $fileMime,
             'uploaded_to'      => $storage,
             'password'         => $password,
-            'expire'           => $expire !== 'never' ? Carbon::now()->addDays($expire) : '',
+            'expire'           => $expire === 'never' ? null : Carbon::now()->addDays($expire),
         ];
 
         if (Auth::check()) {

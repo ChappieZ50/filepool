@@ -18,9 +18,10 @@ class RegisterController extends Controller
     public function store(RegisterRequest $request)
     {
         $user = new User([
-            'username' => $request->get('username'),
-            'email'    => $request->get('email'),
-            'password' => bcrypt($request->get('password')),
+            'username'  => $request->get('username'),
+            'email'     => $request->get('email'),
+            'password'  => bcrypt($request->get('password')),
+            'file_size' => get_setting('max_file_size'),
         ]);
         /* Saving user */
         if ($user->save()) {

@@ -22,15 +22,15 @@
                     <label for="max_file_size">Max File Size (MB)</label>
                     <input type="number" class="form-control col-12" id="max_file_size" name="max_file_size"
                            value="{{ isset($setting) ? $setting->max_file_size : old('max_file_size') }}">
-                    <div class="small font-italic">Default: 5MB</div>
+                    <div class="small text-muted">Ex: 100MB limit and 5 one time uploads | 1 file limit is 20MB</div>
                 </div>
                 <div class="form-group col-lg-6">
                     <label for="one_time_uploads">One Time Uploads</label>
                     <input type="number" class="form-control col-12" id="one_time_uploads" name="one_time_uploads"
                            value="{{ isset($setting) ? $setting->one_time_uploads : old('one_time_uploads') }}">
-                    <div class="small font-italic">Default: 5</div>
                 </div>
             </div>
+
             <div class="row">
                 <div class="form-group col-lg-6">
                     <label for="menu_title">Menu Title</label>

@@ -14,7 +14,10 @@
         <div class="fpool-user-content">
             <div class="col-12 fpool-stats">
                 @if($status)
+                    <h4 class="text-center">Monthly Uploaded Files</h4>
                     <div id="file_chart"></div>
+                    <h4 class="text-center">Monthly Storage</h4>
+                    <div id="file_storage_chart"></div>
                 @else
                     <div class="empty-statistics">
                         <img src="{{ asset('assets/images/empty-statistics.svg') }}" alt="empty statistics" class="img-fluid">
@@ -39,5 +42,6 @@
     <script src="{{ asset('assets/plugins/apexcharts/apexcharts.min.js') }}"></script>
     <script>
         window.file_chart = @json($file_chart_data);
+        window.file_storage_chart_data = @json($file_storage_chart_data);
     </script>
 @append

@@ -250,6 +250,18 @@ a.close {
     }
 }
 
+
+.ipool-file-type {
+    &:after {
+        content: "";
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        border-left: 20px solid transparent;
+        border-top: 20px solid #fff !important;
+    }
+}
+
 @media (max-width: 991px) {
     .navbar.default-layout {
         .navbar-menu-wrapper {

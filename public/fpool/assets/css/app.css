@@ -35,7 +35,7 @@
   top: -1px;
   right: -1px;
   border-left: 20px solid transparent;
-  border-top: 20px solid white;
+  border-top: 20px solid #212121;
 }
 .ipool-file-type:after, .ipool-file-type:before, .ipool-file-type {
   transition: all 0.3s;
@@ -76,7 +76,47 @@
   padding: 6px;
   padding-bottom: 8px;
   margin: 10px;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #fff;
+  position: relative;
+}
+.ipool-file-wrapper:hover .file-actions {
+  display: block !important;
+}
+.ipool-file-wrapper .file-actions {
+  display: none;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  z-index: 999;
+  padding: 0 !important;
+  height: 28px;
+  border-radius: 6px;
+}
+.ipool-file-wrapper .file-actions:hover ~ .ipool-file-type {
+  opacity: 0.7;
+}
+.ipool-file-wrapper .file-actions svg {
+  margin-right: 0;
+}
+.ipool-file-wrapper .fpool-file-locked {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 0 14px 6px 6px;
+  z-index: 999;
+  border-bottom-right-radius: 26px;
+}
+.ipool-file-wrapper .fpool-file-locked svg {
+  width: 18px;
+  height: 18px;
+}
+.ipool-file-wrapper:hover .ipool-file-type .file-icon-text {
+  transition: font-size 0.3s;
+  font-size: 20px;
+}
+.ipool-file-wrapper:hover .ipool-file-type:before, .ipool-file-wrapper:hover .ipool-file-type:after {
+  transition: all 0.3s;
+  border-width: 0 !important;
 }
 
 .ipool-file-avi, .ipool-file-mov, .ipool-file-mp4, .ipool-file-ogg, .ipool-file-wmv, .ipool-file-webm {
@@ -344,6 +384,15 @@ a.close {
 }
 .bootstrap-select .filter-option-inner-inner {
   height: 17px;
+}
+
+.ipool-file-type:after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  border-left: 20px solid transparent;
+  border-top: 20px solid #fff !important;
 }
 
 @media (max-width: 991px) {

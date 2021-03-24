@@ -7,6 +7,7 @@
         @component('components.user.sidebar') @endcomponent
         @component('components.user.statistics')
             @slot('file_chart_data',$file_chart_data)
+            @slot('file_storage_chart_data',$file_storage_chart_data)
         @endcomponent
     </div>
 @endsection

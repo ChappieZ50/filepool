@@ -24,12 +24,11 @@ class AdRequest extends FormRequest
     public function rules()
     {
         return [
-            'home_top_ad'    => 'sometimes',
-            'home_bottom_ad' => 'sometimes',
-            'file_left_ad'   => 'sometimes',
-            'file_bottom_ad' => 'sometimes',
-            'mobile_ad'      => 'sometimes',
-            'download_ad'    => 'sometimes',
+            'home_left'   => 'sometimes',
+            'home_right'  => 'sometimes',
+            'file_left'   => 'sometimes',
+            'file_bottom' => 'sometimes',
+            'mobile'      => 'sometimes',
         ];
     }
 }

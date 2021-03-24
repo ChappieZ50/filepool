@@ -15,9 +15,9 @@ class CreateAdsTable extends Migration
     {
         Schema::create('ads', function (Blueprint $table) {
             $table->id();
-            $table->text('home_top_ad')->nullable();
-            $table->text('home_bottom_ad')->nullable();
-            $table->text('mobile_ad')->nullable();
+            $table->text('home_left')->nullable();
+            $table->text('home_right')->nullable();
+            $table->text('mobile')->nullable();
             $table->timestamps();
         });
     }
