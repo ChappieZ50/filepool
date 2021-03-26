@@ -3,7 +3,7 @@
         <div class="page-items">
             <a class="fpool-button fpool-get-storage nav-link" href="{{ auth()->check() ? '#' : route('user.login.index') }}">
                 <i data-feather="shopping-bag"></i>
-                Get Storage
+                Buy Storage
             </a>
             <button class="navbar-toggler collapsed border-0" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"

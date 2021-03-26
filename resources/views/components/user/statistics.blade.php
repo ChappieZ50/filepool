@@ -16,7 +16,7 @@
                 @if($status)
                     <h4 class="text-center">Monthly Uploaded Files</h4>
                     <div id="file_chart"></div>
-                    <h4 class="text-center">Monthly Storage</h4>
+                    <h4 class="text-center">Monthly Storage Usage</h4>
                     <div id="file_storage_chart"></div>
                 @else
                     <div class="empty-statistics">

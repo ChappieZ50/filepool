@@ -423,19 +423,6 @@ if (!function_exists('get_accepted_mimes_dropzone')) {
 }
 
 /*
- * Getting config data
- */
-if (!function_exists('get_config')) {
-    function get_config($name, $str = true)
-    {
-        if ($str) {
-            return implode(',', config('filepool.' . $name));
-        }
-        return config('filepool.' . $name);
-    }
-}
-
-/*
  * If user logged then return user's file max file size
  * Else return default max file size
  * $p parameter for pretty parse.
@@ -444,7 +431,34 @@ if (!function_exists('get_config')) {
 if (!function_exists('get_file_limit')) {
     function get_file_limit($p = true)
     {
-        $size = auth()->check() ? auth()->user()->file_size : get_setting('max_file_size');
+        $size = auth()->check() ? bytes_to_mb(auth()->user()->storage_limit) : get_setting('max_file_size');
         return $p ? readable_size_clearly($size) : $size * 1000;
+    }
+}
+
+if (!function_exists('mb_to_byte')) {
+    function mb_to_bytes($mb)
+    {
+        return $mb * 1048576;
+    }
+}
+
+if (!function_exists('bytes_to_mb')) {
+    function bytes_to_mb($bytes)
+    {
+        return $bytes / 1048576;
+    }
+}
+
+if (!function_exists('check_storage_limit')) {
+    function check_storage_limit($storage, $file_limit, $file_size)
+    {
+        $new_file_size = $storage + $file_size;
+
+        if ($new_file_size > $file_limit) {
+            return false;
+        }
+
+        return $new_file_size;
     }
 }

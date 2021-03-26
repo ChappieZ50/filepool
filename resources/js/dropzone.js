@@ -124,6 +124,17 @@ $(document).ready(function () {
 
             return parsedResponse;
         },
+        getResponseError(responseText) {
+            let response = JSON.parse(responseText);
+            Swal.fire({
+                title: response.message,
+                icon: "error",
+                cancelButtonText: 'Close',
+            }).then(function () {
+                window.location.reload();
+            });
+            return new Error(response.message)
+        },
     });
 
 });

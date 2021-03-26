@@ -5,88 +5,25 @@ namespace App\Http\Controllers;
 use App\Http\Requests\FileDownloadRequest;
 use App\Http\Requests\FileRequest;
 use App\Models\File;
-use App\Models\Setting;
-use Carbon\Carbon;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
+use App\Repositories\FileRepository;
 
 class FileController extends Controller
 {
-    protected $disk;
-    protected $storage = 'local'; // Default storage
-    protected $uploadFolder;
-
-    public function __construct()
-    {
-        $this->uploadFolder = get_config('local_folder',false); // Default storage folder
-    }
 
     public function store(FileRequest $request)
     {
         $file = $request->file('file');
-        $setting = Setting::first();
+        $storage = FileRepository::findStorage();
 
-        if ($setting && $setting->uploads_storage === 'aws') {
-            $this->disk = 's3';
-            $this->storage = 'aws';
-            $this->uploadFolder = get_config('aws_folder',false);
-        }
-
-        $file = upload_file($file, $this->uploadFolder, '', $this->disk)->getData();
-        $save = $this->save($file->file_id, $file->file_size, $file->extension, $file->file_original_id, $request->get('expire'), $request->get('password'), $this->storage);
-
-        if ($save) {
-            return response()->json([
-                'url' => route('file.show', $file->file_id),
-            ]);
-        }
-
-        return response()->json([], 500);
+        $file = upload_file($file, $storage['upload_folder'], '', $storage['disk'])->getData();
+        return FileRepository::create($file, $request, $storage['storage']);
     }
 
     public function downloadFile(FileDownloadRequest $request)
     {
         $file = File::where('file_id', $request->get('id'))->first();
 
-        if ($file) {
-            if (Auth::check() && Auth::user()->id === $file->user->id) {
-                return download_file($file);
-            }
-            if (!empty($file->password) && $request->get('password') != $file->password) {
-                return response()->json([
-                    'status'  => false,
-                    'message' => 'Password incorrect'
-                ], 401);
-            } else {
-                return download_file($file);
-            }
-        }
-
-        return response()->json([
-            'status'  => false,
-            'message' => 'File not found'
-        ]);
-    }
-
-    public function save($fileId, $fileSize, $fileMime, $fileOriginalId, $expire, $password = '', $storage = 'local')
-    {
-        $create = [
-            'file_id'          => $fileId,
-            'file_full_id'     => $fileId . '.' . $fileMime,
-            'file_original_id' => $fileOriginalId,
-            'file_size'        => $fileSize,
-            'file_mime'        => $fileMime,
-            'uploaded_to'      => $storage,
-            'password'         => $password,
-            'expire'           => $expire === 'never' ? null : Carbon::now()->addDays($expire),
-        ];
-
-        if (Auth::check()) {
-            $create['user_id'] = Auth::user()->id;
-        }
-
-        return File::create($create);
+        return FileRepository::downloadFile($file, $request);
     }
 
     public function show($file)

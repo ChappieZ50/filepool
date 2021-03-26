@@ -7,6 +7,7 @@ use App\Http\Requests\User\UserAvatarRequest;
 use App\Http\Requests\User\UserPasswordRequest;
 use App\Http\Requests\User\UserRequest;
 use App\Models\File as FileModel;
+use App\Repositories\FileRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
@@ -31,17 +32,7 @@ class UserController extends Controller
     public function destroyFile($id)
     {
         $file = FileModel::where('file_id', $id)->where('user_id', Auth::user()->id)->first();
-
-        if ($file) {
-            $destroy = delete_file($file);
-
-            if ($destroy) {
-                $file->delete();
-                return response()->json(['status' => true]);
-            }
-        }
-
-        return response()->json(['status' => false]);
+        return FileRepository::delete($file);
     }
 
     public function filePassword()

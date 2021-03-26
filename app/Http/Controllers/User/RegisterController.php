@@ -21,7 +21,6 @@ class RegisterController extends Controller
             'username'  => $request->get('username'),
             'email'     => $request->get('email'),
             'password'  => bcrypt($request->get('password')),
-            'file_size' => get_setting('max_file_size'),
         ]);
         /* Saving user */
         if ($user->save()) {

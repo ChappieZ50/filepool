@@ -25,7 +25,7 @@ class FileExpire implements Rule
      */
     public function passes($attribute, $value)
     {
-        if (in_array($value, get_config('file_expires', false))) {
+        if (in_array($value, config('filepool.file_expires'))) {
             return $value === 'never' ?
                 (auth()->check() && auth()->user()->is_premium ? true : false)
                 : true;
