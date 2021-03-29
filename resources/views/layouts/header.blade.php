@@ -1,7 +1,7 @@
 <header class="header">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="page-items">
-            <a class="fpool-button fpool-get-storage nav-link" href="{{ auth()->check() ? '#' : route('user.login.index') }}">
+            <a class="fpool-button fpool-get-storage nav-link" href="{{ auth()->check() ? route('products.index') : route('user.login.index') }}">
                 <i data-feather="shopping-bag"></i>
                 Buy Storage
             </a>

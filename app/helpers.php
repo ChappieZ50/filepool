@@ -439,14 +439,14 @@ if (!function_exists('get_file_limit')) {
 if (!function_exists('mb_to_byte')) {
     function mb_to_bytes($mb)
     {
-        return $mb * 1048576;
+        return !$mb ? 0 : $mb * 1048576;
     }
 }
 
 if (!function_exists('bytes_to_mb')) {
     function bytes_to_mb($bytes)
     {
-        return $bytes / 1048576;
+        return !$bytes ? 0 : $bytes / 1048576;
     }
 }
 
@@ -460,5 +460,13 @@ if (!function_exists('check_storage_limit')) {
         }
 
         return $new_file_size;
+    }
+}
+
+if (!function_exists('get_storage_usage')) {
+    function get_storage_usage($storage, $limit, $get_used = true)
+    {
+        $percent = round((($limit - $storage) / $limit) * 100, 2);
+        return $get_used ? round(100 - $percent, 2) : $percent;
     }
 }

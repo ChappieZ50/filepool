@@ -1,6 +1,30 @@
 <div class="fpool-user-container col-xl-10 col-lg-10 col-md-12 col-sm-12">
     <div class="fpool-user">
-        <h2 class="fpool-sidebar-title">My Files</h2>
+        <div class="fpool-user-header d-flex align-items-center justify-content-center justify-content-md-between flex-wrap">
+            <h2 class="fpool-sidebar-title">My Files</h2>
+            <div class="fpool-files-expire">
+                <ul>
+                    <li>
+                        <a href="{{route('user.files')}}" class="{{empty(request()->get('expire')) ? 'active' : ''}}">All</a>
+                    </li>
+                    <li>
+                        <a href="{{route('user.files',['expire' => 'never'])}}" class="{{request()->get('expire') == 'never' ? 'active' : ''}}">Never</a>
+                    </li>
+                    <li>
+                        <a href="{{route('user.files',['expire' => '30'])}}" class="{{request()->get('expire') == '30' ? 'active' : ''}}">30D</a>
+                    </li>
+                    <li>
+                        <a href="{{route('user.files',['expire' => '15'])}}" class="{{request()->get('expire') == '15' ? 'active' : ''}}">15D</a>
+                    </li>
+                    <li>
+                        <a href="{{route('user.files',['expire' => '7'])}}" class="{{request()->get('expire') == '7' ? 'active' : ''}}">7D</a>
+                    </li>
+                    <li>
+                        <a href="{{route('user.files',['expire' => '1'])}}" class="{{request()->get('expire') == '1' ? 'active' : ''}}">1D</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
         <hr>
         <div class="fpool-user-content">
             <svg class="fpool-spinner" viewBox="0 0 50 50">
@@ -61,7 +85,7 @@
                 </div>
             </div>
             <div class="mx-auto mt-3">
-                {{ $files->links() }}
+                {{ $files->appends(['expire'=>request()->get('expire')])->links() }}
             </div>
         </div>
     </div>

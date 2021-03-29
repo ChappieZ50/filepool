@@ -34,12 +34,7 @@
     </div>
 </div>
 
-@section('styles')
-    <link rel="stylesheet" href="{{ asset('assets/plugins/apexcharts/apexcharts.css') }}">
-@append
-
 @section('scripts')
-    <script src="{{ asset('assets/plugins/apexcharts/apexcharts.min.js') }}"></script>
     <script>
         window.file_chart = @json($file_chart_data);
         window.file_storage_chart_data = @json($file_storage_chart_data);

@@ -81,6 +81,12 @@ Route::group(['as' => 'user.', 'namespace' => 'User', 'middleware' => 'user-stat
     });
 });
 
+
+Route::group(['middleware' => 'auth'], function () {
+    /* Products */
+    Route::get('products', 'ProductController@index')->name('products.index');
+});
+
 // Store files
 Route::post('file/store', 'FileController@store')->name('file.store');
 // Download file

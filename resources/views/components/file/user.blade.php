@@ -21,6 +21,10 @@
                     <strong><i data-feather="command"></i></strong>
                     <span>{{$file->file_mime}}</span>
                 </li>
+                <li>
+                    <strong><i data-feather="clock"></i></strong>
+                    <span>Expires in {{\Carbon\Carbon::create($file->expire)->diffForHumans()}}</span>
+                </li>
             </ul>
         </div>
 

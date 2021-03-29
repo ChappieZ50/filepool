@@ -316,7 +316,7 @@ $(document).ready(function () {
 
             let options = {
                 series: [{
-                    name: "Storage",
+                    name: "Usage",
                     data: file_storage,
                 }],
 
@@ -378,6 +378,33 @@ $(document).ready(function () {
             };
 
             let chart = new ApexCharts(document.querySelector("#file_storage_chart"), options);
+
+            chart.render();
+        }
+
+        /* User storage usage chart */
+        if ($('#user_storage_usage_chart').length) {
+            let options = {
+                series: [window.user_storage_usage.empty, window.user_storage_usage.used],
+                labels: ['Empty', 'Used'],
+                colors: ['#19d895', window.filepool.theme],
+                dataLabels: {
+                    enabled: true,
+                    formatter: function (val) {
+                        return val + "%"
+                    },
+                },
+                legend: {
+                    show: false,
+                },
+                chart: {
+                    type: 'donut',
+                    height: 200,
+
+                },
+            };
+
+            let chart = new ApexCharts(document.querySelector("#user_storage_usage_chart"), options);
 
             chart.render();
         }

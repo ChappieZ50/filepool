@@ -579,6 +579,36 @@ label.fpool-button {
             border-radius: 6px;
             min-height: 200px;
 
+            .fpool-user-header {
+                .fpool-files-expire {
+                    ul {
+                        margin: 0;
+                        display: flex;
+                        flex-wrap: wrap;
+
+                        li {
+                            &:not(:first-child) {
+                                margin-left: 10px;
+                            }
+
+                            a {
+                                color: #fff;
+                                font-size: 14px;
+                                text-decoration: none;
+
+                                &:hover {
+                                    color: $primary-color;
+                                }
+
+                                &.active {
+                                    color: $primary-color !important;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
             .fpool-user-content {
                 display: flex;
                 flex-wrap: wrap;
@@ -1109,7 +1139,6 @@ label.fpool-button {
             stroke-dashoffset: -124;
         }
     }
-
 }
 
 .no-resize {
@@ -1228,6 +1257,9 @@ hr {
     }
     .fpool-image-link, .fpool-image-delete {
         opacity: 1 !important;
+    }
+    .file-actions{
+        display: block !important;
     }
 }
 

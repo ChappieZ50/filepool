@@ -17,5 +17,6 @@ if (process.env.section) {
     mix.js('resources/js/app.js', 'public/assets/js/app.js')
         .js('resources/js/dropzone.js', 'public/assets/js/dropzone.js')
         .sass('resources/css/app.scss', 'public/assets/css/app.css')
+        .sass('resources/css/products.scss', 'public/assets/css/products.css')
         .sass('resources/css/main.scss', 'public/assets/css/main.css')
 }

@@ -8,6 +8,7 @@ use App\Http\Requests\User\UserPasswordRequest;
 use App\Http\Requests\User\UserRequest;
 use App\Models\File as FileModel;
 use App\Repositories\FileRepository;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
@@ -24,7 +25,16 @@ class UserController extends Controller
     /* Getting user's files */
     public function userFiles()
     {
-        $files = FileModel::where('user_id', auth()->user()->id)->orderByDesc('id')->paginate(36);
+        $expire = request()->get('expire');
+        $files = FileModel::where('user_id', auth()->user()->id)->orderByDesc('id');
+        if (in_array($expire, config('filepool.file_expires'))) {
+            if ($expire === 'never') {
+                $files->whereNull('expire');
+            } else {
+                $files->whereDate('expire', '>=', Carbon::now()->addDays($expire)->format('Y-m-d H:i:s'));
+            }
+        }
+        $files = $files->paginate(36);
         return view('user.files')->with('files', $files);
     }
 
