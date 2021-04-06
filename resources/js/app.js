@@ -512,5 +512,14 @@ $(document).ready(function () {
             });
         }
 
+        if ($('#payment_success').length > 0) {
+            show_swal('Your payment successful', 'success', false);
+        }
+
+        $(document).on('click', '#buy_product_button', function () {
+            $('#paymentModal input#payment_product').val($(this).attr('data-product'));
+            $('#paymentModal #paymentModalTitle').html($(this).attr('data-product-title'));
+        });
+
     }
 );

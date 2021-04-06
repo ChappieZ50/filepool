@@ -1253,6 +1253,25 @@ hr {
     color: $primary-color;
 }
 
+
+.modal-content {
+    background-color: #19191a;
+    color: #e1e1e1 !important;
+
+    button.close {
+        color: $text-color;
+    }
+
+    .modal-header {
+        border-bottom-color: $border-color;
+    }
+
+    .modal-footer {
+        border-top-color: $border-color;
+    }
+}
+
+
 @media only screen and (max-width: 992px) {
     .fpool-image-bottom {
         height: 30px !important;
