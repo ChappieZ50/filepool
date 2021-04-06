@@ -40,6 +40,7 @@ return [
         'text/csv', 'text/xml', 'text/html', 'text/rtf', 'text/plain',
     ],
 
+    /* DO NOT EDIT */
     'anonymous_user' => [
         'username'     => 'Anonymous',
         'avatar'       => '',
@@ -87,6 +88,10 @@ return [
         'facebook_secret'       => '',
         'recaptcha_site_key'    => '',
         'recaptcha_secret_key'  => '',
+
+        /* Payment Settings */
+        'stripe_key'            => '',
+        'stripe_secret'         => ''
     ],
 
     'file_expires' => [

@@ -25,7 +25,7 @@ class FileRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'file'     => 'required|file|mimetypes:' . get_accepted_mimes() . '|max:' . get_file_limit(false),
+            'file'     => 'required|file|mimetypes:' . get_accepted_mimes() . '|max:' . get_storage_limit(false),
             'expire'   => ['required', new FileExpire],
             'storage'  => '',
             'password' => 'sometimes|max:100',

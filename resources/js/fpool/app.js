@@ -205,6 +205,46 @@ $(document).ready(function () {
         });
     });
 
+    /* Delete Product */
+    $(document).on('click', '#product_delete', function () {
+        let id = $(this).attr('data-id');
+        Swal.fire({
+            title: "Are you sure?",
+            text: "This product will be deleted",
+            icon: "error",
+            confirmButtonText: "Yes,Delete",
+            cancelButtonText: "Cancel",
+            showCancelButton: true,
+            confirmButtonColor: '#ff6258',
+        }).then(function (result) {
+            if (result.isConfirmed) {
+                axios.delete(window.routes.product_destroy + '/' + id).then(response => {
+                    if (response.data.status) {
+                        Swal.fire({
+                            title: response.data.message,
+                            icon: "success",
+                            cancelButtonText: 'Close',
+                        }).then(function () {
+                            window.location.reload();
+                        });
+                    } else {
+                        Swal.fire({
+                            title: response.data.message,
+                            icon: "error",
+                            cancelButtonText: 'Close',
+                        });
+                    }
+                }).catch(error => {
+                    Swal.fire({
+                        title: "Something wrong",
+                        icon: "error",
+                        cancelButtonText: 'Close',
+                    });
+                });
+            }
+        });
+    });
+
     $(document).on('click', '#message_delete', function () {
         let id = $(this).attr('data-id');
         Swal.fire({

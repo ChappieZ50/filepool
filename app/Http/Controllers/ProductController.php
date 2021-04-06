@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
     public function index()
     {
-        return view('products');
+        $products = Product::orderByDesc('premium_user_product')->orderByDesc('id')->get();
+        return view('products')->with('products', $products);
     }
 }

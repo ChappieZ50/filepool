@@ -428,8 +428,8 @@ if (!function_exists('get_accepted_mimes_dropzone')) {
  * $p parameter for pretty parse.
  * Ex: If preview true: 10 value will change to "10MB", if not 10 will change to "10000"
  */
-if (!function_exists('get_file_limit')) {
-    function get_file_limit($p = true)
+if (!function_exists('get_storage_limit')) {
+    function get_storage_limit($p = true)
     {
         $size = auth()->check() ? bytes_to_mb(auth()->user()->storage_limit) : get_setting('max_file_size');
         return $p ? readable_size_clearly($size) : $size * 1000;

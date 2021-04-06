@@ -36,6 +36,7 @@
         'page_destroy': '{{route('admin.page.index')}}',
         'file_destroy': '{{route('admin.file.index')}}',
         'message_destroy': '{{route('admin.message.index')}}',
+        'product_destroy': '{{route('admin.product.index')}}',
     };
 </script>
 <script src="{{asset('fpool/assets/vendors/js/vendor.bundle.base.js')}}"></script>

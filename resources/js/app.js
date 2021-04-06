@@ -394,13 +394,27 @@ $(document).ready(function () {
                         return val + "%"
                     },
                 },
+                plotOptions: {
+                    pie: {
+                        donut: {
+                            labels: {
+                                show: true,
+                                value: {
+                                    formatter: function (value) {
+                                        return "%" + parseFloat(value).toLocaleString();
+                                    },
+                                    color: '#fff',
+                                },
+                            }
+                        }
+                    }
+                },
                 legend: {
                     show: false,
                 },
                 chart: {
                     type: 'donut',
                     height: 200,
-
                 },
             };
 

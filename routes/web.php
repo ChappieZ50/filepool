@@ -32,6 +32,11 @@ Route::group(['prefix' => '/admin/', 'as' => 'admin.', 'namespace' => 'Admin', '
 
     Route::get('file/download/{id}', 'FileController@downloadFile')->name('file.download');
 
+    /* Products */
+    Route::group(['namespace' => 'Product'], function () {
+        Route::resource('product', 'ProductController')->except('show');
+    });
+
     /* Website Settings */
     Route::resource('setting', 'SettingController')->only('index', 'store');
 });

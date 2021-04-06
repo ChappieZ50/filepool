@@ -10,7 +10,10 @@
             <li><a href="{{route('user.logout')}}">Logout</a></li>
         </ul>
     </div>
-    <div id="user_storage_usage_chart"></div>
+    <div class="text-center">
+        <span class="font-weight-bold fpool-storage-limit-text">Storage Limit: <strong>{{get_storage_limit()}}</strong></span>
+        <div id="user_storage_usage_chart"></div>
+    </div>
 </div>
 
 @section('styles')

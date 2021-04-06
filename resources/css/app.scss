@@ -1,7 +1,4 @@
-$primary-color: var(--primary-color);
-$second-color: #14161d;
-$text-color: #fff;
-$border-color: #363e4a;
+@import "variables";
 
 @mixin scroll($w:10px,$h:10px,$scroll:rgba(0, 0, 0, .25),$scroll-bg:rgba(0, 0, 0, .1)) {
 
@@ -583,6 +580,7 @@ label.fpool-button {
                 .fpool-files-expire {
                     ul {
                         margin: 0;
+                        padding: 0;
                         display: flex;
                         flex-wrap: wrap;
 
@@ -1251,6 +1249,10 @@ hr {
     color: #e84545 !important;
 }
 
+.fpool-storage-limit-text strong {
+    color: $primary-color;
+}
+
 @media only screen and (max-width: 992px) {
     .fpool-image-bottom {
         height: 30px !important;
@@ -1258,7 +1260,7 @@ hr {
     .fpool-image-link, .fpool-image-delete {
         opacity: 1 !important;
     }
-    .file-actions{
+    .file-actions {
         display: block !important;
     }
 }

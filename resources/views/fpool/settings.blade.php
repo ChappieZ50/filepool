@@ -42,6 +42,11 @@
                                     SEO
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tab-6">
+                                    Payment
+                                </a>
+                            </li>
                         </ul>
                         <div class="tab-content col-lg-10 col-md-12  mt-4">
                             <div class="tab-pane fade show active" id="tab-1">
@@ -62,6 +67,10 @@
 
                             <div class="tab-pane fade" id="tab-5">
                                 @include('fpool.components.settings.tabs.seo')
+                            </div>
+
+                            <div class="tab-pane fade" id="tab-6">
+                                @include('fpool.components.settings.tabs.payment')
                             </div>
                         </div>
                     </div>

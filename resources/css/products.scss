@@ -1,3 +1,39 @@
-.fpool-products {
+@import "variables";
 
+.fpool-products-wrapper {
+
+    .fpool-products-content {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin: 0 auto;
+
+        .fpool-product {
+            .card {
+                background-color: transparent;
+
+                .card-body {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+
+                    .product-features {
+                        list-style-type: initial;
+                        text-align: left;
+
+                        .product-feature {
+                            &::marker {
+                                color: $primary-color;
+                            }
+                        }
+                    }
+
+                    .buy-product {
+                        margin-top: auto;
+                    }
+                }
+            }
+        }
+    }
 }

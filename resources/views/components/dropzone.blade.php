@@ -1,6 +1,6 @@
 <div class="fpool-dropzone-wrapper">
     <div id="fpool_dropzone" class="fpool-dropzone"
-         data-note="{{trans(get_setting('dropzone_rule'),['size' => get_file_limit()])}}"
+         data-note="{{trans(get_setting('dropzone_rule'),['size' => get_storage_limit()])}}"
          data-drop="{{get_setting('dropzone_text')}}"
          data-browse="{{get_setting('browse_text')}}"
          data-mimes="{{get_accepted_mimes_dropzone()}}"

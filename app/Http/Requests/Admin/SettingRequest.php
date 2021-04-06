@@ -25,40 +25,44 @@ class SettingRequest extends FormRequest
     {
         return [
             /* Website */
-            'website_name'            => 'sometimes',
-            'google_analytics'        => 'sometimes',
-            'max_file_size'           => 'sometimes',
-            'one_time_uploads'        => 'sometimes',
-            'uploads_storage'         => 'sometimes|in:local,aws',
-            'dropzone_text'           => 'sometimes',
-            'browse_text'             => 'sometimes',
-            'dropzone_rule'           => 'sometimes',
-            'menu_title'              => 'sometimes',
-            'theme_color'             => 'sometimes',
+            'website_name'          => 'sometimes',
+            'google_analytics'      => 'sometimes',
+            'max_file_size'         => 'sometimes',
+            'one_time_uploads'      => 'sometimes',
+            'uploads_storage'       => 'sometimes|in:local,aws',
+            'dropzone_text'         => 'sometimes',
+            'browse_text'           => 'sometimes',
+            'dropzone_rule'         => 'sometimes',
+            'menu_title'            => 'sometimes',
+            'theme_color'           => 'sometimes',
 
             /* AWS API */
-            'aws_access_key'          => 'sometimes',
-            'aws_secret_access_key'   => 'sometimes',
-            'aws_region'              => 'sometimes',
-            'aws_bucket'              => 'sometimes',
+            'aws_access_key'        => 'sometimes',
+            'aws_secret_access_key' => 'sometimes',
+            'aws_region'            => 'sometimes',
+            'aws_bucket'            => 'sometimes',
 
             /* Login & Recaptcha API */
-            'google_client_id'        => 'sometimes',
-            'google_secret'           => 'sometimes',
-            'facebook_client_id'      => 'sometimes',
-            'facebook_secret'         => 'sometimes',
-            'recaptcha_site_key'      => 'sometimes',
-            'recaptcha_secret_key'    => 'sometimes',
+            'google_client_id'      => 'sometimes',
+            'google_secret'         => 'sometimes',
+            'facebook_client_id'    => 'sometimes',
+            'facebook_secret'       => 'sometimes',
+            'recaptcha_site_key'    => 'sometimes',
+            'recaptcha_secret_key'  => 'sometimes',
 
             /* Logo & Favicon */
-            'logo'                    => 'sometimes|image|mimes:jpeg,jpg,png,svg|max:5000',
-            'favicon'                 => 'sometimes|mimes:jpeg,jpg,png,svg,ico|max:5000',
-            'favicon_mime'            => 'sometimes|max:10',
+            'logo'                  => 'sometimes|image|mimes:jpeg,jpg,png,svg|max:5000',
+            'favicon'               => 'sometimes|mimes:jpeg,jpg,png,svg,ico|max:5000',
+            'favicon_mime'          => 'sometimes|max:10',
 
             /* Seo */
-            'site_title'              => 'sometimes',
-            'site_description'        => 'sometimes',
-            'site_keywords'           => 'sometimes',
+            'site_title'            => 'sometimes',
+            'site_description'      => 'sometimes',
+            'site_keywords'         => 'sometimes',
+
+            /* Payment */
+            'stripe_key'            => 'sometimes',
+            'stripe_secret'         => 'sometimes',
         ];
     }
 }

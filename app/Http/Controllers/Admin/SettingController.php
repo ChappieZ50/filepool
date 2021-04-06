@@ -35,6 +35,9 @@ class SettingController extends Controller
         } elseif (request()->has('seo')) {
             return $this->seo($request);
 
+        } elseif (request()->has('payment')) {
+            return $this->payment($request);
+
         } else {
             return back()->with('error', 'Something gone wrong.');
         }
@@ -51,16 +54,16 @@ class SettingController extends Controller
     private function website(SettingRequest $request)
     {
         $data = [
-            'website_name'            => $request->get('website_name'),
-            'google_analytics'        => $request->get('google_analytics'),
-            'max_file_size'           => $request->get('max_file_size'),
-            'one_time_uploads'        => $request->get('one_time_uploads'),
-            'uploads_storage'         => $request->get('uploads_storage'),
-            'dropzone_text'           => $request->get('dropzone_text'),
-            'browse_text'             => $request->get('browse_text'),
-            'dropzone_rule'           => $request->get('dropzone_rule'),
-            'menu_title'              => $request->get('menu_title'),
-            'theme_color'             => $request->get('theme_color'),
+            'website_name'     => $request->get('website_name'),
+            'google_analytics' => $request->get('google_analytics'),
+            'max_file_size'    => $request->get('max_file_size'),
+            'one_time_uploads' => $request->get('one_time_uploads'),
+            'uploads_storage'  => $request->get('uploads_storage'),
+            'dropzone_text'    => $request->get('dropzone_text'),
+            'browse_text'      => $request->get('browse_text'),
+            'dropzone_rule'    => $request->get('dropzone_rule'),
+            'menu_title'       => $request->get('menu_title'),
+            'theme_color'      => $request->get('theme_color'),
         ];
 
         if ($this->updateOrCreate($data)) {
@@ -171,6 +174,20 @@ class SettingController extends Controller
 
         if ($this->updateOrCreate($data)) {
             return back()->with('success', 'SEO successfully updated.');
+        } else {
+            return back()->with('error', 'Something gone wrong.');
+        }
+    }
+
+    private function payment(SettingRequest $request)
+    {
+        $data = [
+            'stripe_key'    => $request->get('stripe_key'),
+            'stripe_secret' => $request->get('stripe_secret'),
+        ];
+
+        if ($this->updateOrCreate($data)) {
+            return back()->with('success', 'Paymetn successfully updated.');
         } else {
             return back()->with('error', 'Something gone wrong.');
         }
