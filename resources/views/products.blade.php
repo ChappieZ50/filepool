@@ -5,6 +5,9 @@
         @if(session()->has('success'))
             <div id="payment_success"></div>
         @endif
+        @if(session()->has('error'))
+            <div id="payment_error"></div>
+        @endif
         <div class="fpool-products-content mt-lg-5 col-10 p-0">
             @forelse($products as $product)
                 @if($product->premium_user_product)

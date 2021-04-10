@@ -8,37 +8,48 @@
                 </button>
             </div>
             <div class="modal-body">
-
-                <form role="form" action="{{ route('product.payment') }}" method="post" class="stripe-payment"
-                      data-cc-on-file="false" data-stripe-publishable-key="{{ config('filepool.settings.stripe_key') }}"
+                <div class="error hide">
+                    <div class="alert alert-danger"></div>
+                </div>
+                <form role="form" action="{{ route("product.payment") }}" method="post" class="stripe-payment"
+                      data-cc-on-file="false" data-stripe-publishable-key="{{ config("filepool.settings.stripe_key") }}"
                       id="stripe-payment">
                     <input type="hidden" name="product" value="" id="payment_product">
                     @csrf
 
-                    <div class='form-group'>
-                        <div class='col-xs-12 form-group required'>
-                            <label for="card_name">Name on Card</label>
-                            <input type="text" class="form-control" id="card_name" placeholder="Name on Card">
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="card_name_addon">
+                                    <i data-feather="user"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control" id="card_name" placeholder="Name on Card" aria-describedby="card_name_addon">
                         </div>
                     </div>
 
-                    <div class='form-group'>
-                        <div class='col-xs-12 form-group required'>
-                            <label for="card_number">Card Number</label>
-                            <input type="text" autocomplete='off' class="form-control card-num" id="card_number" size="20" placeholder='Card Number'>
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="card_number_addon">
+                                    <i data-feather="credit-card"></i>
+                                </span>
+                            </div>
+                            <input type="text" autocomplete="off" class="form-control card-num" id="card_number" maxlength="20" placeholder="Card Number"
+                                   aria-describedby="card_number_addon">
                         </div>
                     </div>
 
-                    <div class='form-group row'>
-                        <div class='col-xs-12 col-md-4 form-group cvc required'>
+                    <div class="form-group row">
+                        <div class="col-xs-12 col-md-4 form-group cvc required">
                             <label for="card_cvc">CVC</label>
-                            <input type="text" autocomplete='off' class="form-control card-cvc" id="card_cvc" size="4" placeholder="CVC">
+                            <input type="text" autocomplete="off" class="form-control card-cvc" id="card_cvc" size="4" placeholder="CVC">
                         </div>
-                        <div class='col-xs-12 col-md-4 form-group expiration required'>
+                        <div class="col-xs-12 col-md-4 form-group expiration required">
                             <label for="card_expire_m">Expiration Month</label>
                             <input type="text" class="form-control card-expiry-month" id="card_expire_m" size="2" placeholder="MM">
                         </div>
-                        <div class='col-xs-12 col-md-4 form-group expiration required'>
+                        <div class="col-xs-12 col-md-4 form-group expiration required">
                             <label for="card_expire_y">Expiration Year</label>
                             <input type="text" class="form-control card-expiry-year" id="card_expire_y" size="4" placeholder="YYYY">
                         </div>
@@ -53,7 +64,7 @@
 </div>
 
 @section('scripts')
-    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <script type="text/javascript" src="{{asset('assets/js/stripe.js')}}"></script>
     <script type="text/javascript">
         $(function () {
             var $form = $(".stripe-payment");
@@ -93,8 +104,7 @@
 
             function stripeRes(status, response) {
                 if (response.error) {
-                    $('.error')
-                        .removeClass('hide')
+                    $('.error').removeClass('hide')
                         .find('.alert')
                         .text(response.error.message);
                 } else {

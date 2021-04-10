@@ -25,13 +25,13 @@ class ProductController extends Controller
                 "amount"      => 25 * 100,
                 "currency"    => "usd",
                 "source"      => $request->stripeToken,
-                "description" => "Make payment and chill."
+                "description" => "User:" . auth()->user()->username . " Email: " . auth()->user()->email
             ]);
 
             return back()->with('success', 'Your payment successful. ');
 
         } catch (ApiErrorException $e) {
-            return back()->withErrors('fatal_error', 'Something gone wrong');
+            return back()->withErrors('fatal_error', $e->getMessage());
         }
     }
 }
