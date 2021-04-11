@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Repositories\PaymentRepository;
 use Illuminate\Http\Request;
-use Stripe\Charge;
-use Stripe\Exception\ApiErrorException;
-use Stripe\Stripe;
 
 class ProductController extends Controller
 {
@@ -18,20 +16,23 @@ class ProductController extends Controller
 
     public function payment(Request $request)
     {
-        Stripe::setApiKey(config('filepool.settings.stripe_secret'));
+        $product = Product::where('id', $request->get('product'))->first();
 
-        try {
-            Charge::create([
-                "amount"      => 25 * 100,
-                "currency"    => "usd",
-                "source"      => $request->stripeToken,
-                "description" => "User:" . auth()->user()->username . " Email: " . auth()->user()->email
-            ]);
+        if ($product) {
+            $pay = PaymentRepository::stripe($request->stripeToken, $product);
 
-            return back()->with('success', 'Your payment successful. ');
+            if ($pay === true) {
+                $user = auth()->user();
+                $user->update([
+                    'is_premium'    => $product->premium_user_product ? true : $user->is_premium,
+                    'storage_limit' => $product->storage_limit ? $user->storage_limit + $product->storage_limit : $user->storage_limit
+                ]);
+                return back()->with('success', 'Your payment successful. ');
+            }
 
-        } catch (ApiErrorException $e) {
-            return back()->withErrors('fatal_error', $e->getMessage());
+            return $pay;
         }
+
+        return back()->withErrors('fatal_error', 'Product not found');
     }
 }

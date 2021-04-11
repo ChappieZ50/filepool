@@ -14,9 +14,10 @@
                 @endif
             </ul>
             @if(auth()->user()->is_premium)
-                <a href="#" class="btn btn-block fpool-button disabled">Purchased</a>
+                <a href="javascript:;" class="btn btn-block fpool-button disabled">Purchased</a>
             @else
-                <a href="#" class="btn btn-block fpool-button">Buy Now</a>
+                <a href="javascript:;" class="btn btn-block fpool-button buy-product" id="buy_product_button" data-toggle="modal" data-target="#paymentModal"
+                   data-product="{{$product->id}}" data-product-price="{{$product->price}}" data-product-title="You paying for {{$product->name}}">Buy Now</a>
             @endif
         </div>
     </div>

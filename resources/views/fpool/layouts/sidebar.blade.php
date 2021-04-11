@@ -38,6 +38,12 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="{{route('admin.transaction.index')}}">
+                <i class="menu-icon typcn typcn-document-text"></i>
+                <span class="menu-title">Transactions</span>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="{{route('admin.page.index')}}">
                 <i class="menu-icon typcn typcn-document-text"></i>
                 <span class="menu-title">Pages</span>

@@ -33,9 +33,10 @@ Route::group(['prefix' => '/admin/', 'as' => 'admin.', 'namespace' => 'Admin', '
     Route::get('file/download/{id}', 'FileController@downloadFile')->name('file.download');
 
     /* Products */
-    Route::group(['namespace' => 'Product'], function () {
-        Route::resource('product', 'ProductController')->except('show');
-    });
+    Route::resource('product', 'ProductController')->except('show');
+
+    /* Transactions */
+    Route::get('transactions', 'TransactionController@index')->name('transaction.index');
 
     /* Website Settings */
     Route::resource('setting', 'SettingController')->only('index', 'store');
@@ -79,6 +80,7 @@ Route::group(['as' => 'user.', 'namespace' => 'User', 'middleware' => 'user-stat
         Route::delete('profile/destroy/avatar', 'UserController@destroyAvatar')->name('destroy.avatar');
 
         Route::get('statistic', 'StatisticController@index')->name('statistic');
+        Route::get('transactions', 'TransactionController@index')->name('transactions');
 
         Route::get('my-files', 'UserController@userFiles')->name('files');
         Route::delete('my-files/destroy/{file}', 'UserController@destroyFile')->name('file.destroy');

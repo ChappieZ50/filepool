@@ -49,6 +49,7 @@
                             <a class="dropdown-item" href="{{ route('user.profile') }}">Profile</a>
                             <a class="dropdown-item" href="{{ route('user.files') }}">My Files</a>
                             <a class="dropdown-item" href="{{ route('user.statistic') }}">Statistics</a>
+                            <a class="dropdown-item" href="{{ route('user.transactions') }}">Transactions</a>
                             @if(auth()->user()->is_admin)
                                 <a class="dropdown-item" href="{{route('admin.home')}}">Admin Panel</a>
                             @endif

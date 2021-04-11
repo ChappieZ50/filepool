@@ -182,12 +182,12 @@ class SettingController extends Controller
     private function payment(SettingRequest $request)
     {
         $data = [
-            'stripe_key'    => $request->get('stripe_key'),
-            'stripe_secret' => $request->get('stripe_secret'),
+            'stripe_key'     => $request->get('stripe_key'),
+            'stripe_secret'  => $request->get('stripe_secret'),
         ];
 
         if ($this->updateOrCreate($data)) {
-            return back()->with('success', 'Paymetn successfully updated.');
+            return back()->with('success', 'Payment successfully updated.');
         } else {
             return back()->with('error', 'Something gone wrong.');
         }

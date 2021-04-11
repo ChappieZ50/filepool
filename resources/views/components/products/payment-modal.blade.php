@@ -55,7 +55,7 @@
                         </div>
                     </div>
                     <div class="row p-3">
-                        <button class="btn btn-block fpool-button buy-product" type="submit">Pay</button>
+                        <button class="btn btn-block fpool-button buy-product" id="buyProductButton" type="submit">Pay</button>
                     </div>
                 </form>
             </div>
@@ -69,6 +69,11 @@
         $(function () {
             var $form = $(".stripe-payment");
             $('form.stripe-payment').bind('submit', function (e) {
+                let payment_button_loading = '<div class="spinner-border text-primary" role="status">\n' +
+                    '                            <span class="sr-only">Loading...</span>\n' +
+                    '                        </div>';
+                $('#buyProductButton').html(payment_button_loading);
+
                 var $form = $(".stripe-payment"),
                     inputVal = ['input[type=email]', 'input[type=password]',
                         'input[type=text]', 'input[type=file]',
@@ -99,7 +104,6 @@
                         exp_year: $('.card-expiry-year').val()
                     }, stripeRes);
                 }
-
             });
 
             function stripeRes(status, response) {
@@ -107,6 +111,7 @@
                     $('.error').removeClass('hide')
                         .find('.alert')
                         .text(response.error.message);
+                    $('#buyProductButton').html($('#buyProductButton').attr('data-default-text'));
                 } else {
                     var token = response['id'];
                     $form.find('input[type=text]').empty();

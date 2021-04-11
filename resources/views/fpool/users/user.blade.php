@@ -36,7 +36,7 @@
 
             <div class="col-xl-9 col-lg-12 col-md-12 col-sm-12 mt-3">
                 @component('fpool.components.card')
-                    @slot('title', 'User Images')
+                    @slot('title', 'User Files')
                     @slot('searchRoute', route('admin.user.show',$user->id))
                     @slot('body')
                         @component('fpool.components.files')

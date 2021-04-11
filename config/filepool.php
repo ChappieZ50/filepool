@@ -41,7 +41,7 @@ return [
     ],
 
     /* DO NOT EDIT */
-    'anonymous_user' => [
+    'anonymous_user'         => [
         'username'     => 'Anonymous',
         'avatar'       => '',
         'email'        => '',
@@ -91,7 +91,8 @@ return [
 
         /* Payment Settings */
         'stripe_key'            => '',
-        'stripe_secret'         => ''
+        'stripe_secret'         => '',
+        'stripe_sandbox'        => true,
     ],
 
     'file_expires' => [

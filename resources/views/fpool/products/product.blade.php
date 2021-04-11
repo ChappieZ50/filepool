@@ -77,6 +77,7 @@
                                         <li>User can upload unlimited expire files</li>
                                         <li>Ads will not show this user</li>
                                         <li>User can only buy this product 1 time</li>
+                                        <li>Storage limit will increase by "Storage Limit" value</li>
                                     </ul>
                                 </div>
                                 <div class="text-muted">

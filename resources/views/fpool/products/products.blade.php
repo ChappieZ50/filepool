@@ -52,6 +52,7 @@
                                 </tbody>
                             </table>
                         </div>
+
                     @endunless
                 @endslot
             @endcomponent

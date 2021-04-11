@@ -8,7 +8,7 @@
             <ul class="product-features list-unstyled mt-3 mb-4">
                 <li class="product-feature">{{readable_size_clearly(bytes_to_mb($product->storage_limit))}} increase storage</li>
             </ul>
-            <a href="javascript:;" class="btn btn-block fpool-button buy-product" id="buy_product_button" data-toggle="modal" data-target="#paymentModal" data-product="{{$product->id}}" data-product-title="You paying for {{$product->name}}">Buy Now</a>
+            <a href="javascript:;" class="btn btn-block fpool-button buy-product" id="buy_product_button" data-toggle="modal" data-target="#paymentModal" data-product="{{$product->id}}" data-product-price="{{$product->price}}" data-product-title="You paying for {{$product->name}}">Buy Now</a>
         </div>
     </div>
 </div>
