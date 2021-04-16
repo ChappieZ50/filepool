@@ -2279,6 +2279,47 @@ $(document).ready(function () {
     var chart = new ApexCharts(document.querySelector("#user_login_chart"), options);
     chart.render();
   }
+  /* Delete User Avatar */
+
+
+  $('#delete_user_avatar').on('click', function () {
+    var id = $(this).attr('data-id');
+    sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
+      title: "Are you sure?",
+      text: "User avatar will be deleted",
+      icon: "error",
+      confirmButtonText: "Yes,Delete",
+      cancelButtonText: "Cancel",
+      showCancelButton: true,
+      confirmButtonColor: '#ff6258'
+    }).then(function (result) {
+      if (result.isConfirmed) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default().delete(window.routes.delete_avatar + '/' + id).then(function (response) {
+          if (response.data.status) {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
+              title: "Avatar successfully deleted",
+              icon: "success",
+              cancelButtonText: 'Close'
+            }).then(function () {
+              window.location.reload();
+            });
+          } else {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
+              title: "Something wrong",
+              icon: "error",
+              cancelButtonText: 'Close'
+            });
+          }
+        })["catch"](function (error) {
+          sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
+            title: "Something wrong",
+            icon: "error",
+            cancelButtonText: 'Close'
+          });
+        });
+      }
+    });
+  });
 });
 
 /***/ }),

@@ -439,4 +439,45 @@ $(document).ready(function () {
 
         chart.render();
     }
+
+    /* Delete User Avatar */
+
+    $('#delete_user_avatar').on('click', function () {
+        const id = $(this).attr('data-id');
+        Swal.fire({
+            title: "Are you sure?",
+            text: "User avatar will be deleted",
+            icon: "error",
+            confirmButtonText: "Yes,Delete",
+            cancelButtonText: "Cancel",
+            showCancelButton: true,
+            confirmButtonColor: '#ff6258',
+        }).then(function (result) {
+            if (result.isConfirmed) {
+                axios.delete(window.routes.delete_avatar + '/' + id).then(response => {
+                    if (response.data.status) {
+                        Swal.fire({
+                            title: "Avatar successfully deleted",
+                            icon: "success",
+                            cancelButtonText: 'Close',
+                        }).then(function () {
+                            window.location.reload();
+                        });
+                    } else {
+                        Swal.fire({
+                            title: "Something wrong",
+                            icon: "error",
+                            cancelButtonText: 'Close',
+                        });
+                    }
+                }).catch(error => {
+                    Swal.fire({
+                        title: "Something wrong",
+                        icon: "error",
+                        cancelButtonText: 'Close',
+                    });
+                });
+            }
+        });
+    });
 });

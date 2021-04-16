@@ -20,7 +20,8 @@ Route::group(['prefix' => '/admin/', 'as' => 'admin.', 'namespace' => 'Admin', '
     Route::get('', 'HomeController@index')->name('home');
     /* User Actions */
     Route::group(['namespace' => 'User'], function () {
-        Route::resource('user', 'UserController')->only('index', 'show');
+        Route::resource('user', 'UserController')->except('destroy', 'create');
+        Route::delete('users/delete/avatar/{id?}', 'UserController@deleteAvatar')->name('user.delete_avatar');
         Route::post('users/status', 'UserController@status')->name('user.status');
         Route::post('users/store', 'UserController@store')->name('user.store');
     });

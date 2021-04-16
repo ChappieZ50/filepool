@@ -4,7 +4,7 @@
             <li class="{{request()->routeIs('user.profile') ? 'active' : ''}}"><a href="{{route('user.profile')}}">Profile</a></li>
             <li class="{{request()->routeIs('user.files') ? 'active' : ''}}"><a href="{{route('user.files')}}">My Files</a></li>
             <li class="{{request()->routeIs('user.statistic') ? 'active' : ''}}"><a href="{{route('user.statistic')}}">Statistics</a></li>
-            <li class="{{request()->routeIs('user.transactions') ? 'active' : ''}}"><a href="{{route('user.transactions')}}">Transactions</a></li>
+            <li class="{{request()->routeIs('user.transactions') ? 'active' : ''}}"><a href="{{route('user.transactions')}}">Payments</a></li>
             @if(auth()->user()->is_admin)
                 <li><a href="{{route('admin.home')}}">Admin Panel</a></li>
             @endif

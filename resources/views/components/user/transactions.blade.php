@@ -1,11 +1,11 @@
 <div class="fpool-user-container col-xl-10 col-lg-10 col-md-12 col-sm-12">
     <div class="fpool-user">
-        <h2 class="fpool-sidebar-title">Transactions</h2>
+        <h2 class="fpool-sidebar-title">Payments</h2>
         <hr>
         <div class="fpool-user-content">
             <div class="col-12 fpool-transactions">
                 @unless(count($transactions))
-                    <h4 class="text-center mt-4">No Transactions Found</h4>
+                    <h4 class="text-center mt-4">No Payment Found</h4>
                 @else
                     <div class="table-responsive">
                         <table class="table table-hover table-striped table-dark">

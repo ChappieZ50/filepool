@@ -55,6 +55,10 @@
                                             @endif
                                         </td>
                                         <td>
+                                            <a href="{{route('admin.user.edit',$user->id)}}" class="btn btn-primary social-btn" style="padding: 6px 10px;"
+                                               title="User Edit">
+                                                <i class="mdi mdi-circle-edit-outline"></i>
+                                            </a>
                                             <a href="{{route('admin.user.show',$user->id)}}" class="btn btn-primary social-btn" style="padding: 6px 10px;"
                                                title="User Info">
                                                 <i class="mdi mdi-eye"></i>
