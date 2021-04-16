@@ -105,6 +105,7 @@ $(document).ready(function () {
     }).use(XHRUpload, {
         endpoint: "file/store",
         fieldName: 'file',
+        timeout: 1000 * 1000,
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
