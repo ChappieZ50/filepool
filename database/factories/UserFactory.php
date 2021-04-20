@@ -28,6 +28,8 @@ class UserFactory extends Factory
             'email'    => 'admin@filepool.com',
             'password' => Hash::make('admin1234'),
             'is_admin' => true,
+            'is_premium'    => true,
+            'storage_limit' => '107374182400'
         ];
     }
 }
