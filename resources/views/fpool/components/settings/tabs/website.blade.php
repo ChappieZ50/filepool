@@ -78,6 +78,7 @@
                 <label for="dropzone_rule">Dropzone Rule Text</label>
                 <input type="text" class="form-control col-12" id="dropzone_rule" name="dropzone_rule"
                        value="{{ isset($setting) ? $setting->dropzone_rule : old('dropzone_rule') }}">
+                <div class="small text-muted">Ex: Max 5 files in one time and :size limit</div>
             </div>
         </div>
     </div>
