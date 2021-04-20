@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="file-name">
                                     <small>Uploaded this file: <a href="{{ route('admin.file.show', $file->id) }}"
-                                            target="_blank" title="{{$file->file_original_id . '.' . $file->file_mime}}">{{ str_limit($file->file_original_id . '.' . $file->file_mime) }}</a></small>
+                                            target="_blank" title="{{$file->file_original_id . '.' . $file->file_mime}}">{{ str_limit($file->file_original_id . '.' . $file->file_mime,8) }}</a></small>
                                 </div>
                             </div>
                         </div>
