@@ -224,6 +224,27 @@ if (!function_exists('upload_file')) {
     }
 }
 
+/* Upload avatar,logo,favicon etc. */
+if (!function_exists('upload_website_file')) {
+    function upload_website_file($file, $path)
+    {
+        $extension = $file->getClientOriginalExtension();
+        $fileId = Str::random(12);
+        $name = $fileId . '.' . $extension;
+
+        if ($file->move(public_path($path), $name)) {
+            return response()->json([
+                'status'    => true,
+                'extension' => $extension,
+                'file_id'   => $fileId,
+                'name'      => $name,
+            ]);
+        }
+
+        return response()->json(['status' => false]);
+    }
+}
+
 /*
  * Check setting is exist
 */

@@ -105,7 +105,7 @@ class SettingController extends Controller
 
     private function logoUpload($uploadFolder)
     {
-        $logo = upload_file(request()->file('logo'), $uploadFolder)->getData();
+        $logo = upload_website_file(request()->file('logo'), $uploadFolder)->getData();
 
         if ($logo->status) {
             return $this->updateOrCreate([
@@ -117,7 +117,7 @@ class SettingController extends Controller
 
     private function faviconUpload($uploadFolder)
     {
-        $favicon = upload_file(request()->file('favicon'), $uploadFolder)->getData();
+        $favicon = upload_website_file(request()->file('favicon'), $uploadFolder)->getData();
 
         if ($favicon->status) {
             return $this->updateOrCreate([

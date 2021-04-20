@@ -87,15 +87,11 @@ class UserController extends Controller
     public function updateAvatar(UserAvatarRequest $request)
     {
         $user = Auth::user();
+        $avatar = upload_website_file($request->file('avatar'), config('filepool.user_avatars_folder'))->getData();
 
-        $avatar = $request->file('avatar');
-        $extension = $avatar->getClientOriginalExtension();
-        $fileId = Str::random(12);
-        $name = $fileId . '.' . $extension;
-
-        if ($avatar->move(public_path(config('filepool.user_avatars_folder')), $name)) {
+        if ($avatar->status) {
             $user->update([
-                'avatar' => $name
+                'avatar' => $avatar->name
             ]);
             return response()->json([
                 'status' => true,
