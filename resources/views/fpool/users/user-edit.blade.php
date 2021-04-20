@@ -1,6 +1,15 @@
 @extends('fpool.layouts.app')
 
 @section('content')
+    @if(session()->has('success'))
+        <div class="alert alert-success">
+            {{session()->get('success')}}
+        </div>
+    @elseif(session()->has('error'))
+        <div class="alert alert-danger">
+            {{session()->get('error')}}
+        </div>
+    @endif
     <div class="row">
         @if (!$user->status)
             <div class="alert alert-danger w-100 ml-3 mr-3">
