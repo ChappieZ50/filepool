@@ -54,7 +54,7 @@ class UserController extends Controller
             return response()->json(['status' => true, 'password' => $file->password]);
         }
 
-        return response()->json(['status' => false]);
+        return response_server_error();
     }
 
     public function update(UserRequest $request)
@@ -62,10 +62,10 @@ class UserController extends Controller
         $update = Auth::user()->update($request->validated());
 
         if ($update) {
-            return response()->json(['status' => true]);
+            return response()->json(['status' => true, 'message' => __('page.front.user.profile_update')]);
         }
 
-        return response()->json([], 500);
+        return response_server_error();
     }
 
     public function updatePassword(UserPasswordRequest $request)
@@ -77,10 +77,10 @@ class UserController extends Controller
         ]);
 
         if ($update) {
-            return response()->json(['status' => true]);
+            return response()->json(['status' => true, 'message' => __('page.front.user.password_update')]);
         }
 
-        return response()->json([], 500);
+        return response_server_error();
     }
 
 
@@ -94,11 +94,12 @@ class UserController extends Controller
                 'avatar' => $avatar->name
             ]);
             return response()->json([
-                'status' => true,
+                'status'  => true,
+                'message' => __('page.front.user.avatar_update')
             ]);
         }
 
-        return response()->json([], 500);
+        return response_server_error();
     }
 
     public function destroyAvatar()
@@ -107,6 +108,6 @@ class UserController extends Controller
         Auth::user()->update([
             'avatar' => ''
         ]);
-        return response()->json(['status' => true]);
+        return response()->json(['status' => true, 'message' => __('page.front.user.avatar_delete')]);
     }
 }

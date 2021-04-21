@@ -6,7 +6,7 @@
     <div class="return-to-homepage">
         <a href="{{ route('home') }}" class="return-to-homepage">
             <i data-feather="arrow-left"></i>
-            <span>Homepage</span>
+            <span>{{__('page.website.register.back')}}</span>
         </a>
     </div>
     <div class="fpool-login-wrapper container mt-5">
@@ -22,14 +22,14 @@
             </div>
             @enderror
             @component('components.social-login')
-                @slot('title','Sign up With')
-                @slot('bottom_title','OR')
+                @slot('title',__('page.website.register.sign_up_with'))
+                @slot('bottom_title',__('page.website.register.or'))
             @endcomponent
             <form action="{{ route('user.register.store') }}" method="POST">
                 @csrf
                 <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" class="form-control" name="username" id="username" placeholder="Username" value="{{old('username')}}">
+                    <label for="username">{{__('page.website.register.username')}}</label>
+                    <input type="text" class="form-control" name="username" id="username" placeholder="{{__('page.website.register.username')}}" value="{{old('username')}}">
                     @error('username')
                     <span class="invalid-feedback d-block mt-2" role="alert">
                             <strong>{{ $message }}</strong>
@@ -37,8 +37,8 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Email Address" value="{{old('email')}}">
+                    <label for="email">{{__('page.website.register.email')}}</label>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="{{__('page.website.register.email')}}" value="{{old('email')}}">
                     @error('email')
                     <span class="invalid-feedback d-block mt-2" role="alert">
                             <strong>{{ $message }}</strong>
@@ -46,8 +46,8 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                    <label for="password">{{__('page.website.register.password')}}</label>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="{{__('page.website.register.password')}}">
                     @error('password')
                     <span class="invalid-feedback d-block mt-2" role="alert">
                             <strong>{{ $message }}</strong>
@@ -55,9 +55,9 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="confirm_password">Confirm Password</label>
+                    <label for="confirm_password">{{__('page.website.register.password_confirm')}}</label>
                     <input type="password" class="form-control" name="password_confirmation" id="confirm_password"
-                           placeholder="Confirm Password">
+                           placeholder="{{__('page.website.register.password_confirm')}}">
                     @error('password_confirmation')
                     <span class="invalid-feedback d-block mt-2" role="alert">
                             <strong>{{ $message }}</strong>
@@ -72,11 +72,11 @@
                         </span>
                     @enderror
                 </div>
-                <button class="btn fpool-button w-100" type="submit">Sign Up</button>
+                <button class="btn fpool-button w-100" type="submit">{{__('page.website.register.sign_up')}}</button>
             </form>
         </div>
         <div class="to-register-page text-center mt-3 small">
-            Already have an account ? <a href="{{ route('user.login.index') }}">Sign in</a>
+            {{__('page.website.register.already_account')}} <a href="{{ route('user.login.index') }}">{{__('page.website.register.sign_in')}}</a>
         </div>
     </div>
 @endsection

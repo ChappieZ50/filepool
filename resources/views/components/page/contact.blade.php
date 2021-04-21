@@ -17,7 +17,7 @@
     @csrf
     <div class="row mt-3">
         <div class="form-group col-lg-4">
-            <label for="contact_name">Your Name</label>
+            <label for="contact_name">{{__('page.website.contact.name')}}</label>
             <input type="text" class="form-control" id="contact_name" name="name">
             @error('name')
             <span class="invalid-feedback d-block mt-2" role="alert">
@@ -26,7 +26,7 @@
             @enderror
         </div>
         <div class="form-group col-lg-4">
-            <label for="contact_email">Your Email</label>
+            <label for="contact_email">{{__('page.website.contact.email')}}</label>
             <input type="email" class="form-control" id="contact_email" name="email">
             @error('email')
             <span class="invalid-feedback d-block mt-2" role="alert">
@@ -35,7 +35,7 @@
             @enderror
         </div>
         <div class="form-group col-lg-4">
-            <label for="contact_subject">Subject</label>
+            <label for="contact_subject">{{__('page.website.contact.subject')}}</label>
             <input type="text" class="form-control" id="contact_subject" name="subject">
             @error('subject')
             <span class="invalid-feedback d-block mt-2" role="alert">
@@ -44,7 +44,7 @@
             @enderror
         </div>
         <div class="form-group col-lg-12">
-            <label for="contact_message">Message</label>
+            <label for="contact_message">{{__('page.website.contact.message')}}</label>
             <textarea name="message" id="contact_message" class="form-control"></textarea>
             @error('message')
             <span class="invalid-feedback d-block mt-2" role="alert">
@@ -61,7 +61,7 @@
         </span>
         @enderror
     </div>
-    <button class="btn fpool-button" type="submit">Send Message</button>
+    <button class="btn fpool-button" type="submit">{{__('page.website.contact.send')}}</button>
 
 </form>
 

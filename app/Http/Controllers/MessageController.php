@@ -25,9 +25,9 @@ class MessageController extends Controller
         $store = Message::create($create);
 
         if ($store) {
-            return back()->with('success', 'Your message has been sent successfully.');
+            return back()->with('success', __('page.front.message.success'));
         }
 
-        return back()->with('error', 'Something gone wrong, please try again.');
+        return back()->with('error', __('page.front.message.error'));
     }
 }

@@ -4,19 +4,18 @@
     <div class="row">
         @if (!$file->user->status)
             <div class="alert alert-danger w-100 ml-3 mr-3">
-                "{{ $file->user->username }}" has been banned
+                "{{ $file->user->username }}" {{__('page.admin.banned_text')}}
             </div>
         @endif
         @if($file->password)
             <div class="alert alert-danger w-100 ml-3 mr-3">
                 <i class="mdi mdi-shield-lock-outline"></i>
-                This file protecting with password.
+                {{__('page.admin.files.show_page.protecting')}}
             </div>
         @endif
         <a href="{{route('file.show',$file->file_id)}}" class="ml-auto btn out-of-page" target="_blank">
-            <span>File Page</span>
+            <span>{{__('page.admin.files.show_page.to_file')}}</span>
             <i class="mdi mdi-arrow-right"></i>
-
         </a>
 
         <div class="col-lg-12 d-flex justify-content-between flex-wrap mt-3">
@@ -38,19 +37,19 @@
                             <span class="email text-muted small">{{ $file->user->email }}</span>
                             <div class="user-status">
                                 @if ($file->user->is_admin)
-                                    <label class="badge badge-info">Admin</label>
+                                    <label class="badge badge-info">{{__('page.admin.user_admin_role')}}</label>
                                 @else
                                     @if ($file->user->is_anonymous)
                                         <label class="badge badge-warning text-white">Anonymous</label>
                                     @else
-                                        <label class="badge badge-primary">User</label>
+                                        <label class="badge badge-primary">{{__('page.admin.user_normal_role')}}</label>
                                     @endif
                                 @endif
                                 @if (!$file->user->is_anonymous)
                                     @if ($file->user->status)
-                                        <label class="badge badge-success text-white">Active</label>
+                                        <label class="badge badge-success text-white">{{__('page.admin.active')}}</label>
                                     @else
-                                        <label class="badge badge-danger text-white">Banned</label>
+                                        <label class="badge badge-danger text-white">{{__('page.admin.banned')}}</label>
                                     @endif
                                 @endif
                             </div>
@@ -59,37 +58,37 @@
                         <div class="file-info">
                             <ul>
                                 <li title="{{$file->file_original_id}}">
-                                    <strong>Original Name:</strong>
+                                    <strong>{{__('page.admin.files.show_page.original_name')}}:</strong>
                                     <span>{{ str_limit($file->file_original_id,25) }}</span>
                                 </li>
                                 <li>
-                                    <strong>File ID:</strong>
+                                    <strong>{{__('page.admin.files.show_page.file_id')}}:</strong>
                                     <span>{{ $file->file_id }}</span>
                                 </li>
                                 <li>
-                                    <strong>Size:</strong>
+                                    <strong>{{__('page.admin.files.show_page.size')}}:</strong>
                                     <span>{{ readable_size($file->file_size) }}</span>
                                 </li>
                                 <li>
-                                    <strong>Created Ago:</strong>
+                                    <strong>{{__('page.admin.files.show_page.created_ago')}}:</strong>
                                     <span>{{ $file->created_at->diffForHumans() }}</span>
                                 </li>
                                 <li>
-                                    <strong>Created Date:</strong>
+                                    <strong>{{__('page.admin.files.show_page.created_date')}}:</strong>
                                     <span>{{ $file->created_at }}</span>
                                 </li>
                                 <li>
-                                    <strong>Expire Date:</strong>
+                                    <strong>{{__('page.admin.files.show_page.expire_date')}}:</strong>
                                     <span>
                                         {{ empty($file->expire) ? '~' : \Illuminate\Support\Carbon::create($file->expire)->diffForHumans() }}
                                     </span>
                                 </li>
                                 <li>
-                                    <strong>Uploaded To:</strong>
+                                    <strong>{{__('page.admin.files.show_page.uploaded_to')}}:</strong>
                                     <span class="text-uppercase">{{ $file->uploaded_to }}</span>
                                 </li>
                                 <li>
-                                    <strong>Mime Type:</strong>
+                                    <strong>{{__('page.admin.files.show_page.mime_type')}}:</strong>
                                     <span class="text-uppercase">{{ $file->file_mime }}</span>
                                 </li>
                             </ul>
@@ -111,7 +110,7 @@
                             </div>
                             <a href="{{ route('admin.file.download',$file->id) }}" class="btn btn-primary btn-fw btn-lg mt-3">
                                 <i class="mdi mdi-download"></i>
-                                Download File
+                                {{__('page.admin.files.show_page.download_file_button')}}
                             </a>
                         </div>
                     </div>

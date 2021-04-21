@@ -1,26 +1,27 @@
 <div class="fpool-user-container col-xl-10 col-lg-10 col-md-12 col-sm-12">
     <div class="fpool-user">
         <div class="fpool-user-header d-flex align-items-center justify-content-center justify-content-md-between flex-wrap">
-            <h2 class="fpool-sidebar-title">My Files</h2>
+            <h2 class="fpool-sidebar-title">{{__('page.website.user.files.title')}}</h2>
             <div class="fpool-files-expire">
                 <ul>
                     <li>
-                        <a href="{{route('user.files')}}" class="{{empty(request()->get('expire')) ? 'active' : ''}}">All</a>
+                        <a href="{{route('user.files')}}" class="{{empty(request()->get('expire')) ? 'active' : ''}}">{{__('page.website.user.files.all')}}</a>
                     </li>
                     <li>
-                        <a href="{{route('user.files',['expire' => 'never'])}}" class="{{request()->get('expire') == 'never' ? 'active' : ''}}">Never</a>
+                        <a href="{{route('user.files',['expire' => 'never'])}}"
+                           class="{{request()->get('expire') == 'never' ? 'active' : ''}}">{{__('page.website.user.files.never')}}</a>
                     </li>
                     <li>
-                        <a href="{{route('user.files',['expire' => '30'])}}" class="{{request()->get('expire') == '30' ? 'active' : ''}}">30D</a>
+                        <a href="{{route('user.files',['expire' => '30'])}}" class="{{request()->get('expire') == '30' ? 'active' : ''}}">{{__('page.website.user.files.30')}}</a>
                     </li>
                     <li>
-                        <a href="{{route('user.files',['expire' => '15'])}}" class="{{request()->get('expire') == '15' ? 'active' : ''}}">15D</a>
+                        <a href="{{route('user.files',['expire' => '15'])}}" class="{{request()->get('expire') == '15' ? 'active' : ''}}">{{__('page.website.user.files.15')}}</a>
                     </li>
                     <li>
-                        <a href="{{route('user.files',['expire' => '7'])}}" class="{{request()->get('expire') == '7' ? 'active' : ''}}">7D</a>
+                        <a href="{{route('user.files',['expire' => '7'])}}" class="{{request()->get('expire') == '7' ? 'active' : ''}}">{{__('page.website.user.files.7')}}</a>
                     </li>
                     <li>
-                        <a href="{{route('user.files',['expire' => '1'])}}" class="{{request()->get('expire') == '1' ? 'active' : ''}}">1D</a>
+                        <a href="{{route('user.files',['expire' => '1'])}}" class="{{request()->get('expire') == '1' ? 'active' : ''}}">{{__('page.website.user.files.1')}}</a>
                     </li>
                 </ul>
             </div>
@@ -36,10 +37,10 @@
                         <div class="empty-images">
                             <img src="{{ asset('assets/images/empty-files.svg') }}" alt="empty file" class="img-fluid">
                             <h5>
-                                No files found
+                                {{__('page.website.user.files.not_found')}}
                             </h5>
                             <p>
-                                You can upload some files from <a href="{{ route('home') }}">here.</a>
+                                {!! __('page.website.user.files.upload',['here' => '<a href="'.route("home").'">'.__("page.here").'</a>']) !!}
                             </p>
                         </div>
 
@@ -55,14 +56,16 @@
                                     </svg>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{{ route('file.show',$file->file_id) }}" target="_blank">View</a>
+                                    <a class="dropdown-item" href="{{ route('file.show',$file->file_id) }}" target="_blank">{{__('page.website.user.files.view')}}</a>
                                     <a class="dropdown-item" href="javascript:;" data-id="{{$file->file_id}}"
-                                       data-mime="{{$file->file_mime}}" id="download_file" data-direct="true">Download</a>
+                                       data-mime="{{$file->file_mime}}" id="download_file" data-direct="true">{{__('page.website.user.files.download')}}</a>
                                     <div class="dropdown-divider"></div>
                                     @if($file->password)
-                                        <a class="dropdown-item" href="javascript:;" id="show_file_password" data-id="{{$file->file_id}}">Show Password</a>
+                                        <a class="dropdown-item" href="javascript:;" id="show_file_password"
+                                           data-id="{{$file->file_id}}">{{__('page.website.user.files.show_password')}}</a>
                                     @endif
-                                    <a class="dropdown-item text-danger" href="javascript:;" id="file_delete" data-id="{{$file->file_id}}">Delete File</a>
+                                    <a class="dropdown-item text-danger" href="javascript:;" id="file_delete"
+                                       data-id="{{$file->file_id}}">{{__('page.website.user.files.delete')}}</a>
                                 </div>
                                 <div class="ipool-file-type ipool-file-{{$file->file_mime}}">
                                     <div class="file-icon-text">

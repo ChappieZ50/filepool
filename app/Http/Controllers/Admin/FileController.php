@@ -43,11 +43,11 @@ class FileController extends Controller
 
             if ($destroy) {
                 $file->delete();
-                return response()->json(['status' => true]);
+                return response()->json(['status' => true,'message' => __('page.back.file.delete_success')]);
             }
         }
 
-        return response()->json(['status' => false]);
+        return response_server_error(200);
     }
 
     public function downloadFile($id)

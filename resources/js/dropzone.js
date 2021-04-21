@@ -36,29 +36,29 @@ $(document).ready(function () {
         onBeforeFileAdded: () => {
             let recaptcha = '';
             const svgLock = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>';
-            const premium = window.filepool.premium ? "<option value='never' selected>Never</option>" : "";
+            const premium = window.filepool.premium ? "<option value='never' selected>"+window.filepool_dropzone.expires.never+"</option>" : "";
             const html = "<h4>Please fill the settings for this files</h4>" +
                 "<div class='form-group mt-3'>" +
                 "<select class='form-control' id='expire_files'>" +
-                "<option value='1'>1 Days</option>" +
-                "<option value='7'>7 Days</option>" +
-                "<option value='15'>15 Days</option>" +
-                "<option value='30'>30 Days</option>" + premium +
+                "<option value='1'>"+window.filepool_dropzone.expires.one+"</option>" +
+                "<option value='7'>"+window.filepool_dropzone.expires.seven+"</option>" +
+                "<option value='15'>"+window.filepool_dropzone.expires.fifteen+"</option>" +
+                "<option value='30'>"+window.filepool_dropzone.expires.thirteen+"</option>" + premium +
                 "</select>" +
                 "</div>" +
                 " <div class='input-group mt-3 mb-3'>" +
                 "<div class='input-group-prepend'>" +
                 "<span class='input-group-text' id='basic-addon1'>" + svgLock + "</span>\n" +
                 "</div>" +
-                "<input type='password' class='form-control' placeholder='Password for files' id='password_files'>" +
+                "<input type='password' class='form-control' placeholder='"+window.filepool_dropzone.password+"' id='password_files'>" +
                 "</div>" +
                 "<div id='swal_recaptcha'></div>";
 
             Swal.fire({
-                title: 'Upload Files',
+                title: window.filepool_dropzone.confirm_button_text,
                 html,
                 showCancelButton: true,
-                confirmButtonText: 'Upload Files',
+                confirmButtonText: window.filepool_dropzone.confirm_button_text,
                 showLoaderOnConfirm: true,
                 allowOutsideClick: false,
                 allowEscapeKey: false,
@@ -72,7 +72,7 @@ $(document).ready(function () {
                 preConfirm: function () {
                     if (window.filepool.g_recaptcha_site_key.length > 0 && !window.filepool.auth) {
                         if (grecaptcha.getResponse().length === 0) {
-                            Swal.showValidationMessage(`Please verify that you're not a robot`)
+                            Swal.showValidationMessage(window.filepool_dropzone.recaptcha_error)
                         } else {
                             recaptcha = grecaptcha.getResponse();
                         }
@@ -115,9 +115,9 @@ $(document).ready(function () {
                 parsedResponse = JSON.parse(responseText);
             } catch (err) {
                 Swal.fire({
-                    title: "Something gone wrong, please try again.",
+                    title: window.filepool.error_text,
                     icon: "error",
-                    cancelButtonText: 'Close',
+                    cancelButtonText: window.filepool_dropzone.close,
                 }).then(function () {
                     window.location.reload();
                 });
@@ -130,7 +130,7 @@ $(document).ready(function () {
             Swal.fire({
                 title: response.message,
                 icon: "error",
-                cancelButtonText: 'Close',
+                cancelButtonText: window.filepool_dropzone.close,
             }).then(function () {
                 window.location.reload();
             });

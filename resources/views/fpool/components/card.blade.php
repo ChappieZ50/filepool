@@ -9,7 +9,7 @@
         @isset($searchRoute)
             <div class="card-search float-right mt-3 mb-3">
                 <form action="{{ $searchRoute }}" method="GET" class="d-flex position-relative">
-                    <input type="text" class="form-control" placeholder="Search" name="s"
+                    <input type="text" class="form-control" placeholder="{{__('page.admin.search_text')}}" name="s"
                            value="{{ request()->get('s') }}">
                     @if (request()->has('s'))
                         @php

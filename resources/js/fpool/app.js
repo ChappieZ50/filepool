@@ -11,11 +11,11 @@ $(document).ready(function () {
     $(document).on('click', '#ban', function () {
         let id = $(this).attr('data-id');
         Swal.fire({
-            title: "Are you sure?",
-            text: "This user will be banned",
+            title: window.filepool.trans.title,
+            text: window.filepool.trans.user_ban,
             icon: "error",
-            confirmButtonText: "Yes,Ban",
-            cancelButtonText: "Cancel",
+            confirmButtonText: window.filepool.trans.confirm_ban,
+            cancelButtonText: window.filepool.trans.cancel,
             showCancelButton: true,
             confirmButtonColor: '#ff6258',
         }).then(function (result) {
@@ -26,17 +26,17 @@ $(document).ready(function () {
                 }).then(response => {
                     if (response.data.status) {
                         Swal.fire({
-                            title: "User Banned",
+                            title: response.data.message,
                             icon: "success",
-                            cancelButtonText: 'Close',
+                            cancelButtonText: window.filepool.trans.close,
                         }).then(function () {
                             window.location.reload();
                         });
                     } else {
                         Swal.fire({
-                            title: response.data.message ? response.data.message : "Something wrong",
+                            title: response.data.message,
                             icon: "error",
-                            cancelButtonText: 'Close',
+                            cancelButtonText: window.filepool.trans.close,
                         });
                     }
                 });
@@ -46,11 +46,11 @@ $(document).ready(function () {
     $(document).on('click', '#unban', function () {
         let id = $(this).attr('data-id');
         Swal.fire({
-            title: "Are you sure?",
-            text: "This user will be unbanned",
+            title: window.filepool.trans.title,
+            text: window.filepool.trans.user_banned,
             icon: "info",
-            confirmButtonText: "Yes,Unban",
-            cancelButtonText: "Cancel",
+            confirmButtonText: window.filepool.trans.confirm_unban,
+            cancelButtonText: window.filepool.trans.cancel,
             showCancelButton: true,
             confirmButtonColor: '#19d895',
         }).then(function (result) {
@@ -61,17 +61,17 @@ $(document).ready(function () {
                 }).then(response => {
                     if (response.data.status) {
                         Swal.fire({
-                            title: "User Unbanned",
+                            title: response.data.message,
                             icon: "success",
-                            cancelButtonText: 'Close',
+                            cancelButtonText: window.filepool.trans.close,
                         }).then(function () {
                             window.location.reload();
                         });
                     } else {
                         Swal.fire({
-                            title: response.data.message ? response.data.message : "Something wrong",
+                            title: response.data.message,
                             icon: "error",
-                            cancelButtonText: 'Close',
+                            cancelButtonText: window.filepool.trans.close,
                         });
                     }
                 });
@@ -109,9 +109,9 @@ $(document).ready(function () {
                 if (response.data.status) {
                     $('#newUserModal').modal('toggle');
                     Swal.fire({
-                        title: "New User Added",
+                        title: window.filepool.trans.new_user_success,
                         icon: "success",
-                        cancelButtonText: 'Close',
+                        cancelButtonText: window.filepool.trans.close,
                     }).then(function () {
                         window.location.reload();
                     });
@@ -169,11 +169,11 @@ $(document).ready(function () {
     $(document).on('click', '#page_delete', function () {
         let id = $(this).attr('data-id');
         Swal.fire({
-            title: "Are you sure?",
-            text: "This page will be deleted",
+            title: window.filepool.trans.title,
+            text: window.filepool.trans.page_delete,
             icon: "error",
-            confirmButtonText: "Yes,Delete",
-            cancelButtonText: "Cancel",
+            confirmButtonText: window.filepool.trans.confirm_delete,
+            cancelButtonText: window.filepool.trans.cancel,
             showCancelButton: true,
             confirmButtonColor: '#ff6258',
         }).then(function (result) {
@@ -181,24 +181,24 @@ $(document).ready(function () {
                 axios.delete(window.routes.page_destroy + '/' + id).then(response => {
                     if (response.data.status) {
                         Swal.fire({
-                            title: "Page successfully deleted",
+                            title: response.data.message,
                             icon: "success",
-                            cancelButtonText: 'Close',
+                            cancelButtonText: window.filepool.trans.close,
                         }).then(function () {
                             window.location.reload();
                         });
                     } else {
                         Swal.fire({
-                            title: "Something wrong",
+                            title: response.data.message,
                             icon: "error",
-                            cancelButtonText: 'Close',
+                            cancelButtonText: window.filepool.trans.close,
                         });
                     }
                 }).catch(error => {
                     Swal.fire({
-                        title: "Something wrong",
+                        title: window.filepool.trans.error,
                         icon: "error",
-                        cancelButtonText: 'Close',
+                        cancelButtonText: window.filepool.trans.close,
                     });
                 });
             }
@@ -209,11 +209,11 @@ $(document).ready(function () {
     $(document).on('click', '#product_delete', function () {
         let id = $(this).attr('data-id');
         Swal.fire({
-            title: "Are you sure?",
-            text: "This product will be deleted",
+            title: window.filepool.trans.title,
+            text: window.filepool.trans.product_delete,
             icon: "error",
-            confirmButtonText: "Yes,Delete",
-            cancelButtonText: "Cancel",
+            confirmButtonText: window.filepool.trans.confirm_delete,
+            cancelButtonText: window.filepool.trans.cancel,
             showCancelButton: true,
             confirmButtonColor: '#ff6258',
         }).then(function (result) {
@@ -223,7 +223,7 @@ $(document).ready(function () {
                         Swal.fire({
                             title: response.data.message,
                             icon: "success",
-                            cancelButtonText: 'Close',
+                            cancelButtonText: window.filepool.trans.close,
                         }).then(function () {
                             window.location.reload();
                         });
@@ -231,14 +231,14 @@ $(document).ready(function () {
                         Swal.fire({
                             title: response.data.message,
                             icon: "error",
-                            cancelButtonText: 'Close',
+                            cancelButtonText: window.filepool.trans.close,
                         });
                     }
                 }).catch(error => {
                     Swal.fire({
-                        title: "Something wrong",
+                        title: window.filepool.trans.error,
                         icon: "error",
-                        cancelButtonText: 'Close',
+                        cancelButtonText: window.filepool.trans.close,
                     });
                 });
             }
@@ -248,11 +248,11 @@ $(document).ready(function () {
     $(document).on('click', '#message_delete', function () {
         let id = $(this).attr('data-id');
         Swal.fire({
-            title: "Are you sure?",
-            text: "This message will be deleted",
+            title: window.filepool.trans.title,
+            text: window.filepool.trans.message_delete,
             icon: "error",
-            confirmButtonText: "Yes,Delete",
-            cancelButtonText: "Cancel",
+            confirmButtonText: window.filepool.trans.confirm_delete,
+            cancelButtonText: window.filepool.trans.cancel,
             showCancelButton: true,
             confirmButtonColor: '#ff6258',
         }).then(function (result) {
@@ -260,24 +260,24 @@ $(document).ready(function () {
                 axios.delete(window.routes.message_destroy + '/' + id).then(response => {
                     if (response.data.status) {
                         Swal.fire({
-                            title: "Message successfully deleted",
+                            title: response.data.message,
                             icon: "success",
-                            cancelButtonText: 'Close',
+                            cancelButtonText: window.filepool.trans.close,
                         }).then(function () {
                             window.location.reload();
                         });
                     } else {
                         Swal.fire({
-                            title: "Something wrong",
+                            title: response.data.message,
                             icon: "error",
-                            cancelButtonText: 'Close',
+                            cancelButtonText: window.filepool.trans.close,
                         });
                     }
                 }).catch(error => {
                     Swal.fire({
-                        title: "Something wrong",
+                        title: window.filepool.trans.error,
                         icon: "error",
-                        cancelButtonText: 'Close',
+                        cancelButtonText: window.filepool.trans.close,
                     });
                 });
             }
@@ -287,11 +287,11 @@ $(document).ready(function () {
     $(document).on('click', '#file_delete', function () {
         let id = $(this).attr('data-id');
         Swal.fire({
-            title: "Are you sure?",
-            text: "This file will be deleted",
+            title: window.filepool.trans.title,
+            text: window.filepool.trans.file_delete,
             icon: "error",
-            confirmButtonText: "Yes,Delete",
-            cancelButtonText: "Cancel",
+            confirmButtonText: window.filepool.trans.confirm_delete,
+            cancelButtonText: window.filepool.trans.cancel,
             showCancelButton: true,
             confirmButtonColor: '#ff6258',
         }).then(function (result) {
@@ -299,24 +299,24 @@ $(document).ready(function () {
                 axios.delete(window.routes.file_destroy + '/' + id).then(response => {
                     if (response.data.status) {
                         Swal.fire({
-                            title: "File successfully deleted",
+                            title: response.data.message,
                             icon: "success",
-                            cancelButtonText: 'Close',
+                            cancelButtonText: window.filepool.trans.close,
                         }).then(function () {
                             window.location.reload();
                         });
                     } else {
                         Swal.fire({
-                            title: "Something wrong",
+                            title: response.data.message,
                             icon: "error",
-                            cancelButtonText: 'Close',
+                            cancelButtonText: window.filepool.trans.close,
                         });
                     }
                 }).catch(error => {
                     Swal.fire({
-                        title: "Something wrong",
+                        title: window.filepool.trans.error,
                         icon: "error",
-                        cancelButtonText: 'Close',
+                        cancelButtonText: window.filepool.trans.close,
                     });
                 });
             }
@@ -333,11 +333,11 @@ $(document).ready(function () {
                 }
             },
             series: [{
-                name: 'Uploads',
+                name: window.filepool.trans.uploads,
                 data: Object.values(window.file_chart)
             }],
             xaxis: {
-                categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+                categories: window.filepool.trans.months.split(',')
             },
             yaxis: {
                 labels: {
@@ -355,7 +355,7 @@ $(document).ready(function () {
     if ($('#user_chart').length) {
         var options = {
             series: [{
-                name: "Users",
+                name: window.filepool.trans.users,
                 data: Object.values(window.user_chart)
             }],
             chart: {
@@ -378,7 +378,7 @@ $(document).ready(function () {
                 },
             },
             xaxis: {
-                categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+                categories:window.filepool.trans.months.split(',')
             },
             yaxis: {
                 labels: {
@@ -400,7 +400,7 @@ $(document).ready(function () {
                 type: 'pie',
             },
             colors: ['#19d895', '#ff6258'],
-            labels: ['Active', 'Banned'],
+            labels: [window.filepool.trans.active, window.filepool.trans.banned],
             responsive: [{
                 breakpoint: 480,
                 options: {
@@ -445,11 +445,11 @@ $(document).ready(function () {
     $('#delete_user_avatar').on('click', function () {
         const id = $(this).attr('data-id');
         Swal.fire({
-            title: "Are you sure?",
-            text: "User avatar will be deleted",
+            title: window.filepool.trans.title,
+            text: window.filepool.trans.avatar_delete,
             icon: "error",
-            confirmButtonText: "Yes,Delete",
-            cancelButtonText: "Cancel",
+            confirmButtonText: window.filepool.trans.confirm_delete,
+            cancelButtonText: window.filepool.trans.cancel,
             showCancelButton: true,
             confirmButtonColor: '#ff6258',
         }).then(function (result) {
@@ -457,24 +457,24 @@ $(document).ready(function () {
                 axios.delete(window.routes.delete_avatar + '/' + id).then(response => {
                     if (response.data.status) {
                         Swal.fire({
-                            title: "Avatar successfully deleted",
+                            title: response.data.message,
                             icon: "success",
-                            cancelButtonText: 'Close',
+                            cancelButtonText: window.filepool.trans.close,
                         }).then(function () {
                             window.location.reload();
                         });
                     } else {
                         Swal.fire({
-                            title: "Something wrong",
+                            title: response.data.message,
                             icon: "error",
-                            cancelButtonText: 'Close',
+                            cancelButtonText: window.filepool.trans.close,
                         });
                     }
                 }).catch(error => {
                     Swal.fire({
-                        title: "Something wrong",
+                        title: window.filepool.trans.error,
                         icon: "error",
-                        cancelButtonText: 'Close',
+                        cancelButtonText: window.filepool.trans.close,
                     });
                 });
             }

@@ -54,11 +54,11 @@ class UserController extends Controller
             $user->update([
                 'avatar' => ''
             ]);
-            return response()->json(['status' => true]);
+            return response()->json(['status' => true, 'message' => __('page.back.user.avatar_delete_success')]);
         }
 
 
-        return response()->json([], 404);
+        return response_server_error(404);
 
     }
 
@@ -74,9 +74,9 @@ class UserController extends Controller
         ]);
 
         if ($update) {
-            return back()->with('success', 'User successfully updated.');
+            return back()->with('success', __('page.back.user.update_success'));
         } else {
-            return back()->with('error', 'Something gone wrong.');
+            return back()->with('error', __('page.server_error'));
         }
     }
 
@@ -91,13 +91,10 @@ class UserController extends Controller
         if ($user->save()) {
             return response()->json([
                 'status'  => true,
-                'message' => 'User Created',
+                'message' => __('page.back.user.create_success'),
             ]);
         } else {
-            return response()->json([
-                'status'  => false,
-                'message' => 'Something wrong please try again.'
-            ], 500);
+            return response_server_error();
         }
     }
 
@@ -110,7 +107,7 @@ class UserController extends Controller
             if ($user->is_admin) {
                 return response()->json([
                     'status'  => false,
-                    'message' => 'Admin user cannot ban',
+                    'message' => __('page.back.user.admin_ban_error'),
                 ]);
             }
 
@@ -120,8 +117,13 @@ class UserController extends Controller
         }
 
 
-        return response()->json([
-            'status' => $update ? true : false
-        ]);
+        if ($update) {
+            return response()->json([
+                'status'  => true,
+                'message' => __('page.back.user.status_success')
+            ]);
+        }
+        return response_server_error();
+
     }
 }

@@ -66,6 +66,29 @@
         auth: {{auth()->check() ? 'true' : 'false'}},
         theme: '{{ get_setting('theme_color') }}',
         premium: {{auth()->check() && auth()->user()->is_premium ? 'true' : 'false'}},
+        error_text: '{{__('page.server_error')}}',
+        payment_success_text: '{{__('page.payment_success_text')}}',
+        password_incorrect: '{{__('page.password_incorrect')}}',
+        pay: '{{__('page.admin.js.pay')}}',
+        currency: '{{__('page.currency')}}',
+        trans: {
+            confirm_text: '{{__('page.admin.js.confirm_text')}}',
+            files: '{{__('page.admin.js.files')}}',
+            usage: '{{__('page.admin.js.usage')}}',
+            copied: '{{__('page.admin.js.copied')}}',
+            close: '{{__('page.admin.js.close')}}',
+            confirm_delete_button: '{{__('page.admin.js.confirm_delete_button')}}',
+            file_delete: '{{__('page.admin.js.file_delete')}}',
+            avatar_delete: '{{__('page.admin.js.avatar_delete')}}',
+            empty: '{{__('page.admin.js.empty')}}',
+            used: '{{__('page.admin.js.used')}}',
+            password_confirm: '{{__('page.admin.js.password_confirm')}}',
+            password_confirm_final: '{{__('page.admin.js.password_confirm_final')}}',
+            enter_password: '{{__('page.admin.js.enter_password')}}',
+            password_error: '{{__('page.admin.js.password_error')}}',
+            download_file: '{{__('page.admin.js.download_file')}}',
+            months: '{{__('page.admin.months')}}',
+        }
     };
 
 </script>

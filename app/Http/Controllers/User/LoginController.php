@@ -27,7 +27,7 @@ class LoginController extends Controller
             if (!Auth::user()->status && !Auth::user()->is_admin) {
                 Auth::logout();
                 return back()->withErrors([
-                    'non' => 'Your account has been banned',
+                    'non' => __('page.front.account_banned'),
                 ]);
             }
             /* Return admin home if is admin user */
@@ -38,7 +38,7 @@ class LoginController extends Controller
         }
 
         return back()->withErrors([
-            'non' => 'Email or password is incorrect.',
+            'non' => __('page.front.account_incorrect'),
         ]);
     }
 

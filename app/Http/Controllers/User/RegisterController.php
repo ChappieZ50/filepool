@@ -18,9 +18,9 @@ class RegisterController extends Controller
     public function store(RegisterRequest $request)
     {
         $user = new User([
-            'username'  => $request->get('username'),
-            'email'     => $request->get('email'),
-            'password'  => bcrypt($request->get('password')),
+            'username' => $request->get('username'),
+            'email'    => $request->get('email'),
+            'password' => bcrypt($request->get('password')),
         ]);
         /* Saving user */
         if ($user->save()) {
@@ -33,7 +33,7 @@ class RegisterController extends Controller
         }
 
         return back()->withErrors([
-            'non' => 'Something wrong please try again.'
+            'non' => __('page.server_error')
         ]);
     }
 }

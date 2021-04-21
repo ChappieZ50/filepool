@@ -11,18 +11,18 @@
         </div>
         <div class="file-snap p-4">
             <div class="form-group">
-                <label for="fpool_file_url" class="h5">File Share Link</label>
+                <label for="fpool_file_url" class="h5">{{__('page.website.user.files.share_link')}}</label>
                 <div class="fpool-copy-container">
                     <input type="text" class="form-control" value="{{file_url($file)}}" readonly id="fpool_file_url">
                     <div id="copy_content" class="d-none">{{file_url($file)}}</div>
                     <div class="fpool-copy" id="click_to_copy" data-clipboard-target="#click_to_copy">
-                        Click here to copy
+                        {{__('page.website.user.files.click_to_copy')}}
                     </div>
                 </div>
             </div>
         </div>
         @component('components.ads.file.bottom') @endcomponent
-        <div class="h4 text-center">Share With</div>
+        <div class="h4 text-center">{{__('page.website.user.files.share_with')}}</div>
         <hr>
         @component('components.social-share')
             @slot('text',$file->file_original_id)

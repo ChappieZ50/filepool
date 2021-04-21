@@ -35,9 +35,9 @@ class PageController extends Controller
         ]);
 
         if ($store) {
-            return redirect()->route('admin.page.edit', $store->id)->with('success', 'Page successfully created.');
+            return redirect()->route('admin.page.edit', $store->id)->with('success', __('page.back.page.store_success'));
         } else {
-            return back()->with('error', 'Something gone wrong.');
+            return back()->with('error', __('page.server_error'));
         }
     }
 
@@ -57,9 +57,9 @@ class PageController extends Controller
         ]);
 
         if ($update) {
-            return back()->with('success', 'Page successfully updated.');
+            return back()->with('success', __('page.back.page.update_success'));
         } else {
-            return back()->with('error', 'Something gone wrong.');
+            return back()->with('error', __('page.server_error'));
         }
     }
 
@@ -67,10 +67,10 @@ class PageController extends Controller
     {
         $page = Page::where('id', $id)->first();
         if ($page && $page->delete()) {
-            return response()->json(['message' => 'Page successfully deleted.', 'status' => true]);
+            return response()->json(['message' => __('page.back.page.delete_success'), 'status' => true]);
         }
 
-        return response()->json(['message' => 'Something gone wrong.', 'status' => false], 404);
+        return response_server_error(404);
     }
 
 }

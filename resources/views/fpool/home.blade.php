@@ -10,7 +10,7 @@
                             <div class="d-flex align-items-center justify-content-center flex-column flex-sm-row p-4">
                                 <i class="mdi mdi-cloud-upload-outline text-primary mr-0 mr-sm-4 icon-lg"></i>
                                 <div class="wrapper text-center text-sm-left">
-                                    <p class="card-text mb-0">Uploaded Files</p>
+                                    <p class="card-text mb-0">{{__('page.admin.home.count_card.files')}}</p>
                                     <div class="fluid-container">
                                         <h3 class="mb-0 font-weight-medium">{{ $filesCount }}</h3>
                                     </div>
@@ -23,7 +23,7 @@
                             <div class="d-flex align-items-center justify-content-center flex-column flex-sm-row p-4">
                                 <i class="mdi mdi-account-multiple-outline text-primary mr-0 mr-sm-4 icon-lg"></i>
                                 <div class="wrapper text-center text-sm-left">
-                                    <p class="card-text mb-0">Users</p>
+                                    <p class="card-text mb-0">{{__('page.admin.home.count_card.users')}}</p>
                                     <div class="fluid-container">
                                         <h3 class="mb-0 font-weight-medium">{{ $usersCount }}</h3>
                                     </div>
@@ -36,7 +36,7 @@
                             <div class="d-flex align-items-center justify-content-center flex-column flex-sm-row p-4">
                                 <i class="mdi mdi-message-outline text-primary mr-0 mr-sm-4 icon-lg"></i>
                                 <div class="wrapper text-center text-sm-left">
-                                    <p class="card-text mb-0">Messages</p>
+                                    <p class="card-text mb-0">{{__('page.admin.home.count_card.messages')}}</p>
                                     <div class="fluid-container">
                                         <h3 class="mb-0 font-weight-medium">{{ $messagesCount }}</h3>
                                     </div>
@@ -49,7 +49,7 @@
                             <div class="d-flex align-items-center justify-content-center flex-column flex-sm-row p-4">
                                 <i class="mdi mdi-file-document-outline text-primary mr-0 mr-sm-4 icon-lg"></i>
                                 <div class="wrapper text-center text-sm-left">
-                                    <p class="card-text mb-0">Pages</p>
+                                    <p class="card-text mb-0">{{__('page.admin.home.count_card.pages')}}</p>
                                     <div class="fluid-container">
                                         <h3 class="mb-0 font-weight-medium">{{ $pagesCount }}</h3>
                                     </div>

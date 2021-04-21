@@ -1,7 +1,7 @@
 <div class="col-lg-6 grid-margin stretch-card">
     <div class="card">
         <div class="p-4 border-bottom bg-light">
-            <h4 class="card-title mb-0">Monthly Uploads</h4>
+            <h4 class="card-title mb-0">{{__('page.admin.home.chart.monthly_uploads')}}</h4>
         </div>
         <div id="file_chart"></div>
     </div>
@@ -9,15 +9,15 @@
 <div class="col-lg-6 grid-margin stretch-card">
     <div class="card">
         <div class="p-4 border-bottom bg-light d-flex justify-content-between">
-            <h4 class="card-title mb-0">Latest files</h4>
+            <h4 class="card-title mb-0">{{__('page.admin.home.chart.latest_files')}}</h4>
             <a href="{{ route('admin.file.index') }}" class="btn btn-primary btn-fw">
-                <span>Show All Files</span>
+                <span>{{__('page.admin.home.chart.show_all_files')}}</span>
                 <i class="mdi mdi-arrow-right"></i>
             </a>
         </div>
         <div class="latest-items">
             @unless(count($files))
-                <h5 class="text-center mt-3">No Records Found</h5>
+                <h5 class="text-center mt-3">{{__('page.admin.no_record')}}</h5>
             @else
                 @foreach ($files as $file)
                     <div class="latest-item d-flex justify-content-between align-items-center p-3">
@@ -39,7 +39,7 @@
 
                                 </div>
                                 <div class="file-name">
-                                    <small>Uploaded this file: <a href="{{ route('admin.file.show', $file->id) }}"
+                                    <small>{{__('page.admin.home.chart.uploaded_file')}} <a href="{{ route('admin.file.show', $file->id) }}"
                                             target="_blank" title="{{$file->file_original_id . '.' . $file->file_mime}}">{{ str_limit($file->file_original_id . '.' . $file->file_mime,8) }}</a></small>
                                 </div>
                             </div>

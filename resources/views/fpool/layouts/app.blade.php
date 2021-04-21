@@ -39,6 +39,31 @@
         'product_destroy': '{{route('admin.product.index')}}',
         'delete_avatar': '{{route('admin.user.delete_avatar')}}',
     };
+
+    window.filepool = {
+        trans: {
+            title: '{{__('page.admin.js.admin.are_you_sure')}}',
+            cancel: '{{__('page.admin.js.admin.cancel')}}',
+            close: '{{__('page.admin.js.admin.close')}}',
+            confirm_delete: '{{__('page.admin.js.admin.confirm_delete')}}',
+            error: '{{__('page.server_error')}}',
+            confirm_ban: '{{__('page.admin.js.admin.confirm_ban')}}',
+            confirm_unban: '{{__('page.admin.js.admin.confirm_unban')}}',
+            user_ban: '{{__('page.admin.js.admin.user_ban')}}',
+            user_unban: '{{__('page.admin.js.admin.user_unban')}}',
+            new_user_success: '{{__('page.admin.js.admin.new_user_success')}}',
+            page_delete: '{{__('page.admin.js.admin.page_delete')}}',
+            product_delete: '{{__('page.admin.js.admin.product_delete')}}',
+            message_delete: '{{__('page.admin.js.admin.message_delete')}}',
+            file_delete: '{{__('page.admin.js.admin.file_delete')}}',
+            avatar_delete: '{{__('page.admin.js.admin.avatar_delete')}}',
+            uploads: '{{__('page.admin.js.admin.uploads')}}',
+            users: '{{__('page.admin.js.admin.users')}}',
+            months: '{{__('page.admin.months')}}',
+            active: '{{__('page.admin.js.admin.active')}}',
+            banned: '{{__('page.admin.js.admin.banned')}}',
+        }
+    }
 </script>
 <script src="{{asset('fpool/assets/vendors/js/vendor.bundle.base.js')}}"></script>
 <script src="{{asset('fpool/assets/vendors/js/vendor.bundle.addons.js')}}"></script>

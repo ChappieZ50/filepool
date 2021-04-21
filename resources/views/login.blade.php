@@ -6,7 +6,7 @@
     <div class="return-to-homepage">
         <a href="{{ route('home') }}" class="return-to-homepage">
             <i data-feather="arrow-left"></i>
-            <span>Homepage</span>
+            <span>{{__('page.website.login.back')}}</span>
         </a>
     </div>
 
@@ -24,15 +24,15 @@
             @enderror
 
             @component('components.social-login')
-                @slot('title','Sign in With')
-                @slot('bottom_title','OR')
+                @slot('title',__('page.website.login.sign_in_with'))
+                @slot('bottom_title',__('page.website.login.or'))
             @endcomponent
             <form action="{{route('user.login.store')}}" method="POST">
                 @csrf
                 <div class="form-group">
-                    <label for="email">Email Address</label>
+                    <label for="email">{{__('page.website.login.email')}}</label>
                     <input type="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" name="email"
-                           id="email" placeholder="Email Address" value="{{old('email')}}">
+                           id="email" placeholder="{{__('page.website.login.email')}}" value="{{old('email')}}">
                     @error('email')
                     <span class="invalid-feedback d-block mt-2" role="alert">
                             <strong>{{ $message }}</strong>
@@ -40,8 +40,9 @@
                     @enderror
                 </div>
                 <div class="form-group">
+                    <label for="password">{{__('page.website.login.password')}}</label>
                     <input type="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}"
-                           name="password" id="password" placeholder="Password">
+                           name="password" id="password" placeholder="{{__('page.website.login.password')}}">
                     @error('password')
                     <span class="invalid-feedback d-block mt-2" role="alert">
                             <strong>{{ $message }}</strong>
@@ -56,11 +57,11 @@
                         </span>
                     @enderror
                 </div>
-                <button class="btn fpool-button w-100" type="submit">Sign In</button>
+                <button class="btn fpool-button w-100" type="submit">{{__('page.website.login.sign_in')}}</button>
             </form>
         </div>
         <div class="to-register-page text-center mt-3 small">
-            Don't have an account ? <a href="{{ route('user.register.index') }}">Register</a>
+            {{__('page.website.login.no_account')}} <a href="{{ route('user.register.index') }}">{{__('page.website.login.sign_up')}}</a>
         </div>
     </div>
 @endsection

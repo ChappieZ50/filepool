@@ -27,12 +27,12 @@ class ProductController extends Controller
                     'is_premium'    => $product->premium_user_product ? true : $user->is_premium,
                     'storage_limit' => $product->storage_limit ? $user->storage_limit + $product->storage_limit : $user->storage_limit
                 ]);
-                return back()->with('success', 'Your payment successful. ');
+                return back()->with('success', __('page.front.product.success'));
             }
 
             return $pay;
         }
 
-        return back()->withErrors('fatal_error', 'Product not found');
+        return back()->withErrors('fatal_error', __('page.front.product.not_found'));
     }
 }

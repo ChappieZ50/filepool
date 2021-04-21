@@ -45,7 +45,7 @@ class FileRepository
 
             // Blocking file upload
             if ($storage === false) {
-                return response()->json(['status' => false, 'message' => 'Your storage is full, you should buy storage'], Response::HTTP_REQUEST_ENTITY_TOO_LARGE);
+                return response()->json(['status' => false, 'message' => __('page.storage_full')], Response::HTTP_REQUEST_ENTITY_TOO_LARGE);
             }
 
             $user->update([
@@ -92,13 +92,13 @@ class FileRepository
 
             // Password checking if file's has password
             if (!empty($file->password) && $request->get('password') != $file->password) {
-                return response()->json(['status' => false, 'message' => 'Password incorrect'], 401);
+                return response()->json(['status' => false, 'message' => __('page.password_incorrect')], 401);
             } else {
                 return download_file($file);
             }
         }
 
-        return response()->json(['status' => false, 'message' => 'File not found']);
+        return response()->json(['status' => false, 'message' => __('page.file_not_found')]);
     }
 
     public static function delete($file)
@@ -118,10 +118,10 @@ class FileRepository
 
                 // Deleting record
                 $file->delete();
-                return response()->json(['status' => true]);
+                return response()->json(['status' => true,'message' => __('page.file_delete_success')]);
             }
         }
 
-        return response()->json(['status' => false]);
+        response_server_error(200);
     }
 }

@@ -20,7 +20,7 @@
                     @endcomponent
                 @endif
             @empty
-                <h3 class="text-center">Products not added yet</h3>
+                <h3 class="text-center">{{__('page.website.product.empty')}}</h3>
             @endforelse
         </div>
     </div>

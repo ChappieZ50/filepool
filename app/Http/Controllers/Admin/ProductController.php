@@ -31,9 +31,9 @@ class ProductController extends Controller
         $product = Product::create($store);
 
         if ($product) {
-            return redirect()->route('admin.product.edit', $product->id)->with('success', 'Product successfully created.');
+            return redirect()->route('admin.product.edit', $product->id)->with('success', __('page.back.product.store_success'));
         } else {
-            return back()->with('error', 'Something gone wrong.');
+            return back()->with('error', __('page.server_error'));
         }
 
     }
@@ -55,9 +55,9 @@ class ProductController extends Controller
         ]);
 
         if ($update) {
-            return back()->with('success', 'Product successfully updated.');
+            return back()->with('success', __('page.back.product.update_success'));
         } else {
-            return back()->with('error', 'Something gone wrong.');
+            return back()->with('error', __('page.server_error'));
         }
     }
 
@@ -66,9 +66,9 @@ class ProductController extends Controller
         $product = Product::where('id', $id)->first();
 
         if ($product && $product->delete()) {
-            return response()->json(['message' => 'Product successfully deleted.', 'status' => true]);
+            return response()->json(['message' => __('page.back.product.delete_success'), 'status' => true]);
         }
 
-        return response()->json(['message' => 'Something gone wrong.', 'status' => false], 404);
+        return response_server_error(404);
     }
 }

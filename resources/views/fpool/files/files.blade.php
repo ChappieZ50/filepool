@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-12 grid-margin stretch-card">
             @component('fpool.components.card')
-                @slot('title', 'Files')
+                @slot('title', __('page.admin.files.title'))
                 @slot('searchRoute', route('admin.file.index'))
                 @slot('body')
                     @component('fpool.components.files')

@@ -491,3 +491,11 @@ if (!function_exists('get_storage_usage')) {
         return $get_used ? round(100 - $percent, 2) : $percent;
     }
 }
+
+if (!function_exists('response_server_error')) {
+    function response_server_error($status = 500)
+    {
+        return response()->json(['status' => false, __('page.server_error')], $status);
+    }
+}
+

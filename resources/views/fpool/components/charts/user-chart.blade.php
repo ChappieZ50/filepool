@@ -1,7 +1,7 @@
 <div class="col-lg-6 grid-margin stretch-card">
     <div class="card">
         <div class="p-4 border-bottom bg-light">
-            <h4 class="card-title mb-0">Monthly User Registers</h4>
+            <h4 class="card-title mb-0">{{__('page.admin.home.chart.monthly_registers')}}</h4>
         </div>
         <div id="user_chart"></div>
     </div>
@@ -9,15 +9,15 @@
 <div class="col-lg-6 grid-margin stretch-card">
     <div class="card">
         <div class="p-4 border-bottom bg-light d-flex justify-content-between">
-            <h4 class="card-title mb-0">Latest users</h4>
+            <h4 class="card-title mb-0">{{__('page.admin.home.chart.latest_users')}}</h4>
             <a href="{{ route('admin.user.index') }}" class="btn btn-primary btn-fw">
-                <span>Show All Users</span>
+                <span>{{__('page.admin.home.chart.show_all_users')}}</span>
                 <i class="mdi mdi-arrow-right"></i>
             </a>
         </div>
         <div class="latest-items">
             @unless(count($users))
-                <h5 class="text-center mt-3">No Records Found</h5>
+                <h5 class="text-center mt-3">{{__('page.admin.no_record')}}</h5>
             @else
                 @foreach ($users as $user)
                     <div class="latest-item d-flex align-items-center p-3">
@@ -31,14 +31,14 @@
                                     <a href="{{ route('admin.user.show', $user->id) }}" target="_blank">
                                         <strong>{{ $user->username }}</strong>
                                     </a>
-                                    <span class="text-muted" style="font-size: 14px;">Just register.</span>
+                                    <span class="text-muted" style="font-size: 14px;">{{__('page.admin.home.chart.just_register')}}</span>
                                 </div>
                                 <small class="text-muted">
                                     {{ $user->created_at->diffForHumans() }}
                                 </small>
                             </div>
                             @if (!$user->status)
-                                <label class="badge badge-danger text-white">Banned</label>
+                                <label class="badge badge-danger text-white">{{__('page.admin.banned')}}</label>
                             @endif
                         </div>
                     </div>

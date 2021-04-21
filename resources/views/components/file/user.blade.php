@@ -23,7 +23,7 @@
                 </li>
                 <li>
                     <strong><i data-feather="clock"></i></strong>
-                    <span>Expires in {{\Carbon\Carbon::create($file->expire)->diffForHumans()}}</span>
+                    <span>{{__('page.front.expire')}}: {{\Carbon\Carbon::create($file->expire)->diffForHumans()}}</span>
                 </li>
             </ul>
         </div>
@@ -31,7 +31,7 @@
         @if(auth()->check() && $file->user_id === auth()->user()->id)
             <hr class="mt-3">
             <div class="alert-info text-center font-weight-bold">
-                This is your file, you can download without password.
+                {{__('page.website.file.own_file')}}
             </div>
             <hr>
         @endif
@@ -39,7 +39,7 @@
         <button class="btn btn-sm fpool-button mt-3 w-100" style="font-size: 14px;" data-mime="{{$file->file_mime}}" data-id="{{$file->file_id}}"
                 id="download_file" {{$file->password ? 'data-secure=true' : ''}} {{auth()->check() && $file->user_id === auth()->user()->id ? 'data-own=true' : ''}}>
             <i data-feather="{{$file->password ? 'lock' : 'download'}}"></i>
-            Download
+            {{__('page.website.file.download')}}
         </button>
     </div>
     @component('components.ads.file.left') @endcomponent

@@ -11,16 +11,16 @@ class AdController extends Controller
     public function index()
     {
         $ad = Ad::first();
-        return view('fpool.ads')->with('ad',$ad);
+        return view('fpool.ads')->with('ad', $ad);
     }
 
     public function store(AdRequest $request)
     {
 
         if ($this->updateOrCreate($request->validated())) {
-            return back()->with('success', 'Ads successfully updated.');
+            return back()->with('success',);
         } else {
-            return back()->with('error', 'Something gone wrong.');
+            return back()->with('error', __('page.server_error'));
         }
     }
 

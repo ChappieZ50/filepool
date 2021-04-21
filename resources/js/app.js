@@ -45,7 +45,7 @@ $(document).ready(function () {
 
 
         clipboard.on('success', function (e) {
-            setTooltip(e.trigger, 'File Copied!');
+            setTooltip(e.trigger, window.filepool.trans.copied);
             hideTooltip(e.trigger);
         });
 
@@ -68,7 +68,7 @@ $(document).ready(function () {
                 Swal.fire({
                     title: title,
                     icon: "error",
-                    cancelButtonText: 'Close',
+                    cancelButtonText: window.filepool.trans.close,
                 }).then(function () {
                     if (reload) {
                         window.location.reload();
@@ -79,7 +79,7 @@ $(document).ready(function () {
                 Swal.fire({
                     title,
                     icon: "success",
-                    cancelButtonText: 'Close',
+                    cancelButtonText: window.filepool.trans.close,
                 }).then(function () {
                     if (reload) {
                         window.location.reload();
@@ -115,7 +115,9 @@ $(document).ready(function () {
                     username, email,
                 }).then(response => {
                     if (response.data.status) {
-                        show_swal("Your profile successfully updated.")
+                        show_swal(response.data.message);
+                    } else {
+                        show_swal(response.data.message, 'error');
                     }
                 }, error => parse_errors(error.response.data.errors));
             }, 500);
@@ -131,7 +133,9 @@ $(document).ready(function () {
                     current_password, password, password_confirmation
                 }).then(response => {
                     if (response.data.status) {
-                        show_swal("Your password successfully updated.");
+                        show_swal(response.data.message);
+                    } else {
+                        show_swal(response.data.message, 'error');
                     }
                 }, error => parse_errors(error.response.data.errors));
             }, 500);
@@ -149,7 +153,9 @@ $(document).ready(function () {
                     }
                 }).then(response => {
                     if (response.data.status) {
-                        show_swal("Your avatar successfully updated.");
+                        show_swal(response.data.message);
+                    } else {
+                        show_swal(response.data.message, 'error');
                     }
                 }, error => {
                     parse_errors(error.response.data.errors);
@@ -164,23 +170,23 @@ $(document).ready(function () {
         $(document).on('click', '#file_delete', function () {
             const id = $(this).attr('data-id');
             Swal.fire({
-                title: "Are you sure?",
-                text: "This file will be deleted",
+                title: window.filepool.trans.confirm_text,
+                text: window.filepool.trans.file_delete,
                 icon: "info",
-                confirmButtonText: "Yes,Delete",
-                cancelButtonText: "Cancel",
+                confirmButtonText: window.filepool.trans.confirm_delete_button,
+                cancelButtonText: window.filepool.trans.close,
                 showCancelButton: true,
                 confirmButtonColor: '#ff6258',
             }).then(function (result) {
                 if (result.isConfirmed) {
                     axios.delete(window.routes.file_destroy + '/' + id).then(response => {
                         if (response.data.status) {
-                            show_swal("Your file successfully deleted.");
+                            show_swal(response.data.message);
                         } else {
-                            show_swal('Something gone wrong, please try again.', 'error');
+                            show_swal(response.data.message, 'error');
                         }
                     }, () => {
-                        show_swal('Something gone wrong, please try again.', 'error');
+                        show_swal(window.filepool.error_text, 'error');
                     });
                 }
             });
@@ -189,21 +195,23 @@ $(document).ready(function () {
 
         $('#user_delete_avatar').on('click', function () {
             Swal.fire({
-                title: "Are you sure?",
-                text: "Your avatar will be deleted",
+                title: window.filepool.trans.confirm_text,
+                text: window.filepool.trans.avatar_delete,
                 icon: "info",
-                confirmButtonText: "Yes,Delete",
-                cancelButtonText: "Cancel",
+                confirmButtonText: window.filepool.trans.confirm_delete_button,
+                cancelButtonText: window.filepool.trans.close,
                 showCancelButton: true,
                 confirmButtonColor: '#ff6258',
             }).then(function (result) {
                 if (result.isConfirmed) {
                     axios.delete(window.location.href + '/destroy/avatar').then(response => {
                         if (response.data.status) {
-                            show_swal("Your avatar successfully deleted.");
+                            show_swal(response.data.message);
+                        } else {
+                            show_swal(response.data.message, 'error');
                         }
                     }, () => {
-                        show_swal('Something gone wrong, please try again.', 'error');
+                        show_swal(window.filepool.error_text, 'error');
                     });
                 }
             });
@@ -219,7 +227,7 @@ $(document).ready(function () {
 
         function clickToCopyAction(el, success = true) {
             let color = success ? '#3cb371' : '#dc143c';
-            let tt = success ? 'Text Copied!' : 'ERROR!';
+            let tt = success ? window.filepool.trans.copied : 'ERROR!';
             let text = $(el).text();
             $(el).html('<span style="color:' + color + '">' + tt + '</span>');
             $(el).show();
@@ -243,7 +251,7 @@ $(document).ready(function () {
         if ($('#file_chart').length) {
             let options = {
                 series: [{
-                    name: "Files",
+                    name: window.filepool.trans.files,
                     data: Object.values(window.file_chart),
 
                 }],
@@ -288,7 +296,7 @@ $(document).ready(function () {
                     },
                 },
                 xaxis: {
-                    categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                    categories: window.filepool.trans.months.split(','),
                 },
                 yaxis: {
                     labels: {
@@ -316,7 +324,7 @@ $(document).ready(function () {
 
             let options = {
                 series: [{
-                    name: "Usage",
+                    name: window.filepool.trans.usage,
                     data: file_storage,
                 }],
 
@@ -369,7 +377,7 @@ $(document).ready(function () {
                     },
                 },
                 xaxis: {
-                    categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                    categories: window.filepool.trans.months.split(','),
                 },
                 yaxis: {
                     show: false,
@@ -386,7 +394,7 @@ $(document).ready(function () {
         if ($('#user_storage_usage_chart').length) {
             let options = {
                 series: [window.user_storage_usage.empty, window.user_storage_usage.used],
-                labels: ['Empty', 'Used'],
+                labels: [window.filepool.trans.empty, window.filepool.trans.used],
                 colors: ['#19d895', window.filepool.theme],
                 dataLabels: {
                     enabled: true,
@@ -437,7 +445,7 @@ $(document).ready(function () {
             let id = $(this).attr('data-id');
             if (id) {
                 Swal.fire({
-                    title: 'Your password will appear clearly. Do you confirm?',
+                    title: window.filepool.trans.password_confirm,
                     showCancelButton: true,
                     confirmButtonText: 'Yes',
                     showLoaderOnConfirm: true,
@@ -445,13 +453,13 @@ $(document).ready(function () {
                     if (result.isConfirmed) {
                         axios.post('my-files/password', {id}).then(response => {
                             Swal.fire({
-                                title: 'Your file\'s password',
+                                title: window.filepool.trans.password_confirm_final,
                                 text: response.data.password,
                                 showCancelButton: true,
                                 showConfirmButton: false,
                             })
                         }).catch(() => {
-                            show_swal('Something gone wrong', 'error', false);
+                            show_swal(window.filepool.error_text, 'error', false);
                         });
                     }
                 })
@@ -465,18 +473,18 @@ $(document).ready(function () {
 
             if ($(this).attr('data-secure') && !$(this).attr('data-own')) {
                 Swal.fire({
-                    title: 'Enter Password',
+                    title: window.filepool.trans.enter_password,
                     input: 'password',
                     inputAttributes: {
                         name: 'file_password'
                     },
                     preConfirm: function () {
                         if ($('input[name=file_password]').val().length < 0) {
-                            Swal.showValidationMessage(`Please enter file's password`);
+                            Swal.showValidationMessage(window.filepool.trans.password_error);
                         }
                     },
                     showCancelButton: true,
-                    confirmButtonText: 'Download File',
+                    confirmButtonText: window.filepool.trans.download_file,
                     showLoaderOnConfirm: true,
 
                 }).then((result) => {
@@ -505,19 +513,19 @@ $(document).ready(function () {
                 link.click();
             }).catch((errors) => {
                 if (errors.response.status === 401) {
-                    show_swal('Password incorrect', 'error', false);
+                    show_swal(window.filepool.password_incorrect, 'error', false);
                 } else {
-                    show_swal('Something gone wrong', 'error', false);
+                    show_swal(window.filepool.error_text, 'error', false);
                 }
             });
         }
 
         if ($('#payment_success').length > 0) {
-            show_swal('Your payment successful', 'success', false);
+            show_swal(window.filepool.payment_success_text, 'success', false);
         }
 
         $(document).on('click', '#buy_product_button', function () {
-            const payment_button = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg> Pay ($${$(this).attr('data-product-price')})`;
+            const payment_button = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg> ${window.filepool.pay} (${$(this).attr('data-product-price')} ${window.filepool.currency})`;
             $('#paymentModal input#payment_product').val($(this).attr('data-product'));
             $('#paymentModal #paymentModalTitle').html($(this).attr('data-product-title'));
 

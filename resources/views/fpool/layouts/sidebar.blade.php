@@ -12,60 +12,60 @@
                 </div>
             </a>
         </li>
-        <li class="nav-item nav-category">Main Menu</li>
+        <li class="nav-item nav-category">{{__('page.admin.sidebar.main_menu')}}</li>
         <li class="nav-item">
             <a class="nav-link" href="{{route('admin.home')}}">
                 <i class="menu-icon typcn typcn-document-text"></i>
-                <span class="menu-title">Dashboard</span>
+                <span class="menu-title">{{__('page.admin.sidebar.dashboard')}}</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{route('admin.user.index')}}">
                 <i class="menu-icon typcn typcn-document-text"></i>
-                <span class="menu-title">Users</span>
+                <span class="menu-title">{{__('page.admin.sidebar.users')}}</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{route('admin.file.index')}}">
                 <i class="menu-icon typcn typcn-document-text"></i>
-                <span class="menu-title">Files</span>
+                <span class="menu-title">{{__('page.admin.sidebar.files')}}</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{route('admin.product.index')}}">
                 <i class="menu-icon typcn typcn-document-text"></i>
-                <span class="menu-title">Products</span>
+                <span class="menu-title">{{__('page.admin.sidebar.products')}}</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{route('admin.transaction.index')}}">
                 <i class="menu-icon typcn typcn-document-text"></i>
-                <span class="menu-title">Transactions</span>
+                <span class="menu-title">{{__('page.admin.sidebar.transactions')}}</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{route('admin.page.index')}}">
                 <i class="menu-icon typcn typcn-document-text"></i>
-                <span class="menu-title">Pages</span>
+                <span class="menu-title">{{__('page.admin.sidebar.pages')}}</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{route('admin.message.index')}}">
                 <i class="menu-icon typcn typcn-document-text"></i>
-                <span class="menu-title">Messages</span>
+                <span class="menu-title">{{__('page.admin.sidebar.messages')}}</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{route('admin.ad.index')}}">
                 <i class="menu-icon typcn typcn-document-text"></i>
-                <span class="menu-title">Manage Ads</span>
+                <span class="menu-title">{{__('page.admin.sidebar.manage_ads')}}</span>
             </a>
         </li>
-        <li class="nav-item nav-category">Website</li>
+        <li class="nav-item nav-category">{{__('page.admin.sidebar.website')}}</li>
         <li class="nav-item">
             <a class="nav-link" href="{{route('admin.setting.index')}}">
                 <i class="menu-icon typcn typcn-document-text"></i>
-                <span class="menu-title">Settings</span>
+                <span class="menu-title">{{__('page.admin.sidebar.settings')}}</span>
             </a>
         </li>
         {{--<li class="nav-item">

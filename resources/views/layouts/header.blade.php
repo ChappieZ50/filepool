@@ -3,7 +3,7 @@
         <div class="page-items">
             <a class="fpool-button fpool-get-storage nav-link" href="{{ auth()->check() ? route('products.index') : route('user.login.index') }}">
                 <i data-feather="shopping-bag"></i>
-                Buy Storage
+                {{__('page.website.home.buy_storage')}}
             </a>
             <button class="navbar-toggler collapsed border-0" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -46,23 +46,23 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right position-absolute shadow-lg"
                              aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('user.profile') }}">Profile</a>
-                            <a class="dropdown-item" href="{{ route('user.files') }}">My Files</a>
-                            <a class="dropdown-item" href="{{ route('user.statistic') }}">Statistics</a>
-                            <a class="dropdown-item" href="{{ route('user.transactions') }}">Payments</a>
+                            <a class="dropdown-item" href="{{ route('user.profile') }}">{{__('page.website.home.sidebar.profile')}}</a>
+                            <a class="dropdown-item" href="{{ route('user.files') }}">{{__('page.website.home.sidebar.my_files')}}</a>
+                            <a class="dropdown-item" href="{{ route('user.statistic') }}">{{__('page.website.home.sidebar.statistics')}}</a>
+                            <a class="dropdown-item" href="{{ route('user.transactions') }}">{{__('page.website.home.sidebar.payments')}}</a>
                             @if(auth()->user()->is_admin)
-                                <a class="dropdown-item" href="{{route('admin.home')}}">Admin Panel</a>
+                                <a class="dropdown-item" href="{{route('admin.home')}}">{{__('page.website.home.sidebar.admin_panel')}}</a>
                             @endif
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ route('user.logout') }}">Logout</a>
+                            <a class="dropdown-item" href="{{ route('user.logout') }}">{{__('page.website.home.sidebar.logout')}}</a>
                         </div>
                     </li>
                 </ul>
             @else
-                <a class="nav-link" href="{{ route('user.login.index') }}">Sign in</a>
+                <a class="nav-link" href="{{ route('user.login.index') }}">{{__('page.website.home.sidebar.sign_in')}}</a>
                 <a class="nav-link fpool-button fpool-sign-up fpool-move-btn" href="{{ route('user.register.index') }}">
                     <i data-feather="user-plus"></i>
-                    Sign up
+                    {{__('page.website.home.sidebar.sign_up')}}
                 </a>
             @endauth
 

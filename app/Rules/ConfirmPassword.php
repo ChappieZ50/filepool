@@ -38,6 +38,6 @@ class ConfirmPassword implements Rule
      */
     public function message()
     {
-        return 'Current password does not match';
+        return __('page.password_does_not_match');
     }
 }

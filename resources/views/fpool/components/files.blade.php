@@ -5,16 +5,16 @@
         <table class="table table-hover table-striped">
             <thead>
             <tr>
-                <th>Preview</th>
+                <th>{{__('page.admin.file_table.preview')}}</th>
                 @isset($username)
-                    <th>Username</th>
+                    <th>{{__('page.admin.file_table.username')}}</th>
                 @endisset
-                <th>Name</th>
-                <th>Original Name</th>
-                <th>Size</th>
-                <th>Created</th>
-                <th>Expire</th>
-                <th>Action</th>
+                <th>{{__('page.admin.file_table.name')}}</th>
+                <th>{{__('page.admin.file_table.original_name')}}</th>
+                <th>{{__('page.admin.file_table.size')}}</th>
+                <th>{{__('page.admin.file_table.created')}}</th>
+                <th>{{__('page.admin.file_table.expire')}}</th>
+                <th>{{__('page.admin.file_table.action')}}</th>
             </tr>
             </thead>
             <tbody>
@@ -48,11 +48,11 @@
 
                     <td>
                         <a href="{{ route('admin.file.show', $file->id) }}" class="btn btn-primary social-btn"
-                           style="padding: 6px 10px;" title="File info">
+                           style="padding: 6px 10px;" title="{{__('page.admin.file_table.file_info')}}">
                             <i class="mdi mdi-eye"></i>
                         </a>
                         <button class="btn btn-danger social-btn" id="file_delete" style="padding: 6px 10px;"
-                                title="Delete this file" data-id="{{ $file->id }}">
+                                title="{{__('page.admin.file_table.delete_file')}}" data-id="{{ $file->id }}">
                             <i class="mdi mdi-delete-outline"></i>
                         </button>
                     </td>

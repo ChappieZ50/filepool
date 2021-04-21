@@ -18,19 +18,19 @@
                     </div>
                     <a href="{{route('user.profile')}}" class="dropdown-item">
                         <i class="mdi mdi-arrow-right-drop-circle"></i>
-                        My Profile
+                        {{__('page.admin.user_sidebar.my_profile')}}
                     </a>
                     <a href="{{route('admin.setting.index')}}" class="dropdown-item">
                         <i class="mdi mdi-arrow-right-drop-circle"></i>
-                        Settings
+                        {{__('page.admin.user_sidebar.settings')}}
                     </a>
                     <a href="{{route('home')}}" class="dropdown-item">
                         <i class="mdi mdi-arrow-right-drop-circle"></i>
-                        Website
+                        {{__('page.admin.user_sidebar.website')}}
                     </a>
                     <a href="{{route('user.logout')}}" class="dropdown-item">
                         <i class="mdi mdi-arrow-right-drop-circle"></i>
-                        Logout
+                        {{__('page.admin.user_sidebar.logout')}}
                     </a>
                 </div>
             </li>
