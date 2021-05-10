@@ -31,10 +31,20 @@
                                             <a href="{{ route('admin.user.show',$transaction->user->id) }}" target="_blank">{{$transaction->user->username}}</a>
                                         </td>
                                         <td>
-                                            <a href="{{ route('admin.product.edit',$transaction->product->id) }}" target="_blank">{{$transaction->product->name}}</a>
+                                            @if($transaction->product)
+                                                <a href="{{ route('admin.product.edit',$transaction->product->id) }}" target="_blank">{{$transaction->product->name}}</a>
+                                            @else
+                                                -
+                                            @endif
                                         </td>
                                         <td>{{ucfirst($transaction->payment_method)}}</td>
-                                        <td>${{$transaction->product->price}}</td>
+                                        <td>
+                                            @if($transaction->product)
+                                                {{$transaction->product->price}}
+                                            @else
+                                                -
+                                            @endif
+                                        </td>
                                         <td>
                                             @if($transaction->status)
                                                 <span class="badge badge-success badge-pill text-white">{{__('page.admin.transactions.success')}}</span>

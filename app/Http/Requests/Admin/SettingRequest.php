@@ -61,8 +61,9 @@ class SettingRequest extends FormRequest
             'site_keywords'         => 'sometimes',
 
             /* Payment */
-            'stripe_key'            => 'sometimes',
-            'stripe_secret'         => 'sometimes',
+            'iyzico_api_key'    => 'sometimes',
+            'iyzico_secret_key' => 'sometimes',
+            'iyzico_sandbox'    => 'sometimes',
         ];
     }
 }

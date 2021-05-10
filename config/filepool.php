@@ -89,10 +89,10 @@ return [
         'recaptcha_site_key'    => '',
         'recaptcha_secret_key'  => '',
 
-        /* Payment Settings */
-        'stripe_key'            => '',
-        'stripe_secret'         => '',
-        'stripe_sandbox'        => true,
+        /* Iyzico Settings */
+        'iyzico_api_key'        => '',
+        'iyzico_secret_key'     => '',
+        'iyzico_sandbox'        => true,
     ],
 
     'file_expires' => [

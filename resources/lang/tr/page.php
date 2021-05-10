@@ -61,9 +61,11 @@ return [
     ],
     'server_error'            => 'Bir şeyler ters gitti',
     'payment_success_text'    => 'Ödemeniz başarılı',
+    'payment_error_text'      => 'Bazı nedenlerden dolayı ödemeniz başarısız oldu',
     'password_incorrect'      => 'Şifre Yanlış',
     'storage_full '           => 'Deponuz dolu, depolama alanı satın almalısınız ',
     'file_not_found'          => 'Dosya Bulunamadı',
+    'product_not_found'       => 'Bir sorun oluştu, ürün bulunamadı',
     'file_delete_success'     => 'Dosya Başarıyla Silindi',
 
     /* Website */
@@ -87,6 +89,7 @@ return [
             'no_ads'              => 'Reklam Yok',
             'increase_storage'    => 'depolamayı artır',
             'purchased'           => 'Satın alındı',
+            'purchased_response'  => 'Bu ürünü zaten satın aldınız',
             'buy_now'             => 'Şimdi Satın Alın',
             'payment'             => 'Ödeme',
             'card_name'           => 'Karttaki İsim',
@@ -292,10 +295,14 @@ return [
                     'site_keywords'    => 'Site Anahtar Kelimeleri',
                 ],
                 'payment'         => [
-                    'card_title'    => 'Ödeme',
-                    'title'         => 'Stripe Payment',
-                    'stripe_key'    => 'Stripe Key',
-                    'stripe_secret' => 'Stripe Secret'
+                    'card_title'             => 'Ödeme',
+                    'title'                  => 'Iyzico',
+                    'iyzico_api_key'         => 'Iyzico API Key',
+                    'iyzico_secret_key'      => 'Iyzico Secret Key',
+                    'iyzico_sandbox'         => 'Sandbox (Deneme Modu)',
+                    'iyzico_sandbox_active'  => 'Aktif',
+                    'iyzico_sandbox_passive' => 'Pasif',
+                    'iyzico_sandbox_text'    => 'Gerçek ödemeler almak istiyorsanız sandbox\'u pasif hale getirin',
                 ]
             ]
         ],
@@ -396,7 +403,7 @@ return [
             'title'                 => 'Ürünler',
             'name'                  => 'İsim',
             'price'                 => 'Fiyat',
-            'storage_limit'         => 'Depolama Sınırı',
+            'storage_limit'         => 'Depolama Sınırı Ürünü',
             'premium_user_products' => 'Premium Kullanıcı Ürünü',
             'yes'                   => 'Evet',
             'no'                    => 'Hayır',
@@ -519,6 +526,7 @@ return [
         'user_normal_role' => 'Kullanıcı',
         'search_text'      => 'Ara',
         'banned_text'      => 'Bu Kullanıcı Yasaklandı',
+        'user_not_found'   => 'Kullanıcı bulunamadı',
 
         /* Javascript */
         'js'               => [

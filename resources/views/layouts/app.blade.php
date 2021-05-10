@@ -61,6 +61,7 @@
         file_destroy: '{{ route('user.files') . '/destroy' }}',
         file_download: '{{ route('file.download')}}',
     };
+
     window.filepool = {
         g_recaptcha_site_key: '{{get_setting('recaptcha_site_key')}}',
         auth: {{auth()->check() ? 'true' : 'false'}},
@@ -88,6 +89,7 @@
             password_error: '{{__('page.admin.js.password_error')}}',
             download_file: '{{__('page.admin.js.download_file')}}',
             months: '{{__('page.admin.months')}}',
+            buy_now_modal: '{{__('page.website.product.buy_now_modal')}}'
         }
     };
 

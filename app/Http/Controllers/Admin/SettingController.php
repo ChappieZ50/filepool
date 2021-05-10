@@ -182,8 +182,9 @@ class SettingController extends Controller
     private function payment(SettingRequest $request)
     {
         $data = [
-            'stripe_key'     => $request->get('stripe_key'),
-            'stripe_secret'  => $request->get('stripe_secret'),
+            'iyzico_api_key'    => $request->get('iyzico_api_key'),
+            'iyzico_secret_key' => $request->get('iyzico_secret_key'),
+            'iyzico_sandbox'    => $request->get('iyzico_sandbox'),
         ];
 
         if ($this->updateOrCreate($data)) {

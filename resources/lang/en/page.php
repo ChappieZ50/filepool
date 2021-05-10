@@ -61,9 +61,11 @@ return [
     ],
     'server_error'            => 'Something gone wrong',
     'payment_success_text'    => 'Your payment successful',
+    'payment_error_text'      => 'For some reason your payment failed',
     'password_incorrect'      => 'Password Incorrect',
     'storage_full'            => 'Your storage is full, you should buy storage',
     'file_not_found'          => 'File Not Found',
+    'product_not_found'       => 'There was a problem, the product was not found',
     'file_delete_success'     => 'File Successfully Deleted',
 
     /* Website */
@@ -87,6 +89,7 @@ return [
             'no_ads'              => 'No Ads',
             'increase_storage'    => 'increase storage',
             'purchased'           => 'Purchased',
+            'purchased_response'  => 'You already have this product',
             'buy_now'             => 'Buy Now',
             'payment'             => 'Payment',
             'card_name'           => 'Name on Card',
@@ -291,10 +294,14 @@ return [
                     'site_keywords'    => 'Site Keywords',
                 ],
                 'payment'         => [
-                    'card_title'    => 'Payment',
-                    'title'         => 'Stripe Payment',
-                    'stripe_key'    => 'Stripe Key',
-                    'stripe_secret' => 'Stripe Secret'
+                    'card_title'             => 'Payment',
+                    'title'                  => 'Iyzico',
+                    'iyzico_api_key'         => 'Iyzico API Key',
+                    'iyzico_secret_key'      => 'Iyzico Secret',
+                    'iyzico_sandbox'         => 'Sandbox (Test Mode)',
+                    'iyzico_sandbox_active'  => 'Active',
+                    'iyzico_sandbox_passive' => 'Passive',
+                    'iyzico_sandbox_text'    => 'Select passive if you want get real paid',
                 ]
             ]
         ],
@@ -395,7 +402,7 @@ return [
             'title'                 => 'Products',
             'name'                  => 'Name',
             'price'                 => 'Price',
-            'storage_limit'         => 'Storage Limit',
+            'storage_limit'         => 'Storage Limit Product',
             'premium_user_products' => 'Premium User Product',
             'yes'                   => 'Yes',
             'no'                    => 'No',
@@ -518,6 +525,7 @@ return [
         'user_normal_role' => 'User',
         'search_text'      => 'Search',
         'banned_text'      => 'has been banned',
+        'user_not_found'   => 'User not found',
 
         /* Javascript */
         'js'               => [

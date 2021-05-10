@@ -8,7 +8,11 @@
             <ul class="product-features list-unstyled mt-3 mb-4">
                 <li class="product-feature">{{readable_size_clearly(bytes_to_mb($product->storage_limit))}} {{__('page.website.product.increase_storage')}}</li>
             </ul>
-            <a href="javascript:;" class="btn btn-block fpool-button buy-product" id="buy_product_button" data-toggle="modal" data-target="#paymentModal" data-product="{{$product->id}}" data-product-price="{{$product->price}}" data-product-title="You paying for {{$product->name}}">{{__('page.website.product.buy_now')}}</a>
+            <form action="{{route('checkout')}}" class="w-100" method="POST">
+                @csrf
+                <input type="hidden" name="id" value="{{$product->id}}">
+                <button type="submit" class="btn btn-block fpool-button buy-product" data-id="{{$product->id}}">{{__('page.website.product.buy_now')}}</button>
+            </form>
         </div>
     </div>
 </div>

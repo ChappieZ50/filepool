@@ -22,7 +22,7 @@ class CreateTransactionsTable extends Migration
             $table->unsignedBigInteger('user_id');
 
             $table->foreign('product_id')->references('id')->on('products')->cascadeOnDelete();
-            $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('product_id')->nullable();
 
             $table->timestamps();
         });

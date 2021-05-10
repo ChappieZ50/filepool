@@ -177,6 +177,7 @@ return [
 
         /* Filepool Custom Service Providers */
         \App\Providers\InitialServiceProvider::class,
+        \App\Providers\InitialServiceProvider::class,
 
     ],
 

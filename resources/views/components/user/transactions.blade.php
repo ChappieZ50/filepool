@@ -23,8 +23,20 @@
                             @foreach ($transactions as $transaction)
                                 <tr>
                                     <td>{{$transaction->id}}</td>
-                                    <td>{{$transaction->product->name}}</td>
-                                    <td>${{$transaction->product->price}}</td>
+                                    <td>
+                                        @if($transaction->product)
+                                            {{$transaction->product->name}}
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($transaction->product)
+                                            {{$transaction->product->price.__('page.currency')}}
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
                                     <td>{{ucfirst($transaction->payment_method)}}</td>
                                     <td>
                                         @if($transaction->status)
