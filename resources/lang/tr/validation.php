@@ -164,9 +164,11 @@ return [
         'new_password_confirmation' => 'Yeni Şifre Doğrulama',
         'avatar'                    => 'Avatar',
         'g-recaptcha-response'      => 'Recaptcha',
-        'name' 		     => 'İsim',
-        'subject'		     => 'Konu',
-        'message'		     => 'Mesaj',
+        'name'                      => 'İsim',
+        'subject'                   => 'Konu',
+        'message'                   => 'Mesaj',
+        'shortcode'                 => 'Kısa Ad',
+        'active'                    => 'Aktif'
     ],
 
 ];

@@ -57,6 +57,11 @@ return [
             'admin_ban_error'       => 'Yönetici kullanıcı yasaklayamaz',
             'create_success'        => 'Kullanıcı Oluşturuldu',
             'update_success'        => 'Kullanıcı başarıyla güncellendi',
+        ],
+        'language' => [
+            'create_success' => 'Dil Başarıyla Oluşturuldu',
+            'update_success' => 'Dil Başarıyla Güncellendi',
+            'delete_success' => 'Dil Başarıyla Silindi',
         ]
     ],
     'server_error'            => 'Bir şeyler ters gitti',
@@ -494,6 +499,39 @@ return [
                 'download_file_button' => 'Dosyayı İndir'
             ]
         ],
+        'language'         => [
+            'title'           => 'Diller',
+            'new_language'    => 'Yeni Dil',
+            'name'            => 'Dil Adı',
+            'language_edit'   => 'Dili düzenle',
+            'language_delete' => 'Dili Sil',
+            'form'            => [
+                'name'      => 'Dil adı',
+                'shortcode' => 'Dil Kısa Adı',
+                'active'    => 'Aktif',
+                'passive'   => 'Pasif',
+            ],
+            'create'          => [
+                'title'  => 'Yeni Dil',
+                'button' => 'Dil Oluştur'
+
+            ],
+            'edit'            => [
+                'title'         => 'Dil Güncelle',
+                'button'        => 'Dili Güncelle',
+                'editor_button' => 'Kaydet',
+            ],
+            'table'           => [
+                'name'         => 'Dil Adı',
+                'shortcode'    => 'Dil Kısa Adı',
+                'active'       => 'Aktif',
+                'created'      => 'Oluşturulma Tarihi',
+                'action'       => 'Eylem',
+                'active_text'  => 'Aktif',
+                'passive_text' => 'Pasif'
+            ]
+
+        ],
 
         /* Layouts */
         'sidebar'          => [
@@ -508,6 +546,7 @@ return [
             'manage_ads'   => 'Reklamları Yönet',
             'website'      => 'Web sitesi',
             'settings'     => 'Ayarlar',
+            'language'     => 'Dil',
         ],
         'user_sidebar'     => [
             'my_profile' => 'Profilim',

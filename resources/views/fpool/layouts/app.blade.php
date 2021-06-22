@@ -38,6 +38,7 @@
         'message_destroy': '{{route('admin.message.index')}}',
         'product_destroy': '{{route('admin.product.index')}}',
         'delete_avatar': '{{route('admin.user.delete_avatar')}}',
+        'language_destroy': '{{route('admin.language.index')}}',
     };
 
     window.filepool = {

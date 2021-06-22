@@ -507,6 +507,7 @@ return [
             'manage_ads'   => 'Manage Ads',
             'website'      => 'Website',
             'settings'     => 'Settings',
+            'language'     => 'Language',
         ],
         'user_sidebar'     => [
             'my_profile' => 'My Profile',

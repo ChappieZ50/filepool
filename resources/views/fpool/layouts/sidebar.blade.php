@@ -68,6 +68,12 @@
                 <span class="menu-title">{{__('page.admin.sidebar.settings')}}</span>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('admin.language.index')}}">
+                <i class="menu-icon typcn typcn-document-text"></i>
+                <span class="menu-title">{{__('page.admin.sidebar.language')}}</span>
+            </a>
+        </li>
         {{--<li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <i class="menu-icon typcn typcn-coffee"></i>

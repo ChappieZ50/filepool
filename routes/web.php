@@ -41,6 +41,7 @@ Route::group(['prefix' => '/admin/', 'as' => 'admin.', 'namespace' => 'Admin', '
 
     /* Website Settings */
     Route::resource('setting', 'SettingController')->only('index', 'store');
+    Route::resource('language', 'LanguageController')->except('show');
 });
 
 /* filepool web */

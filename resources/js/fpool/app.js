@@ -480,4 +480,43 @@ $(document).ready(function () {
             }
         });
     });
+
+    $(document).on('click', '#language_delete', function () {
+        let id = $(this).attr('data-id');
+        Swal.fire({
+            title: window.filepool.trans.title,
+            text: window.filepool.trans.language_delete,
+            icon: "error",
+            confirmButtonText: window.filepool.trans.confirm_delete,
+            cancelButtonText: window.filepool.trans.cancel,
+            showCancelButton: true,
+            confirmButtonColor: '#ff6258',
+        }).then(function (result) {
+            if (result.isConfirmed) {
+                axios.delete(window.routes.language_destroy + '/' + id).then(response => {
+                    if (response.data.status) {
+                        Swal.fire({
+                            title: response.data.message,
+                            icon: "success",
+                            cancelButtonText: window.filepool.trans.close,
+                        }).then(function () {
+                            window.location.reload();
+                        });
+                    } else {
+                        Swal.fire({
+                            title: response.data.message,
+                            icon: "error",
+                            cancelButtonText: window.filepool.trans.close,
+                        });
+                    }
+                }).catch(error => {
+                    Swal.fire({
+                        title: window.filepool.trans.error,
+                        icon: "error",
+                        cancelButtonText: window.filepool.trans.close,
+                    });
+                });
+            }
+        });
+    });
 });
