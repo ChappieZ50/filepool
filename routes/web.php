@@ -42,6 +42,7 @@ Route::group(['prefix' => '/admin/', 'as' => 'admin.', 'namespace' => 'Admin', '
     /* Website Settings */
     Route::resource('setting', 'SettingController')->only('index', 'store');
     Route::resource('language', 'LanguageController')->except('show');
+    Route::post('language/file', 'LanguageController@updateFiles')->name('language.update.file');
 });
 
 /* filepool web */

@@ -499,3 +499,13 @@ if (!function_exists('response_server_error')) {
     }
 }
 
+if (!function_exists('clear_file_content')) {
+    function clear_file_content($content)
+    {
+        $content = str_replace('<?php','',$content);
+        $content = str_replace('];','',$content);
+        return str_replace('return [','',$content);
+    }
+}
+
+

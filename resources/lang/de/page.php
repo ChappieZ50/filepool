@@ -1,8 +1,4 @@
-<?php
-
-return [
-
-    'front' => [
+<?php return ['front' => [
         'expire'            => 'Silinecek',
         'product'           => [
             'success'   => 'Ödemeniz başarılı',
@@ -271,7 +267,7 @@ return [
                 ],
                 'login_recaptcha' => [
                     'card_title' => 'Giriş ve Recaptcha API',
-                    'title'      => 'Google & Facebook & Recaptcha',
+                    'title'      => 'Google &amp; Facebook &amp; Recaptcha',
                     'google'     => [
                         'title'      => 'Google Giriş Bilgileri',
                         'client_id'  => 'Müşteri Kimliği',
@@ -623,5 +619,4 @@ return [
     ],
     'here'                    => 'buradan',
     'password_does_not_match' => 'Mevcut şifre eşleşmiyor',
-    'currency'                => '₺',
-];
+    'currency'                => '₺',];

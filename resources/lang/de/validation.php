@@ -1,7 +1,4 @@
-<?php
-
-return [
-    'accepted'             => ':attribute kabul edilmelidir.',
+<?php return ['accepted'             => ':attribute kabul edilmelidir.',
     'active_url'           => ':attribute geçerli bir URL olmalıdır.',
     'after'                => ':attribute değeri :date tarihinden sonra olmalıdır.',
     'after_or_equal'       => ':attribute değeri :date tarihinden sonra veya eşit olmalıdır.',
@@ -128,6 +125,4 @@ return [
         'message'                   => 'Mesaj',
         'shortcode'                 => 'Kısa Ad',
         'active'                    => 'Aktif'
-    ],
-
-];
+    ],];

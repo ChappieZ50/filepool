@@ -1,6 +1,3 @@
-<?php
-
-return [
     'accepted'             => ':attribute kabul edilmelidir.',
     'active_url'           => ':attribute geçerli bir URL olmalıdır.',
     'after'                => ':attribute değeri :date tarihinden sonra olmalıdır.',

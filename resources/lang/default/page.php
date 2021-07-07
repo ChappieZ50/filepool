@@ -1,7 +1,3 @@
-<?php
-
-return [
-
     'front' => [
         'expire'            => 'Silinecek',
         'product'           => [
