@@ -21,6 +21,7 @@ return [
         'account_banned'    => 'Your account has been banned',
         'account_exists'    => 'User already exists. Sign in with email password',
         'account_incorrect' => 'Email or password is incorrect',
+        'menu_title'        => 'About',
     ],
 
     'back'                    => [

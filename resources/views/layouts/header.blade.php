@@ -17,7 +17,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{get_setting('menu_title','About')}}
+                            {{__('page.front.menu_title')}}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @forelse(get_pages() as $page)

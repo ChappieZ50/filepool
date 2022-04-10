@@ -21,6 +21,7 @@ return [
         'account_banned'    => 'Hesabınız yasaklandı',
         'account_exists'    => 'Kullanıcı zaten var. E-posta şifresiyle oturum açın ',
         'account_incorrect' => 'E-posta veya şifre yanlış',
+        'menu_title'        => 'Hakkımızda',
     ],
 
     'back'                    => [
@@ -437,8 +438,8 @@ return [
                     'Kullanıcı bu ürünü istediği kadar satın alabilir',
                 ],
                 'premium_user_settings'  => [
-                    'Kullanıcı sınırsız kullanım süresi dolan dosya yükleyebilir',
-                    'Reklamlar bu kullanıcıyı göstermeyecek',
+                    'Kullanıcı sınırsız süreli dosya yükleyebilir',
+                    'Reklamlar bu kullanıcıya gösterilmeyecek',
                     'Kullanıcı bu ürünü sadece 1 kez satın alabilir',
                     'Depolama sınırı, "Depolama Sınırı" değeri kadar artacaktır',
                 ]
